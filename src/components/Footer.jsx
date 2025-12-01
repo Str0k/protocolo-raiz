@@ -1,0 +1,31 @@
+import React from 'react';
+
+const Footer = () => {
+    return (
+        <footer className="bg-background text-slate-500 py-12 border-t border-slate-200">
+            <div className="container mx-auto px-4 text-center">
+                <div className="grid md:grid-cols-4 gap-8 mb-12">
+                    <div className="col-span-1 md:col-span-2 text-left">
+                        <img src="/logo.jpg" alt="Protocolo de Raíz" className="h-16 mb-6 mix-blend-multiply" />
+                        <p className="text-slate-500 max-w-sm">
+                            Un enfoque científico y natural para sanar tu digestión desde la raíz, sin dietas restrictivas ni suplementos innecesarios.
+                        </p>
+                    </div>
+                    {/* Additional footer columns can go here */}
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
+                    <a href="#" className="hover:text-primary transition-colors">Aviso Legal</a>
+                    <a href="#" className="hover:text-primary transition-colors">Términos y Condiciones</a>
+                    <a href="#" className="hover:text-primary transition-colors">Contacto</a>
+                </div>
+
+                <p className="text-xs">
+                    Copyright © 2025 Protocolo de Raíz. Todos los derechos reservados.
+                </p>
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;
