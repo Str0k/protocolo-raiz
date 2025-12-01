@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CountdownTimer from './CountdownTimer';
 
 const StickyCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -28,9 +29,12 @@ const StickyCTA = () => {
                     className="fixed bottom-0 left-0 w-full z-50 bg-[#1C1917] border-t border-white/10 shadow-2xl py-4 px-4 md:py-6"
                 >
                     <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-4">
-                        <p className="text-white font-medium text-lg hidden md:block">
-                            Desinflama tu cuerpo en 7 días.
-                        </p>
+                        <div className="flex flex-col md:flex-row items-center gap-4">
+                            <CountdownTimer className="text-red-500 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm" />
+                            <p className="text-white font-medium text-lg hidden md:block">
+                                Desinflama tu cuerpo en 7 días.
+                            </p>
+                        </div>
                         <a
                             onclick="return false;"
                             href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
