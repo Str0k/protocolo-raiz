@@ -14,7 +14,7 @@ const Science = () => {
                         </span>
                         <AnimatedTitle
                             text="Tu cuerpo no está roto. Solo está defendiéndose."
-                            className="text-3xl md:text-4xl font-bold mb-6 justify-start"
+                            className="text-3xl md:text-4xl font-bold mb-6 justify-start text-slate-900"
                         />
 
                         <div className="space-y-6 text-slate-600 leading-relaxed">
