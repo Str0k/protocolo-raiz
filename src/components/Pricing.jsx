@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CountdownTimer from './CountdownTimer';
 
 const Pricing = () => {
     return (
@@ -29,6 +30,7 @@ const Pricing = () => {
                         </div>
 
                         <div className="text-center md:text-left">
+                            <CountdownTimer className="mb-4 justify-center md:justify-start" />
                             <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
                                 <span className="text-slate-400 text-xl line-through decoration-red-500 decoration-2">
                                     $47 USD
