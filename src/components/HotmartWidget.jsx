@@ -39,13 +39,16 @@ const HotmartWidget = () => {
                             <a
                                 onclick="return false;"
                                 href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                className="hotmart-fb hotmart__button-checkout transform hover:scale-105 transition-transform duration-300"
+                                className="hotmart-fb group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-xl py-5 px-10 rounded-2xl shadow-xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
                             >
-                                <img
-                                    src='https://static.hotmart.com/img/btn-buy-green.png'
-                                    alt='Comprar ahora'
-                                    className="h-auto w-auto max-w-[280px]"
-                                />
+                                <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
+                                <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>
+
+                                <span className="relative z-10 flex items-center justify-center gap-2">
+                                    DESCARGAR AHORA
+                                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm font-normal">$17 USD</span>
+                                </span>
+                                <span className="relative z-10 block text-xs font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>
                             </a>
                         </div>
 
