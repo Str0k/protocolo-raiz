@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CountdownTimer from './CountdownTimer';
+import TrustRow from './TrustRow';
 
 const StickyCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -42,6 +43,9 @@ const StickyCTA = () => {
                         >
                             Descargar Ahora ($17)
                         </a>
+                        <div className="w-full md:w-auto flex justify-center mt-2 md:mt-0 md:absolute md:-bottom-8 md:right-4">
+                            <TrustRow className="scale-90 origin-top md:origin-right" />
+                        </div>
                     </div>
                 </motion.div>
             )}

@@ -3,6 +3,7 @@ import { ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedTitle from './AnimatedTitle';
 import CountdownTimer from './CountdownTimer';
+import TrustRow from './TrustRow';
 
 const Hero = () => {
   return (
@@ -71,16 +72,18 @@ const Hero = () => {
                 <span className="block text-sm font-normal opacity-90 mt-1 relative z-10">(Oferta Limitada)</span>
               </a>
 
-              <div className="flex items-center gap-3 text-xs md:text-sm text-slate-500 mt-2">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck size={14} className="text-primary" /> Descarga digital inmediata
-                </span>
-                <span className="text-slate-400">•</span>
-                <span>Garantía de 7 días</span>
-                <span className="text-slate-400">•</span>
-                <span>Pago Seguro</span>
-              </div>
+              <TrustRow />
             </motion.div>
+
+            <div className="flex items-center gap-3 text-xs md:text-sm text-slate-500 mt-2">
+              <span className="flex items-center gap-1">
+                <ShieldCheck size={14} className="text-primary" /> Descarga digital inmediata
+              </span>
+              <span className="text-slate-400">•</span>
+              <span>Garantía de 7 días</span>
+              <span className="text-slate-400">•</span>
+              <span>Pago Seguro</span>
+            </div>
           </div>
 
           <div className="order-1 md:order-2 flex justify-center perspective-1000">

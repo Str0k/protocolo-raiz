@@ -2,6 +2,7 @@ import React from 'react';
 import { Check, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountdownTimer from './CountdownTimer';
+import TrustRow from './TrustRow';
 
 const Pricing = () => {
     return (
@@ -66,6 +67,8 @@ const Pricing = () => {
                             >
                                 QUIERO MI RESET AHORA
                             </a>
+
+                            <TrustRow className="items-center md:items-start mb-6" />
 
                             <div className="flex items-center justify-center gap-2 text-xs text-slate-500 bg-slate-50 p-3 rounded-lg border border-slate-200">
                                 <ShieldCheck size={16} className="text-primary" />
