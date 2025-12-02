@@ -3,6 +3,7 @@ import { AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedTitle from './AnimatedTitle';
 import RevealOnScroll from './RevealOnScroll';
+import InlineWhatsAppButton from './InlineWhatsAppButton';
 
 const Problem = () => {
     const symptoms = [
@@ -71,6 +72,10 @@ const Problem = () => {
                                         </div>
                                     </motion.div>
                                 ))}
+                            </div>
+
+                            <div className="mt-8">
+                                <InlineWhatsAppButton text="¿Te identificas? Hablemos por WhatsApp" />
                             </div>
                         </div>
                     </div>

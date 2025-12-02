@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedTitle from './AnimatedTitle';
+import InlineWhatsAppButton from './InlineWhatsAppButton';
 
 const FAQ = () => {
     const faqs = [
@@ -67,6 +68,10 @@ const FAQ = () => {
                             )}
                         </motion.div>
                     ))}
+                </div>
+
+                <div className="mt-12">
+                    <InlineWhatsAppButton text="¿Aún tienes preguntas? Escríbenos" />
                 </div>
             </div>
         </section>
