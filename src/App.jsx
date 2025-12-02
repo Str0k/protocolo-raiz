@@ -18,6 +18,7 @@ import Ingredients from './components/Ingredients';
 import Filter from './components/Filter';
 import StickyCTA from './components/StickyCTA';
 import HotmartWidget from './components/HotmartWidget';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
       </main>
       <Footer />
       <StickyCTA />
+      <WhatsAppButton />
     </div>
   );
 }
