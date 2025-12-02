@@ -68,7 +68,7 @@ const Hero = () => {
                 className="hotmart-fb group relative bg-gradient-to-r from-secondary to-yellow-600 text-white text-lg md:text-xl font-bold px-8 py-4 rounded-xl shadow-lg shadow-secondary/20 hover:shadow-secondary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto overflow-hidden inline-block text-center"
               >
                 <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 skew-x-12 -translate-x-full"></div>
-                <span className="relative z-10">DESCARGAR EL PROTOCOLO - $17 USD</span>
+                <span className="relative z-10">DESCARGAR EL PROTOCOLO - <span className="line-through text-slate-300 mr-1">$30</span>$17 USD</span>
                 <span className="block text-sm font-normal opacity-90 mt-1 relative z-10">(Oferta Limitada)</span>
               </a>
 

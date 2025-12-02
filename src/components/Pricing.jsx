@@ -34,7 +34,7 @@ const Pricing = () => {
                             <CountdownTimer className="mb-4 justify-center md:justify-start" />
                             <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
                                 <span className="text-slate-400 text-xl line-through decoration-red-500 decoration-2">
-                                    $47 USD
+                                    $30 USD
                                 </span>
                                 <span className="text-5xl font-bold text-primary">
                                     $17 USD

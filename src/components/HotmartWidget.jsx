@@ -46,7 +46,10 @@ const HotmartWidget = () => {
 
                                 <span className="relative z-10 flex items-center justify-center gap-2">
                                     DESCARGAR AHORA
-                                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm font-normal">$17 USD</span>
+                                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm font-normal flex items-center gap-1">
+                                        <span className="line-through opacity-70">$30</span>
+                                        $17 USD
+                                    </span>
                                 </span>
                                 <span className="relative z-10 block text-xs font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>
                             </a>
