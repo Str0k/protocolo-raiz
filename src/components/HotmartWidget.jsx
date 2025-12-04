@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { ShieldCheck, Lock, CreditCard, Banknote } from 'lucide-react';
-import { ShieldCheck, CreditCard, Lock } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
 import CountdownTimer from './CountdownTimer';
 
@@ -17,6 +16,28 @@ const HotmartWidget = () => {
                             <Lock size={16} />
                             Checkout Seguro SSL
                         </div>
+                        <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-2xl shadow-slate-200/50 relative overflow-hidden">
+                            {/* Premium Top Border */}
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+                            <div className="text-center mb-10">
+                                <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+                                    Empieza tu transformación hoy
+                                </h3>
+                                <p className="text-slate-500 text-lg">
+                                    Acceso inmediato • Garantía de satisfacción • Soporte 24/7
+                                </p>
+                            </div>
+
+                            <CountdownTimer className="mb-8 justify-center" />
+
+                            {/* Hotmart Button Container */}
+                            <div className="mb-12 flex justify-center">
+                                <a
+                                    href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                                    className="group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
+                                >
+                                    <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
                                     <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>
 
                                     <span className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-3">

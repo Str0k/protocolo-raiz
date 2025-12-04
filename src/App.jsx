@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Reviews from './components/Reviews';
 import Problem from './components/Problem';
+import DeepBenefits from './components/DeepBenefits';
 import Science from './components/Science';
 import LogicPivot from './components/LogicPivot';
 import Transformation from './components/Transformation';
@@ -31,6 +32,7 @@ function App() {
         <Hero />
         <Reviews />
         <Problem />
+        <DeepBenefits />
         <Science />
         <LogicPivot />
         <ComparisonTable />
