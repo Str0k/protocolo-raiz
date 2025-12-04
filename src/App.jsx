@@ -6,6 +6,7 @@ import Problem from './components/Problem';
 import Science from './components/Science';
 import LogicPivot from './components/LogicPivot';
 import Transformation from './components/Transformation';
+import CashCheckout from './components/CashCheckout';
 import Solution from './components/Solution';
 import Bonuses from './components/Bonuses';
 import Pricing from './components/Pricing';
@@ -34,6 +35,7 @@ function App() {
         <LogicPivot />
         <ComparisonTable />
         <Transformation />
+        <CashCheckout />
         <Solution />
         <Ingredients />
         <HotmartWidget />
