@@ -26,61 +26,83 @@ const HotmartWidget = () => {
     }, []);
 
     return (
-        <section className="py-16 bg-white relative overflow-hidden">
+        <section id="checkout" className="py-24 bg-slate-50 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 opacity-70 -z-10"></div>
+
             <div className="container mx-auto px-4 relative z-10">
                 <RevealOnScroll width="100%">
-                    <div className="max-w-3xl mx-auto bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl text-center">
-                        <h3 className="text-2xl md:text-3xl font-bold text-text mb-8">
-                            Empieza tu transformación hoy
-                        </h3>
-
-                        {/* Hotmart Button Container */}
-                        <div className="mb-10 flex justify-center">
-                            <a
-                                onclick="return false;"
-                                href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                className="hotmart-fb group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-xl py-5 px-10 rounded-2xl shadow-xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
-                            >
-                                <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
-                                <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>
-
-                                <span className="relative z-10 flex items-center justify-center gap-2">
-                                    DESCARGAR AHORA
-                                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm font-normal flex items-center gap-1">
-                                        <span className="line-through opacity-70">$30</span>
-                                        $17 USD
-                                    </span>
-                                </span>
-                                <span className="relative z-10 block text-xs font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>
-                            </a>
+                    <div className="max-w-4xl mx-auto">
+                        {/* Secure Checkout Header */}
+                        <div className="flex items-center justify-center gap-2 mb-6 text-slate-400 text-sm font-semibold tracking-widest uppercase">
+                            <Lock size={16} />
+                            Checkout Seguro SSL
                         </div>
 
-                        {/* Trust Indicators */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-slate-200">
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                                    <Lock size={20} />
-                                </div>
-                                <span className="text-sm font-medium text-slate-600">Pago 100% Seguro</span>
+                        <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-2xl shadow-slate-200/50 relative overflow-hidden">
+                            {/* Premium Top Border */}
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+                            <div className="text-center mb-10">
+                                <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+                                    Empieza tu transformación hoy
+                                </h3>
+                                <p className="text-slate-500 text-lg">
+                                    Acceso inmediato • Garantía de satisfacción • Soporte 24/7
+                                </p>
                             </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
-                                    <ShieldCheck size={20} />
-                                </div>
-                                <span className="text-sm font-medium text-slate-600">Garantía de 7 Días</span>
+
+                            {/* Hotmart Button Container */}
+                            <div className="mb-12 flex justify-center">
+                                <a
+                                    onclick="return false;"
+                                    href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                                    className="hotmart-fb group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
+                                >
+                                    <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
+                                    <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>
+
+                                    <span className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-3">
+                                        <span>DESCARGAR AHORA</span>
+                                        <span className="bg-white/20 px-3 py-1 rounded-lg text-lg font-normal flex items-center gap-2">
+                                            <span className="line-through opacity-70 text-sm">$30</span>
+                                            $17 USD
+                                        </span>
+                                    </span>
+                                    <span className="relative z-10 block text-sm font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>
+                                </a>
                             </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                    <CreditCard size={20} />
+
+                            {/* Trust Indicators */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-slate-100">
+                                <div className="flex flex-col items-center gap-3 group">
+                                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform duration-300">
+                                        <Lock size={24} />
+                                    </div>
+                                    <span className="text-sm font-semibold text-slate-600">Pago 100% Seguro</span>
                                 </div>
-                                <span className="text-sm font-medium text-slate-600">Tarjetas y Paypal</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
-                                    <Banknote size={20} />
+                                <div className="flex flex-col items-center gap-3 group">
+                                    <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform duration-300">
+                                        <ShieldCheck size={24} />
+                                    </div>
+                                    <span className="text-sm font-semibold text-slate-600">Garantía de 7 Días</span>
                                 </div>
-                                <span className="text-sm font-medium text-slate-600">Pago en Efectivo</span>
+                                <div className="flex flex-col items-center gap-3 group">
+                                    <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                                        <CreditCard size={24} />
+                                    </div>
+                                    <span className="text-sm font-semibold text-slate-600">Tarjetas y Paypal</span>
+                                </div>
+                                <div className="flex flex-col items-center gap-3 group">
+                                    <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform duration-300">
+                                        <Banknote size={24} />
+                                    </div>
+                                    <span className="text-sm font-semibold text-slate-600">Pago en Efectivo</span>
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="text-center mt-8">
+                            <img src="https://static.hotmart.com/images/site/hotmart-logo.svg" alt="Hotmart" className="h-6 mx-auto opacity-50 grayscale hover:grayscale-0 transition-all duration-300" />
                         </div>
                     </div>
                 </RevealOnScroll>

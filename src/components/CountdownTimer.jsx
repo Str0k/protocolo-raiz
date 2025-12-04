@@ -20,8 +20,18 @@ const CountdownTimer = ({ className = "" }) => {
         return `${h.toString().padStart(2, '0')} : ${m.toString().padStart(2, '0')} : ${s.toString().padStart(2, '0')}`;
     };
 
+    const scrollToCheckout = () => {
+        const checkoutSection = document.getElementById('checkout');
+        if (checkoutSection) {
+            checkoutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
-        <div className={`flex items-center gap-2 text-red-600 ${className}`}>
+        <div
+            onClick={scrollToCheckout}
+            className={`flex items-center gap-2 text-red-600 cursor-pointer hover:scale-105 transition-transform ${className}`}
+        >
             <Timer size={20} className="animate-pulse" />
             <span className="font-medium uppercase tracking-wider text-sm">La oferta termina en:</span>
             <span className="font-mono font-bold text-xl tracking-widest tabular-nums">

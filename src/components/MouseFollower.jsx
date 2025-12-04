@@ -35,16 +35,7 @@ const MouseFollower = () => {
           background: "radial-gradient(circle, rgba(5, 150, 105, 0.4) 0%, rgba(5, 150, 105, 0) 70%)"
         }}
       />
-      {/* Visible Core Dot */}
-      <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-secondary rounded-full pointer-events-none z-50 shadow-sm"
-        style={{
-          translateX: cursorXSpring,
-          translateY: cursorYSpring,
-          x: "-50%",
-          y: "-50%"
-        }}
-      />
+      {/* Visible Core Dot Removed as per request */}
     </div>
   );
 };
