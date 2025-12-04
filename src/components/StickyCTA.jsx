@@ -38,7 +38,7 @@ const StickyCTA = () => {
                         </div>
                         <a
                             href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                            className="hotmart-fb w-full md:w-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-bold text-lg py-3 px-8 rounded-xl shadow-lg hover:shadow-amber-500/20 transition-all transform hover:-translate-y-1 text-center inline-block"
+                            className="w-full md:w-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-bold text-lg py-3 px-8 rounded-xl shadow-lg hover:shadow-amber-500/20 transition-all transform hover:-translate-y-1 text-center inline-block"
                         >
                             Descargar Ahora (<span className="line-through opacity-70 mr-1">$30</span>$17)
                         </a>

@@ -3,28 +3,6 @@ import { ShieldCheck, Lock, CreditCard, Banknote } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
 
 const HotmartWidget = () => {
-    useEffect(() => {
-        const importHotmart = () => {
-            // Check if script already exists
-            if (document.querySelector('script[src="https://static.hotmart.com/checkout/widget.min.js"]')) {
-                return;
-            }
-
-            const script = document.createElement('script');
-            script.src = 'https://static.hotmart.com/checkout/widget.min.js';
-            script.async = true;
-            document.head.appendChild(script);
-
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
-            document.head.appendChild(link);
-        };
-
-        importHotmart();
-    }, []);
-
     return (
         <section id="checkout" className="py-24 bg-slate-50 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 opacity-70 -z-10"></div>
@@ -55,7 +33,7 @@ const HotmartWidget = () => {
                             <div className="mb-12 flex justify-center">
                                 <a
                                     href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                    className="hotmart-fb group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
+                                    className="group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
                                 >
                                     <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
                                     <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>

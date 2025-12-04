@@ -6,7 +6,7 @@ import TrustRow from './TrustRow';
 
 const Pricing = () => {
     return (
-        <section className="py-24 md:py-32 bg-background text-text relative overflow-hidden">
+        <section id="pricing" className="py-24 md:py-32 bg-background text-text relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/10 to-transparent -z-10"></div>
             <div className="container mx-auto px-4">
                 <motion.div
@@ -61,9 +61,8 @@ const Pricing = () => {
                             </ul>
 
                             <a
-                                onclick="return false;"
                                 href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                className="hotmart-fb w-full bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-primary/20 transition-all mb-6 transform hover:-translate-y-1 block text-center"
+                                className="w-full bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-primary/20 transition-all mb-6 transform hover:-translate-y-1 block text-center"
                             >
                                 QUIERO MI RESET AHORA
                             </a>

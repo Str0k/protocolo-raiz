@@ -22,7 +22,7 @@ const Problem = () => {
     ];
 
     return (
-        <section className="py-24 md:py-32 bg-surface relative overflow-hidden">
+        <section id="problem" className="py-24 md:py-32 bg-surface relative overflow-hidden">
             <div className="container mx-auto px-4 max-w-6xl relative z-10">
                 <RevealOnScroll width="100%">
                     <div className="grid md:grid-cols-2 gap-12 items-center">

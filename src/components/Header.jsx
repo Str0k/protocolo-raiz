@@ -24,12 +24,13 @@ const Header = () => {
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
                     <a href="#problem" className="hover:text-primary transition-colors">El Problema</a>
                     <a href="#solution" className="hover:text-primary transition-colors">La Solución</a>
-                    <a href="#pricing" className="hover:text-primary transition-colors">Precios</a>
+                    <a href="#pricing" className="hover:text-primary transition-colors">Obtener Oferta</a>
                 </nav>
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
                     className="relative overflow-hidden bg-primary text-white px-6 py-2 rounded-full font-bold text-xs md:text-sm shadow-md hover:shadow-lg transition-all group flex-shrink-0"
                 >
                     <span className="relative z-10 flex items-center gap-2">

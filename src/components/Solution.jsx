@@ -28,7 +28,7 @@ const Solution = () => {
     ];
 
     return (
-        <section className="py-24 md:py-32 bg-surface relative overflow-hidden">
+        <section id="solution" className="py-24 md:py-32 bg-surface relative overflow-hidden">
             <div className="absolute inset-0 bg-primary/5"></div>
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
