@@ -23,7 +23,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background font-sans text-text cursor-none">
+    <div className="min-h-screen bg-background font-sans text-text">
       <MouseFollower />
       <Header />
       <main>
