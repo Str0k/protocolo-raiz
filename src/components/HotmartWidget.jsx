@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ShieldCheck, Lock, CreditCard, Banknote } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
 import CountdownTimer from './CountdownTimer';
+import PaymentMethods from './PaymentMethods';
 
 const HotmartWidget = () => {
     return (
@@ -49,6 +50,10 @@ const HotmartWidget = () => {
                                     </span>
                                     <span className="relative z-10 block text-sm font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>
                                 </a>
+                            </div>
+
+                            <div className="mb-10">
+                                <PaymentMethods theme="light" />
                             </div>
 
                             {/* Trust Indicators */}

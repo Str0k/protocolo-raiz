@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Banknote } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
 import CountdownTimer from './CountdownTimer';
+import PaymentMethods from './PaymentMethods';
 
 const CashCheckout = () => {
     return (
@@ -40,6 +41,9 @@ const CashCheckout = () => {
                                         OFERTA $17
                                     </div>
                                 </a>
+                                <div className="mt-6 w-full">
+                                    <PaymentMethods theme="dark" />
+                                </div>
                             </div>
                         </div>
                     </div>
