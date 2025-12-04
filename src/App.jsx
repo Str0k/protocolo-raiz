@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Reviews from './components/Reviews';
 import Problem from './components/Problem';
 import Science from './components/Science';
 import LogicPivot from './components/LogicPivot';
@@ -27,6 +28,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <Reviews />
         <Problem />
         <Science />
         <LogicPivot />
