@@ -9,7 +9,7 @@ const SnowEffect = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true });
 
         // Set canvas size
         const resizeCanvas = () => {
@@ -19,7 +19,7 @@ const SnowEffect = () => {
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Snowflake class with premium properties
+        // Ultra-lightweight Snowflake class
         class Snowflake {
             constructor() {
                 this.reset();
@@ -28,23 +28,15 @@ const SnowEffect = () => {
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * -canvas.height;
-                this.radius = Math.random() * 3 + 1; // 1-4px
-                this.speed = Math.random() * 1 + 0.5; // 0.5-1.5px per frame
-                this.drift = Math.random() * 0.5 - 0.25; // Horizontal drift
-                this.opacity = Math.random() * 0.6 + 0.3; // 0.3-0.9 opacity
-                this.twinkle = Math.random() * 0.02 + 0.01; // Twinkling effect
-                this.twinkleDirection = 1;
+                this.radius = Math.random() * 2 + 1; // 1-3px (reduced)
+                this.speed = Math.random() * 0.8 + 0.4; // 0.4-1.2px
+                this.drift = Math.random() * 0.3 - 0.15;
+                this.opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8 (simplified)
             }
 
             update() {
                 this.y += this.speed;
                 this.x += this.drift;
-
-                // Twinkling effect
-                this.opacity += this.twinkle * this.twinkleDirection;
-                if (this.opacity >= 0.9 || this.opacity <= 0.3) {
-                    this.twinkleDirection *= -1;
-                }
 
                 // Reset when out of bounds
                 if (this.y > canvas.height) {
@@ -56,47 +48,34 @@ const SnowEffect = () => {
             }
 
             draw() {
-                ctx.beginPath();
-
-                // Create gradient for each snowflake (premium glow effect)
-                const gradient = ctx.createRadialGradient(
-                    this.x, this.y, 0,
-                    this.x, this.y, this.radius * 2
-                );
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                gradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.5})`);
-                gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
-
-                ctx.fillStyle = gradient;
-                ctx.arc(this.x, this.y, this.radius * 2, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Inner bright core
+                // Simple solid circle - no gradients for performance
                 ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.arc(this.x, this.y, this.radius * 0.7, 0, Math.PI * 2);
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        // Create snowflakes (dense but not overwhelming)
-        const snowflakeCount = Math.floor((canvas.width * canvas.height) / 8000); // Responsive density
+        // DRASTICALLY reduced count for performance (70% less)
+        const isMobile = window.innerWidth < 768;
+        const snowflakeCount = isMobile
+            ? Math.floor((canvas.width * canvas.height) / 35000) // Mobile: very few
+            : Math.floor((canvas.width * canvas.height) / 25000); // Desktop: still conservative
+
         for (let i = 0; i < snowflakeCount; i++) {
             snowflakes.current.push(new Snowflake());
         }
 
-        // Animation loop
+        // Optimized animation loop
         const animate = () => {
+            // Clear canvas efficiently
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Optional: Add subtle background blur effect
-            ctx.filter = 'blur(0.5px)';
-
-            snowflakes.current.forEach(snowflake => {
-                snowflake.update();
-                snowflake.draw();
-            });
-
-            ctx.filter = 'none';
+            // Update and draw in single loop
+            for (let i = 0; i < snowflakes.current.length; i++) {
+                snowflakes.current[i].update();
+                snowflakes.current[i].draw();
+            }
 
             animationFrameId.current = requestAnimationFrame(animate);
         };
@@ -118,8 +97,7 @@ const SnowEffect = () => {
             ref={canvasRef}
             className="fixed inset-0 pointer-events-none z-[100]"
             style={{
-                mixBlendMode: 'screen',
-                opacity: 0.85
+                opacity: 0.7 // Slightly more subtle
             }}
         />
     );
