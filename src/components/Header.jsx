@@ -4,8 +4,8 @@ import { Snowflake } from 'lucide-react';
 
 const Header = ({ isSnowEnabled, onToggleSnow }) => {
     return (
-        <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[90%]">
-            <div className="bg-white/70 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-6 py-3 flex items-center gap-4 md:gap-8">
+        <header className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] md:max-w-[90%]">
+            <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-3 py-2 md:px-6 md:py-3 flex items-center gap-2 md:gap-8">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -16,7 +16,7 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                     <motion.img
                         src="/logo.jpg"
                         alt="Protocolo de Raíz"
-                        className="h-10 md:h-12 w-auto object-contain mix-blend-multiply relative z-10"
+                        className="h-8 md:h-12 w-auto object-contain mix-blend-multiply relative z-10"
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     />
@@ -34,8 +34,8 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                     whileTap={{ scale: 0.95 }}
                     onClick={onToggleSnow}
                     className={`relative p-2 rounded-full transition-all duration-300 ${isSnowEnabled
-                            ? 'bg-blue-100 text-blue-600'
-                            : 'bg-slate-100 text-slate-400'
+                        ? 'bg-blue-100 text-blue-600'
+                        : 'bg-slate-100 text-slate-400'
                         }`}
                     title={isSnowEnabled ? "Desactivar nieve" : "Activar nieve"}
                 >
@@ -57,7 +57,7 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="custom-btn text-xs md:text-sm !px-6 !py-2"
+                    className="custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
                 >
                     <span>Comenzar</span>
                 </motion.button>
