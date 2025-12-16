@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ShieldCheck } from 'lucide-react';
+import { Check, ShieldCheck, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountdownTimer from './CountdownTimer';
 import TrustRow from './TrustRow';
@@ -59,6 +59,51 @@ const Pricing = () => {
                                     <span className="text-slate-600">Acceso de por vida</span>
                                 </li>
                             </ul>
+
+                            {/* Premium Audio Bonus Card */}
+                            <div className="bg-slate-900 rounded-xl p-6 mb-8 border border-amber-500/30 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 blur-3xl -z-10 rounded-full"></div>
+
+                                {/* Header Badge */}
+                                <div className="inline-block bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2 py-1 rounded mb-3 border border-amber-500/20 tracking-wider">
+                                    🎁 REGALO VIP (Valorado en $97 USD)
+                                </div>
+
+                                {/* Main Title */}
+                                <h4 className="text-white font-bold text-lg leading-tight mb-2">
+                                    Pack de Neuro-Programación: <span className="text-amber-400">'Mente Anti-Inflamatoria'</span>
+                                </h4>
+                                <p className="text-slate-400 text-xs mb-5 leading-relaxed">
+                                    No uses fuerza de voluntad. Usa ciencia. 5 sesiones de audio diseñadas para apagar la ansiedad y reprogramar tu relación con la comida.
+                                </p>
+
+                                {/* The Playlist */}
+                                <div className="space-y-3 mb-6">
+                                    {[
+                                        { title: "Botón de Pánico: Stop Ansiedad Inmediata", duration: "3 min" },
+                                        { title: "Ducha Anti-Cortisol: Elimina el estrés del día", duration: "5 min" },
+                                        { title: "Hipnopedia Nocturna: Repara tu cuerpo mientras duermes", duration: "" },
+                                        { title: "Escudo Social: Confianza indestructible en fiestas", duration: "" },
+                                        { title: "Reseteo de Emergencia: Borra la culpa y reinicia", duration: "" }
+                                    ].map((track, i) => (
+                                        <div key={i} className="flex items-center gap-3 text-sm group/track">
+                                            <div className="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center shrink-0 group-hover/track:bg-amber-500 transition-colors duration-300">
+                                                <Play size={10} className="fill-current text-slate-400 group-hover/track:text-slate-900 ml-0.5" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <span className="text-slate-300 font-medium">{track.title}</span>
+                                                {track.duration && <span className="text-slate-500 text-xs ml-1">({track.duration})</span>}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* The Closer */}
+                                <div className="text-center pt-4 border-t border-slate-800">
+                                    <p className="text-slate-400 text-xs mb-1">GRATIS - INCLUIDO EN TU ORDEN HOY</p>
+                                    <div className="text-amber-400 font-bold text-xl tracking-widest">GRATIS</div>
+                                </div>
+                            </div>
 
                             <a
                                 href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
