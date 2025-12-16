@@ -1,8 +1,24 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Snowflake } from 'lucide-react';
 
 const Header = ({ isSnowEnabled, onToggleSnow }) => {
+    const mobilePhrases = [
+        "Desinflama tu Abdomen",
+        "Resultados en 7 Días",
+        "Sin Dietas Estrictas",
+        "100% Natural"
+    ];
+
+    const [phraseIndex, setPhraseIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPhraseIndex((prev) => (prev + 1) % mobilePhrases.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <header className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] md:max-w-[90%]">
             <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-3 py-2 md:px-6 md:py-3 flex items-center gap-2 md:gap-8">
@@ -21,6 +37,22 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                         transition={{ type: "spring", stiffness: 300 }}
                     />
                 </motion.div>
+
+                {/* Mobile Animated Phrase - Elegant & Dynamic */}
+                <div className="flex md:hidden flex-1 justify-center items-center overflow-hidden h-5 min-w-[140px]">
+                    <AnimatePresence mode="wait">
+                        <motion.p
+                            key={phraseIndex}
+                            initial={{ y: 15, opacity: 0, filter: 'blur(5px)' }}
+                            animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                            exit={{ y: -15, opacity: 0, filter: 'blur(5px)' }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            className="text-[10px] font-bold tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary whitespace-nowrap"
+                        >
+                            {mobilePhrases[phraseIndex]}
+                        </motion.p>
+                    </AnimatePresence>
+                </div>
 
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
                     <a href="#problem" className="hover:text-primary transition-colors">El Problema</a>
@@ -53,12 +85,12 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                     )}
                 </motion.button>
 
-                {/* Comenzar Button - Hidden on very small mobile */}
+                {/* Comenzar Button - Hidden on mobile, visible on desktop */}
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="hidden sm:flex custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
+                    className="hidden md:flex custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
                 >
                     <span>Comenzar</span>
                 </motion.button>
