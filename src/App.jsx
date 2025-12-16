@@ -37,7 +37,6 @@ function App() {
         <LogicPivot />
         <ComparisonTable />
         <Transformation />
-        <CashCheckout />
         <Solution />
         <Ingredients />
         <HotmartWidget />
@@ -46,6 +45,7 @@ function App() {
         <SneakPeek />
         <Filter />
         <Pricing />
+        <CashCheckout />
         <FAQ />
       </main>
       <Footer />
