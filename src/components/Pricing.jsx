@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ShieldCheck, Play } from 'lucide-react';
+import { Check, ShieldCheck, Play, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountdownTimer from './CountdownTimer';
 import TrustRow from './TrustRow';
@@ -102,6 +102,55 @@ const Pricing = () => {
                                 <div className="text-center pt-4 border-t border-slate-800">
                                     <p className="text-slate-400 text-xs mb-1">GRATIS - INCLUIDO EN TU ORDEN HOY</p>
                                     <div className="text-amber-400 font-bold text-xl tracking-widest">GRATIS</div>
+                                </div>
+                            </div>
+
+                            {/* Bonus 2: Anti-Rebote Shield */}
+                            <div className="bg-emerald-900 rounded-xl p-6 mb-8 border border-emerald-500/30 relative overflow-hidden group">
+                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10 rounded-full"></div>
+
+                                {/* Header Badge */}
+                                <div className="inline-block bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold mb-3 border border-emerald-500/20 tracking-wider">
+                                    🛡️ GARANTÍA DE RESULTADOS
+                                </div>
+
+                                {/* Main Content */}
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-emerald-800 flex items-center justify-center shrink-0 border-2 border-emerald-500/40">
+                                        <Shield size={24} className="text-emerald-400" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="text-white font-bold text-lg leading-tight mb-2">
+                                            Guía de Salida: <span className="text-emerald-400">El Escudo Anti-Rebote</span>
+                                        </h4>
+                                        <p className="text-slate-400 text-xs mb-4 leading-relaxed">
+                                            ¿Qué pasa el día 8? No pierdas tu progreso. Aprende a reintroducir alimentos sin recuperar la inflamación.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Bullet Points */}
+                                <div className="space-y-2 mb-5 ml-16">
+                                    <div className="flex items-start gap-2 text-sm">
+                                        <span className="text-emerald-400 shrink-0">✅</span>
+                                        <span className="text-slate-300">Estrategia para comer fuera de casa sin culpa.</span>
+                                    </div>
+                                    <div className="flex items-start gap-2 text-sm">
+                                        <span className="text-emerald-400 shrink-0">✅</span>
+                                        <span className="text-slate-300">Cómo mantener el vientre plano de por vida.</span>
+                                    </div>
+                                    <div className="flex items-start gap-2 text-sm">
+                                        <span className="text-emerald-400 shrink-0">✅</span>
+                                        <span className="text-slate-300">La regla del 80/20 explicada.</span>
+                                    </div>
+                                </div>
+
+                                {/* Value */}
+                                <div className="text-center pt-4 border-t border-emerald-800">
+                                    <p className="text-slate-400 text-xs mb-1">
+                                        Valor Real: <span className="line-through text-slate-500">$37 USD</span>
+                                    </p>
+                                    <div className="text-emerald-400 font-bold text-xl tracking-widest">GRATIS HOY</div>
                                 </div>
                             </div>
 
