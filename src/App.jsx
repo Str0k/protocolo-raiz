@@ -5,7 +5,6 @@ import Reviews from './components/Reviews';
 import Problem from './components/Problem';
 import HotmartWidget from './components/HotmartWidget';
 import Pricing from './components/Pricing';
-import StickyCTA from './components/StickyCTA';
 import WhatsAppButton from './components/WhatsAppButton';
 import SnowEffect from './components/SnowEffect';
 
@@ -116,7 +115,6 @@ function App() {
         <Footer />
       </Suspense>
 
-      <StickyCTA />
       <WhatsAppButton />
     </div>
   );
