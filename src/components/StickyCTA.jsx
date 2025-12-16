@@ -7,17 +7,11 @@ const StickyCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            // Show after scrolling down 300px
-            if (window.scrollY > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 10000); // 10 seconds delay
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => clearTimeout(timer);
     }, []);
 
     return (
