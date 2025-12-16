@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AnimatedTitle from './AnimatedTitle';
+import SpinningText from './SpinningText';
 import CountdownTimer from './CountdownTimer';
 import TrustRow from './TrustRow';
 
@@ -29,10 +29,7 @@ const Hero = () => {
             </motion.div>
 
             <div className="mb-6">
-              <AnimatedTitle
-                text="No engordaste 5 kilos en diciembre."
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight mb-2"
-              />
+              <SpinningText />
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -43,8 +40,8 @@ const Hero = () => {
                 </span>
 
                 <div className="mb-6">
-                  <a href="https://pay.hotmart.com/C103224627H?checkoutMode=2" className="hotmart-fb inline-block bg-gradient-to-r from-primary to-secondary text-white font-bold text-xl md:text-2xl px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                    QUIERO DESINFLAMARME YA
+                  <a href="https://pay.hotmart.com/C103224627H?checkoutMode=2" className="custom-btn hotmart-fb text-xl md:text-2xl">
+                    <span>QUIERO DESINFLAMARME YA</span>
                   </a>
                 </div>
 

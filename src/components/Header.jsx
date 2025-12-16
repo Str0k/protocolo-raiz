@@ -31,18 +31,9 @@ const Header = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="relative overflow-hidden bg-primary text-white px-6 py-2 rounded-full font-bold text-xs md:text-sm shadow-md hover:shadow-lg transition-all group flex-shrink-0"
+                    className="custom-btn text-xs md:text-sm !px-6 !py-2"
                 >
-                    <span className="relative z-10 flex items-center gap-2">
-                        Comenzar
-                        <motion.span
-                            animate={{ x: [0, 3, 0] }}
-                            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                        >
-                            →
-                        </motion.span>
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
+                    <span>Comenzar</span>
                 </motion.button>
             </div>
         </header>

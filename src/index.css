@@ -9,3 +9,61 @@ body {
   background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* Custom Button Style adapted from user request */
+.custom-btn {
+  display: inline-block;
+  border-radius: 7px;
+  border: none;
+  background: linear-gradient(to right, #059669, #047857);
+  /* Primary color gradient */
+  color: white;
+  font-family: inherit;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0px 14px 56px -11px #059669;
+  width: auto;
+  min-width: 10em;
+  padding: 1em 2em;
+  transition: all 0.4s;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  /* Ensure content doesn't overflow */
+}
+
+.custom-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+  z-index: 10;
+}
+
+.custom-btn span:after {
+  content: '\00bb';
+  /* Right guillemet » */
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.7s;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.custom-btn:hover span {
+  padding-right: 1.5em;
+}
+
+.custom-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.custom-btn:hover {
+  box-shadow: 0px 10px 40px -8px #047857;
+  transform: translateY(-2px);
+}

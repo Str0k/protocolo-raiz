@@ -62,9 +62,9 @@ const Pricing = () => {
 
                             <a
                                 href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                className="w-full bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-primary/20 transition-all mb-6 transform hover:-translate-y-1 block text-center"
+                                className="custom-btn w-full text-lg block"
                             >
-                                QUIERO MI RESET AHORA
+                                <span>QUIERO MI RESET AHORA</span>
                             </a>
 
                             <TrustRow className="items-center md:items-start mb-6" />
