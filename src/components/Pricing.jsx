@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ShieldCheck, Play, Shield } from 'lucide-react';
+import { Check, ShieldCheck, Play, Shield, Utensils } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountdownTimer from './CountdownTimer';
 import TrustRow from './TrustRow';
@@ -151,6 +151,55 @@ const Pricing = () => {
                                         Valor Real: <span className="line-through text-slate-500">$37 USD</span>
                                     </p>
                                     <div className="text-emerald-400 font-bold text-xl tracking-widest">GRATIS HOY</div>
+                                </div>
+                            </div>
+
+                            {/* Bonus 3: Recetario Express */}
+                            <div className="bg-slate-900 rounded-xl p-6 mb-8 border border-orange-500/30 relative overflow-hidden group">
+                                <div className="absolute top-0 left-1/2 w-40 h-40 bg-orange-500/10 blur-3xl -z-10 rounded-full -translate-x-1/2"></div>
+
+                                {/* Header Badge */}
+                                <div className="inline-block bg-orange-500/20 text-orange-400 px-2 py-1 rounded text-[10px] font-bold mb-3 border border-orange-500/20 tracking-wider">
+                                    🍽️ PARA LOS AMANTES DEL SABOR
+                                </div>
+
+                                {/* Main Content */}
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-orange-900/50 flex items-center justify-center shrink-0 border-2 border-orange-500/40">
+                                        <Utensils size={24} className="text-orange-400" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="text-white font-bold text-lg leading-tight mb-2">
+                                            Recetario Express: <span className="text-orange-400">Desinflama Comiendo</span>
+                                        </h4>
+                                        <p className="text-slate-400 text-xs mb-4 leading-relaxed">
+                                            ¿Crees que comer sano es aburrido? Te equivocas. 9 Recetas deliciosas que se cocinan en menos de 15 minutos.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* The Menu */}
+                                <div className="space-y-2 mb-5 ml-16">
+                                    <div className="flex items-start gap-2 text-sm">
+                                        <span className="text-orange-400 shrink-0">🥞</span>
+                                        <span className="text-slate-300"><strong>Desayunos:</strong> Pancakes sin culpa y Bowls de energía.</span>
+                                    </div>
+                                    <div className="flex items-start gap-2 text-sm">
+                                        <span className="text-orange-400 shrink-0">🥗</span>
+                                        <span className="text-slate-300"><strong>Comidas:</strong> Platos fuertes que no te dejan con hambre.</span>
+                                    </div>
+                                    <div className="flex items-start gap-2 text-sm">
+                                        <span className="text-orange-400 shrink-0">🍵</span>
+                                        <span className="text-slate-300"><strong>Cenas:</strong> Opciones ligeras para quemar grasa mientras duermes.</span>
+                                    </div>
+                                </div>
+
+                                {/* Value */}
+                                <div className="text-center pt-4 border-t border-slate-800">
+                                    <p className="text-slate-400 text-xs mb-1">
+                                        Valor Real: <span className="line-through text-slate-500">$27 USD</span>
+                                    </p>
+                                    <div className="text-orange-400 font-bold text-xl tracking-widest">GRATIS</div>
                                 </div>
                             </div>
 
