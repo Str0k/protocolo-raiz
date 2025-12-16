@@ -26,7 +26,7 @@ const Pricing = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent md:bg-gradient-to-r"></div>
                     </div>
 
-                    <div className="md:w-1/2 p-4 md:p-12">
+                    <div className="md:w-1/2 p-6 md:p-12">
                         <div className="bg-secondary inline-block px-4 py-1 rounded-full text-white font-bold tracking-wider text-xs uppercase mb-6 shadow-lg shadow-secondary/20">
                             Oferta Limitada
                         </div>
