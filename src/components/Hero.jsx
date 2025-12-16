@@ -66,7 +66,7 @@ const Hero = () => {
                   </a>
                 </div>
 
-                <TrustRow />
+                <TrustRow className="items-center md:items-start" />
               </motion.div>
 
               <div className="flex items-center gap-2 text-xs text-slate-500 mt-3 justify-center md:justify-start flex-wrap">

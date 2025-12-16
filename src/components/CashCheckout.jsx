@@ -30,7 +30,7 @@ const CashCheckout = () => {
                             </div>
 
                             {/* Right Side: CTA */}
-                            <div className="flex-1 w-full md:w-auto flex justify-center md:justify-end">
+                            <div className="flex-1 w-full md:w-auto flex flex-col items-center md:items-end gap-4">
                                 <a
                                     href="https://pay.hotmart.com/C103224627H?checkoutMode=2&bid=1764818365260"
                                     className="group relative inline-flex items-center justify-center gap-3 bg-white text-slate-900 font-bold text-xl py-5 px-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all transform hover:-translate-y-1 w-full md:w-auto"
@@ -41,7 +41,7 @@ const CashCheckout = () => {
                                         OFERTA $17
                                     </div>
                                 </a>
-                                <div className="mt-6 w-full">
+                                <div className="w-full">
                                     <PaymentMethods theme="dark" />
                                 </div>
                             </div>

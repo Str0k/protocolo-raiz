@@ -26,7 +26,7 @@ const Pricing = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent md:bg-gradient-to-r"></div>
                     </div>
 
-                    <div className="md:w-1/2 p-6 md:p-12">
+                    <div className="md:w-1/2 p-6 md:p-12 text-center md:text-left">
                         <div className="bg-secondary inline-block px-4 py-1 rounded-full text-white font-bold tracking-wider text-xs uppercase mb-6 shadow-lg shadow-secondary/20">
                             Oferta Limitada
                         </div>
@@ -87,7 +87,7 @@ const Pricing = () => {
                                         { title: "Escudo Social: Confianza indestructible en fiestas", duration: "" },
                                         { title: "Reseteo de Emergencia: Borra la culpa y reinicia", duration: "" }
                                     ].map((track, i) => (
-                                        <div key={i} className="flex items-center gap-3 text-sm group/track">
+                                        <div key={i} className="flex items-center gap-3 text-sm group/track justify-center md:justify-start">
                                             <div className="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center shrink-0 group-hover/track:bg-amber-500 transition-colors duration-300">
                                                 <Play size={10} className="fill-current text-slate-400 group-hover/track:text-slate-900 ml-0.5" />
                                             </div>
@@ -116,7 +116,7 @@ const Pricing = () => {
                                 </div>
 
                                 {/* Main Content */}
-                                <div className="flex items-start gap-4">
+                                <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4">
                                     <div className="w-12 h-12 rounded-full bg-emerald-800 flex items-center justify-center shrink-0 border-2 border-emerald-500/40">
                                         <Shield size={24} className="text-emerald-400" />
                                     </div>
@@ -131,16 +131,16 @@ const Pricing = () => {
                                 </div>
 
                                 {/* Bullet Points */}
-                                <div className="space-y-2 mb-5 ml-16">
-                                    <div className="flex items-start gap-2 text-sm">
+                                <div className="space-y-2 mb-5 md:ml-16">
+                                    <div className="flex items-start gap-2 text-sm justify-center md:justify-start">
                                         <span className="text-emerald-400 shrink-0">✅</span>
                                         <span className="text-slate-300">Estrategia para comer fuera de casa sin culpa.</span>
                                     </div>
-                                    <div className="flex items-start gap-2 text-sm">
+                                    <div className="flex items-start gap-2 text-sm justify-center md:justify-start">
                                         <span className="text-emerald-400 shrink-0">✅</span>
                                         <span className="text-slate-300">Cómo mantener el vientre plano de por vida.</span>
                                     </div>
-                                    <div className="flex items-start gap-2 text-sm">
+                                    <div className="flex items-start gap-2 text-sm justify-center md:justify-start">
                                         <span className="text-emerald-400 shrink-0">✅</span>
                                         <span className="text-slate-300">La regla del 80/20 explicada.</span>
                                     </div>
@@ -165,7 +165,7 @@ const Pricing = () => {
                                 </div>
 
                                 {/* Main Content */}
-                                <div className="flex items-start gap-4">
+                                <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-4">
                                     <div className="w-12 h-12 rounded-full bg-orange-900/50 flex items-center justify-center shrink-0 border-2 border-orange-500/40">
                                         <Utensils size={24} className="text-orange-400" />
                                     </div>
@@ -180,16 +180,16 @@ const Pricing = () => {
                                 </div>
 
                                 {/* The Menu */}
-                                <div className="space-y-2 mb-5 ml-16">
-                                    <div className="flex items-start gap-2 text-sm">
+                                <div className="space-y-2 mb-5 md:ml-16">
+                                    <div className="flex items-start gap-2 text-sm justify-center md:justify-start">
                                         <span className="text-orange-400 shrink-0">🥞</span>
                                         <span className="text-slate-300"><strong>Desayunos:</strong> Pancakes sin culpa y Bowls de energía.</span>
                                     </div>
-                                    <div className="flex items-start gap-2 text-sm">
+                                    <div className="flex items-start gap-2 text-sm justify-center md:justify-start">
                                         <span className="text-orange-400 shrink-0">🥗</span>
                                         <span className="text-slate-300"><strong>Comidas:</strong> Platos fuertes que no te dejan con hambre.</span>
                                     </div>
-                                    <div className="flex items-start gap-2 text-sm">
+                                    <div className="flex items-start gap-2 text-sm justify-center md:justify-start">
                                         <span className="text-orange-400 shrink-0">🍵</span>
                                         <span className="text-slate-300"><strong>Cenas:</strong> Opciones ligeras para quemar grasa mientras duermes.</span>
                                     </div>
