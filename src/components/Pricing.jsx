@@ -26,7 +26,7 @@ const Pricing = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent md:bg-gradient-to-r"></div>
                     </div>
 
-                    <div className="md:w-1/2 p-8 md:p-12">
+                    <div className="md:w-1/2 p-4 md:p-12">
                         <div className="bg-secondary inline-block px-4 py-1 rounded-full text-white font-bold tracking-wider text-xs uppercase mb-6 shadow-lg shadow-secondary/20">
                             Oferta Limitada
                         </div>
@@ -62,7 +62,7 @@ const Pricing = () => {
                             </ul>
 
                             {/* Premium Audio Bonus Card */}
-                            <div className="bg-slate-900 rounded-xl p-6 mb-8 border border-amber-500/30 relative overflow-hidden group">
+                            <div className="bg-slate-900 rounded-xl p-4 md:p-6 mb-6 md:mb-8 border border-amber-500/30 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 blur-3xl -z-10 rounded-full"></div>
 
                                 {/* Header Badge */}
@@ -107,7 +107,7 @@ const Pricing = () => {
                             </div>
 
                             {/* Bonus 2: Anti-Rebote Shield */}
-                            <div className="bg-emerald-900 rounded-xl p-6 mb-8 border border-emerald-500/30 relative overflow-hidden group">
+                            <div className="bg-emerald-900 rounded-xl p-4 md:p-6 mb-6 md:mb-8 border border-emerald-500/30 relative overflow-hidden group">
                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10 rounded-full"></div>
 
                                 {/* Header Badge */}
@@ -156,7 +156,7 @@ const Pricing = () => {
                             </div>
 
                             {/* Bonus 3: Recetario Express */}
-                            <div className="bg-slate-900 rounded-xl p-6 mb-8 border border-orange-500/30 relative overflow-hidden group">
+                            <div className="bg-slate-900 rounded-xl p-4 md:p-6 mb-6 md:mb-8 border border-orange-500/30 relative overflow-hidden group">
                                 <div className="absolute top-0 left-1/2 w-40 h-40 bg-orange-500/10 blur-3xl -z-10 rounded-full -translate-x-1/2"></div>
 
                                 {/* Header Badge */}

@@ -53,11 +53,12 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                     )}
                 </motion.button>
 
+                {/* Comenzar Button - Hidden on very small mobile */}
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
+                    className="hidden sm:flex custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
                 >
                     <span>Comenzar</span>
                 </motion.button>

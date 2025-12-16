@@ -81,13 +81,13 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* IMAGE SECOND ON MOBILE - SMALLER */}
+          {/* IMAGE SECOND ON MOBILE - CENTERED */}
           <div className="order-2 flex justify-center mt-8 md:mt-0">
             <motion.div
               initial={isMobile ? { opacity: 0 } : { opacity: 0, rotateY: -20, x: 50 }}
               animate={isMobile ? { opacity: 1 } : { opacity: 1, rotateY: 0, x: 0 }}
               transition={isMobile ? { duration: 0.4, delay: 0.3 } : { duration: 1, type: "spring" }}
-              className="relative w-full max-w-[280px] md:max-w-md"
+              className="relative w-full max-w-[280px] md:max-w-md mx-auto"
             >
               {!isMobile && <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-3xl transform rotate-3 scale-105 blur-2xl"></div>}
               <img
