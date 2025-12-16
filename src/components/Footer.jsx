@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container mx-auto px-4 text-center">
                 <div className="grid md:grid-cols-4 gap-8 mb-12">
                     <div className="col-span-1 md:col-span-2 text-left">
-                        <img src="/logo.jpg" alt="Protocolo de Raíz" className="h-16 mb-6 mix-blend-multiply" />
+                        <img src="/logo.jpg" alt="Protocolo de Raíz" loading="lazy" className="h-16 mb-6 mix-blend-multiply" />
                         <p className="text-slate-500 max-w-sm">
                             Un enfoque científico y natural para sanar tu digestión desde la raíz, sin dietas restrictivas ni suplementos innecesarios.
                         </p>

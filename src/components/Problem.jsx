@@ -32,6 +32,8 @@ const Problem = () => {
                             <img
                                 src="/bloating-pain.jpg"
                                 alt="Sensación de pesadez e inflamación"
+                                loading="lazy"
+                                decoding="async"
                                 className="relative z-10 rounded-2xl shadow-2xl w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500 border border-white/10"
                             />
                         </div>

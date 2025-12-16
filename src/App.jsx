@@ -71,8 +71,9 @@ function App() {
         </Suspense>
       )}
 
-      {/* Christmas Snow Effect */}
-      {isSnowEnabled && <SnowEffect />}
+
+      {/* Christmas Snow Effect - Desktop Only */}
+      {isSnowEnabled && isDesktop && <SnowEffect />}
 
       <Header isSnowEnabled={isSnowEnabled} onToggleSnow={toggleSnow} />
       <main>

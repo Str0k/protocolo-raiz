@@ -39,7 +39,7 @@ const ComparisonTable = () => {
         <section className="py-24 md:py-32 bg-background relative overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
-                <img src="/comparison.jpg" alt="Comparison Background" className="w-full h-full object-cover opacity-10" />
+                <img src="/comparison.jpg" alt="Comparison Background" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-10" />
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
             </div>
 

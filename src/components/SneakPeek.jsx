@@ -56,7 +56,7 @@ const SneakPeek = () => {
                         >
                             {/* Card Background Gradient & Image */}
                             <div className="absolute inset-0">
-                                <img src="/sneakpeek.jpg" alt="Sneak Peek" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+                                <img src="/sneakpeek.jpg" alt="Sneak Peek" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
                                 <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-60 mix-blend-overlay`}></div>
                             </div>
 

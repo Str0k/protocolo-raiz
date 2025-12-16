@@ -62,7 +62,7 @@ const Solution = () => {
                         viewport={{ once: true }}
                         className="hidden md:block relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200"
                     >
-                        <img src="/meal.jpg" alt="Solución Natural" className="w-full h-full object-cover" />
+                        <img src="/meal.jpg" alt="Solución Natural" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
                     </motion.div>
 
