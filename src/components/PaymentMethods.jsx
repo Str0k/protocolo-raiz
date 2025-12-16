@@ -14,22 +14,24 @@ const PaymentMethods = ({ className = "", theme = "light" }) => {
             </p>
             <div className={`flex flex-wrap justify-center items-center gap-4 md:gap-6 p-4 rounded-xl border ${containerClass} backdrop-blur-sm`}>
                 {/* Visa */}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                <img src="/payment-icons/visa.svg" alt="Visa" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
 
                 {/* Mastercard */}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                <img src="/payment-icons/mastercard.svg" alt="Mastercard" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
 
                 {/* Amex */}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                <img src="/payment-icons/amex.svg" alt="Amex" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
 
                 {/* PayPal */}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                <img src="/payment-icons/paypal.svg" alt="PayPal" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
 
                 {/* Mercado Pago */}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Mercadopago_logo.png" alt="Mercado Pago" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity object-contain" />
+                <div className="h-6 md:h-8 flex items-center justify-center bg-[#009EE3] px-2 rounded opacity-70 hover:opacity-100 transition-opacity">
+                    <span className="text-xs font-bold text-white whitespace-nowrap">Mercado Pago</span>
+                </div>
 
                 {/* OXXO */}
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Oxxo_Logo.svg" alt="OXXO" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
+                <img src="/payment-icons/oxxo.svg" alt="OXXO" className="h-6 md:h-8 opacity-70 hover:opacity-100 transition-opacity" />
 
                 {/* SPEI */}
                 <div className="h-6 md:h-8 flex items-center justify-center bg-white px-2 rounded border border-slate-200 opacity-70 hover:opacity-100 transition-opacity">

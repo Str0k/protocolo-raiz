@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
-import SpinningText from './SpinningText';
+import AnimatedTitle from './AnimatedTitle';
 import CountdownTimer from './CountdownTimer';
 import TrustRow from './TrustRow';
 
@@ -29,7 +29,10 @@ const Hero = () => {
             </motion.div>
 
             <div className="mb-6">
-              <SpinningText />
+              <AnimatedTitle
+                text="No engordaste 5 kilos en diciembre."
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight mb-2"
+              />
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
