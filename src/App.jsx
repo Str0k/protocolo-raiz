@@ -1,54 +1,121 @@
-import React from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Reviews from './components/Reviews';
 import Problem from './components/Problem';
-import DeepBenefits from './components/DeepBenefits';
-import Science from './components/Science';
-import LogicPivot from './components/LogicPivot';
-import Transformation from './components/Transformation';
-import CashCheckout from './components/CashCheckout';
-import Solution from './components/Solution';
-import Bonuses from './components/Bonuses';
-import Pricing from './components/Pricing';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
-import MouseFollower from './components/MouseFollower';
-import ComparisonTable from './components/ComparisonTable';
-import Timeline from './components/Timeline';
-import SneakPeek from './components/SneakPeek';
-import Ingredients from './components/Ingredients';
-import Filter from './components/Filter';
-import StickyCTA from './components/StickyCTA';
 import HotmartWidget from './components/HotmartWidget';
+import Pricing from './components/Pricing';
+import StickyCTA from './components/StickyCTA';
 import WhatsAppButton from './components/WhatsAppButton';
+import SnowEffect from './components/SnowEffect';
+
+// Lazy load non-critical sections for faster initial load
+const DeepBenefits = lazy(() => import('./components/DeepBenefits'));
+const Science = lazy(() => import('./components/Science'));
+const LogicPivot = lazy(() => import('./components/LogicPivot'));
+const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
+const Transformation = lazy(() => import('./components/Transformation'));
+const Solution = lazy(() => import('./components/Solution'));
+const Ingredients = lazy(() => import('./components/Ingredients'));
+const Timeline = lazy(() => import('./components/Timeline'));
+const Bonuses = lazy(() => import('./components/Bonuses'));
+const SneakPeek = lazy(() => import('./components/SneakPeek'));
+const Filter = lazy(() => import('./components/Filter'));
+const CashCheckout = lazy(() => import('./components/CashCheckout'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const Footer = lazy(() => import('./components/Footer'));
+
+// Only load MouseFollower on desktop (not needed on mobile)
+const MouseFollower = lazy(() => import('./components/MouseFollower'));
+
+// Lightweight loading placeholder
+const SectionLoader = () => (
+  <div className="w-full h-20 flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 function App() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Detect if device is desktop (width > 768px)
+    const checkDevice = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  // Snow effect state with localStorage persistence
+  const [isSnowEnabled, setIsSnowEnabled] = useState(() => {
+    const saved = localStorage.getItem('snowEnabled');
+    return saved === null ? true : saved === 'true';
+  });
+
+  const toggleSnow = () => {
+    setIsSnowEnabled(prev => {
+      const newValue = !prev;
+      localStorage.setItem('snowEnabled', newValue.toString());
+      return newValue;
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background font-sans text-text">
-      <MouseFollower />
-      <Header />
+      {/* Only render MouseFollower on desktop */}
+      {isDesktop && (
+        <Suspense fallback={null}>
+          <MouseFollower />
+        </Suspense>
+      )}
+
+      {/* Christmas Snow Effect */}
+      {isSnowEnabled && <SnowEffect />}
+
+      <Header isSnowEnabled={isSnowEnabled} onToggleSnow={toggleSnow} />
       <main>
+        {/* Critical above-the-fold content loads immediately */}
         <Hero />
         <Reviews />
         <Problem />
-        <DeepBenefits />
-        <Science />
-        <LogicPivot />
-        <ComparisonTable />
-        <Transformation />
-        <Solution />
-        <Ingredients />
+
+        {/* Lazy load remaining sections */}
+        <Suspense fallback={<SectionLoader />}>
+          <DeepBenefits />
+          <Science />
+          <LogicPivot />
+          <ComparisonTable />
+          <Transformation />
+          <Solution />
+          <Ingredients />
+        </Suspense>
+
+        {/* First checkout - loads eagerly for conversions */}
         <HotmartWidget />
-        <Timeline />
-        <Bonuses />
-        <SneakPeek />
-        <Filter />
+
+        <Suspense fallback={<SectionLoader />}>
+          <Timeline />
+          <Bonuses />
+          <SneakPeek />
+          <Filter />
+        </Suspense>
+
+        {/* Second checkout - loads eagerly for conversions */}
         <Pricing />
-        <CashCheckout />
-        <FAQ />
+
+        <Suspense fallback={<SectionLoader />}>
+          <CashCheckout />
+          <FAQ />
+        </Suspense>
       </main>
-      <Footer />
+
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
+
       <StickyCTA />
       <WhatsAppButton />
     </div>

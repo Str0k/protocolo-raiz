@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Snowflake } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ isSnowEnabled, onToggleSnow }) => {
     return (
         <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[90%]">
-            <div className="bg-white/70 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-6 py-3 flex items-center gap-6 md:gap-8">
+            <div className="bg-white/70 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-6 py-3 flex items-center gap-4 md:gap-8">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -26,6 +27,31 @@ const Header = () => {
                     <a href="#solution" className="hover:text-primary transition-colors">La Solución</a>
                     <a href="#pricing" className="hover:text-primary transition-colors">Obtener Oferta</a>
                 </nav>
+
+                {/* Snow Toggle Button */}
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={onToggleSnow}
+                    className={`relative p-2 rounded-full transition-all duration-300 ${isSnowEnabled
+                            ? 'bg-blue-100 text-blue-600'
+                            : 'bg-slate-100 text-slate-400'
+                        }`}
+                    title={isSnowEnabled ? "Desactivar nieve" : "Activar nieve"}
+                >
+                    <Snowflake
+                        size={18}
+                        className={`transition-all ${isSnowEnabled ? 'animate-spin-slow' : ''}`}
+                        style={{ animationDuration: '3s' }}
+                    />
+                    {isSnowEnabled && (
+                        <motion.span
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white"
+                        />
+                    )}
+                </motion.button>
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
