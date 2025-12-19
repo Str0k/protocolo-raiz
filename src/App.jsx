@@ -22,6 +22,7 @@ const SneakPeek = lazy(() => import('./components/SneakPeek'));
 const Filter = lazy(() => import('./components/Filter'));
 const CashCheckout = lazy(() => import('./components/CashCheckout'));
 const FAQ = lazy(() => import('./components/FAQ'));
+const CommunitySupport = lazy(() => import('./components/CommunitySupport'));
 const Footer = lazy(() => import('./components/Footer'));
 
 // Only load MouseFollower on desktop (not needed on mobile)
@@ -108,6 +109,7 @@ function App() {
 
         <Suspense fallback={<SectionLoader />}>
           <CashCheckout />
+          <CommunitySupport />
           <FAQ />
         </Suspense>
       </main>

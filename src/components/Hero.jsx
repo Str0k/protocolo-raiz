@@ -60,6 +60,24 @@ const Hero = () => {
                   Estás INFLAMADO.
                 </span>
 
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3 text-sm font-medium text-slate-600"
+                >
+                  <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full border border-green-200 text-xs font-bold uppercase tracking-wide w-fit">
+                    🎁 Incluye 3 Regalos:
+                  </span>
+                  <div className="flex flex-wrap gap-x-3 gap-y-1">
+                    <span className="flex items-center gap-1">✨ Lista de Compra</span>
+                    <span className="hidden sm:inline text-slate-300">•</span>
+                    <span className="flex items-center gap-1">🥤 Jugos Detox</span>
+                    <span className="hidden sm:inline text-slate-300">•</span>
+                    <span className="flex items-center gap-1">🥂 Guía Social</span>
+                  </div>
+                </motion.div>
+
                 <div className="mb-5">
                   <a href="https://pay.hotmart.com/C103224627H?checkoutMode=2" className="custom-btn hotmart-fb text-lg md:text-2xl">
                     <span>QUIERO DESINFLAMARME YA</span>
