@@ -68,7 +68,7 @@ const Timeline = () => {
                                     }`}
                             >
                                 {/* Content */}
-                                <div className="flex-1 pl-12 md:pl-0 md:text-center md:px-16">
+                                <div className="flex-1 pl-12 md:px-16">
                                     <div className={`md:text-left ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                                         <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider mb-2 border border-primary/20">
                                             {step.days}
