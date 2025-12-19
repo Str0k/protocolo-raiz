@@ -98,9 +98,9 @@ function App() {
 
         <Suspense fallback={<SectionLoader />}>
           <Timeline />
-          <Bonuses />
           <SneakPeek />
           <Filter />
+          <Bonuses />
           <CommunitySupport />
         </Suspense>
 
