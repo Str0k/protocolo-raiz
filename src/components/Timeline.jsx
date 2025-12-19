@@ -38,9 +38,23 @@ const Timeline = () => {
                 </div>
 
                 <div className="max-w-4xl mx-auto relative">
-                    {/* Vertical Line */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 -translate-x-1/2 hidden md:block"></div>
-                    <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 -translate-x-1/2 md:hidden"></div>
+                    {/* Vertical Line Desktop */}
+                    <motion.div
+                        initial={{ height: 0 }}
+                        whileInView={{ height: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        className="absolute left-1/2 top-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 -translate-x-1/2 hidden md:block"
+                    ></motion.div>
+
+                    {/* Vertical Line Mobile */}
+                    <motion.div
+                        initial={{ height: 0 }}
+                        whileInView={{ height: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        className="absolute left-4 top-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 -translate-x-1/2 md:hidden"
+                    ></motion.div>
 
                     <div className="space-y-12">
                         {steps.map((step, index) => (
@@ -48,13 +62,13 @@ const Timeline = () => {
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.2 }}
-                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.3 }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 className={`relative flex flex-col md:flex-row gap-8 items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
                                     }`}
                             >
                                 {/* Content */}
-                                <div className="flex-1 pl-12 md:pl-0 md:text-center md:px-8">
+                                <div className="flex-1 pl-12 md:pl-0 md:text-center md:px-16">
                                     <div className={`md:text-left ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                                         <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider mb-2 border border-primary/20">
                                             {step.days}
