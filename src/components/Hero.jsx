@@ -60,42 +60,36 @@ const Hero = () => {
                   Estás INFLAMADO.
                 </span>
 
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 1, duration: 0.5 }}
-                  className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3 text-sm font-medium text-slate-600"
+                  className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed font-medium"
                 >
-                  <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full border border-green-200 text-xs font-bold uppercase tracking-wide w-fit">
-                    🎁 Incluye 3 Regalos:
-                  </span>
-                  <div className="flex flex-wrap gap-x-3 gap-y-1">
-                    <span className="flex items-center gap-1">✨ Lista de Compra</span>
-                    <span className="hidden sm:inline text-slate-300">•</span>
-                    <span className="flex items-center gap-1">🥤 Jugos Detox</span>
-                    <span className="hidden sm:inline text-slate-300">•</span>
-                    <span className="flex items-center gap-1">🥂 Guía Social</span>
-                  </div>
+                  La hinchazón no es grasa. Es un grito de ayuda de tu metabolismo. <br className="hidden md:block" />
+                  Aprende a apagar el fuego interno y resetea tu cuerpo en 7 días.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                  className="flex justify-center md:justify-start"
+                >
+                  <button
+                    onClick={() => document.getElementById('problem').scrollIntoView({ behavior: 'smooth' })}
+                    className="group flex items-center gap-2 text-primary font-bold text-lg hover:text-primary/80 transition-colors cursor-pointer"
+                  >
+                    <span>Descubre la solución</span>
+                    <motion.span
+                      animate={{ y: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      👇
+                    </motion.span>
+                  </button>
                 </motion.div>
-
-                <div className="mb-5">
-                  <a href="https://pay.hotmart.com/C103224627H?checkoutMode=2" className="custom-btn hotmart-fb text-lg md:text-2xl">
-                    <span>QUIERO DESINFLAMARME YA</span>
-                  </a>
-                </div>
-
-                <TrustRow className="items-center md:items-start" />
               </motion.div>
-
-              <div className="flex items-center gap-2 text-xs text-slate-500 mt-3 justify-center md:justify-start flex-wrap">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck size={12} className="text-primary" /> Descarga inmediata
-                </span>
-                <span className="text-slate-400">•</span>
-                <span>Garantía 7 días</span>
-                <span className="text-slate-400">•</span>
-                <span>Pago Seguro</span>
-              </div>
             </div>
           </div>
 
