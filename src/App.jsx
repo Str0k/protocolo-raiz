@@ -94,14 +94,14 @@ function App() {
           <Ingredients />
         </Suspense>
 
-        {/* First checkout - loads eagerly for conversions */}
-        <HotmartWidget />
+
 
         <Suspense fallback={<SectionLoader />}>
           <Timeline />
           <Bonuses />
           <SneakPeek />
           <Filter />
+          <CommunitySupport />
         </Suspense>
 
         {/* Second checkout - loads eagerly for conversions */}
@@ -109,7 +109,7 @@ function App() {
 
         <Suspense fallback={<SectionLoader />}>
           <CashCheckout />
-          <CommunitySupport />
+          <HotmartWidget />
           <FAQ />
         </Suspense>
       </main>
