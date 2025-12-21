@@ -1,27 +1,45 @@
 import React from 'react';
-import { ShoppingCart, GlassWater, Users } from 'lucide-react';
+import { ShoppingCart, GlassWater, Users, Headphones, Shield, Utensils } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedTitle from './AnimatedTitle';
 
 const Bonuses = () => {
     const bonuses = [
         {
-            icon: <ShoppingCart size={24} />,
-            title: "LA LISTA DE COMPRA MAESTRA",
-            value: "$19",
-            description: "No pienses qué comprar. Ve al súper, sigue la checklist y listo."
+            icon: <Headphones size={24} />,
+            title: "MENTE ANTI-INFLAMATORIA",
+            value: "$97",
+            description: "5 Sesiones de reprogramación subconsciente para eliminar la ansiedad por comer."
         },
         {
-            icon: <GlassWater size={24} />,
-            title: "RECETARIO DE JUGOS 'ROOT RESET'",
-            value: "$15",
-            description: "Los 3 elixires líquidos para drenar la retención de líquidos en 24 horas."
+            icon: <Shield size={24} />,
+            title: "ESCUDO ANTI-REBOTE",
+            value: "$37",
+            description: "Estrategia exacta para reintroducir alimentos sin recuperar el peso perdido."
+        },
+        {
+            icon: <Utensils size={24} />,
+            title: "RECETARIO EXPRESS",
+            value: "$27",
+            description: "9 Recetas deliciosas anti-inflamatorias que se cocinan en menos de 15 minutos."
         },
         {
             icon: <Users size={24} />,
             title: "GUÍA DE SUPERVIVENCIA SOCIAL",
             value: "$27",
             description: "Cómo comer en restaurantes sin inflamarme y el 'Semáforo del Alcohol'."
+        },
+        {
+            icon: <GlassWater size={24} />,
+            title: "JUGOS 'ROOT RESET'",
+            value: "$19",
+            description: "Los 3 elixires líquidos para drenar la retención de líquidos en 24 horas."
+        },
+        {
+            icon: <ShoppingCart size={24} />,
+            title: "LISTA DE COMPRA MAESTRA",
+            value: "$19",
+            description: "No pienses qué comprar. Ve al súper, sigue la checklist y listo."
         }
     ];
 
@@ -41,11 +59,11 @@ const Bonuses = () => {
                         viewport={{ once: true }}
                         className="text-xl text-primary font-medium"
                     >
-                        Ordena hoy y recibe GRATIS:
+                        Más de <span className="font-bold underlineDecoration decoration-wavy decoration-secondary">$200 USD</span> en regalos incluidos hoy:
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
                     {bonuses.map((bonus, index) => (
                         <motion.div
                             key={index}
@@ -53,16 +71,16 @@ const Bonuses = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 hover:border-secondary/30 hover:shadow-secondary/10 transition-all group"
+                            className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 hover:border-secondary/30 hover:shadow-secondary/10 transition-all group h-full flex flex-col"
                         >
-                            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                                 {bonus.icon}
                             </div>
-                            <div className="mb-4">
-                                <span className="text-xs font-bold tracking-wider text-secondary uppercase">
+                            <div className="mb-4 grow">
+                                <span className="text-xs font-bold tracking-wider text-secondary uppercase bg-secondary/10 px-2 py-1 rounded-md">
                                     Valor {bonus.value} - GRATIS
                                 </span>
-                                <h3 className="text-lg font-bold text-text mt-1">{bonus.title}</h3>
+                                <h3 className="text-lg font-bold text-text mt-3">{bonus.title}</h3>
                             </div>
                             <p className="text-slate-500 text-sm leading-relaxed">
                                 {bonus.description}
