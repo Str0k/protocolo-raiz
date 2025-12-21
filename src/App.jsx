@@ -1,6 +1,8 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import ProductImpact from './components/ProductImpact';
+import ValueStack from './components/ValueStack';
 import Reviews from './components/Reviews';
 import Problem from './components/Problem';
 import HotmartWidget from './components/HotmartWidget';
@@ -80,6 +82,7 @@ function App() {
       <main>
         {/* Critical above-the-fold content loads immediately */}
         <Hero />
+        <ProductImpact />
         <Reviews />
         <Problem />
 
@@ -103,6 +106,8 @@ function App() {
           <Bonuses />
           <CommunitySupport />
         </Suspense>
+
+        <ValueStack />
 
         {/* Second checkout - loads eagerly for conversions */}
         <Pricing />

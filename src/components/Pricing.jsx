@@ -16,14 +16,41 @@ const Pricing = () => {
                     className="max-w-5xl mx-auto bg-white text-text rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-slate-200"
                 >
 
-                    <div className="md:w-1/2 bg-slate-100 relative min-h-[300px] md:min-h-full group">
-                        <img
-                            src="/bundle.jpg"
-                            alt="El Protocolo de Raíz Bundle"
-                            loading="lazy"
-                            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent md:bg-gradient-to-r"></div>
+                    <div className="md:w-1/2 bg-gradient-to-br from-white to-amber-50 relative min-h-[350px] md:min-h-full group flex items-center justify-center p-8 overflow-hidden">
+                        {/* Background Radial Glow */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-amber-500/5 blur-3xl rounded-full"></div>
+
+                        {/* Badge */}
+                        <motion.div
+                            initial={{ x: -20, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-md border border-amber-200 px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
+                        >
+                            <span className="text-xl">✨</span>
+                            <span className="font-bold text-amber-600 text-xs tracking-wider">TODO INCLUIDO</span>
+                        </motion.div>
+
+                        <motion.div
+                            className="relative z-10 w-full"
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <motion.img
+                                src="/product-explosion.jpg"
+                                alt="El Protocolo de Raíz - Bundle Completo"
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-auto drop-shadow-2xl object-contain"
+                                animate={{ y: [-8, 8, -8] }}
+                                transition={{
+                                    duration: 5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        </motion.div>
                     </div>
 
                     <div className="md:w-1/2 p-6 md:p-12 text-center md:text-left">
