@@ -2,13 +2,62 @@ import React, { useState, useEffect } from 'react';
 import { Timer } from 'lucide-react';
 
 const CountdownTimer = ({ className = "" }) => {
-    // Initial time: 2 hours in seconds
-    const [timeLeft, setTimeLeft] = useState(2 * 60 * 60);
+    const DURATION_HOURS = 2; // Duration of the timer in hours
+    const RESET_WINDOW_HOURS = 12; // When to fully reset the timer cycle
+
+    // Initialize state properly
+    const [timeLeft, setTimeLeft] = useState(DURATION_HOURS * 60 * 60);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-        }, 1000);
+        const STORAGE_KEY = 'offer_countdown_data';
+
+        const initTimer = () => {
+            const now = Date.now();
+            const savedData = localStorage.getItem(STORAGE_KEY);
+
+            let targetTime;
+
+            if (savedData) {
+                const { target, createdAt } = JSON.parse(savedData);
+                const ageHours = (now - createdAt) / (1000 * 60 * 60);
+
+                // If existing timer is valid (within 12h reset window)
+                if (ageHours < RESET_WINDOW_HOURS) {
+                    targetTime = target;
+                }
+            }
+
+            // If no valid timer exists, create new one
+            if (!targetTime) {
+                targetTime = now + (DURATION_HOURS * 60 * 60 * 1000);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                    target: targetTime,
+                    createdAt: now
+                }));
+            }
+
+            return targetTime;
+        };
+
+        const targetTime = initTimer();
+
+        const updateTimer = () => {
+            const now = Date.now();
+            const difference = Math.floor((targetTime - now) / 1000);
+
+            if (difference > 0) {
+                setTimeLeft(difference);
+            } else {
+                setTimeLeft(0);
+                // Optional: Force reset if we want it to loop immediately after 0
+                // but usually "expired" means expired until the 12h window passes.
+            }
+        };
+
+        // Run immediately to avoid initial flash of wrong time
+        updateTimer();
+
+        const timer = setInterval(updateTimer, 1000);
 
         return () => clearInterval(timer);
     }, []);

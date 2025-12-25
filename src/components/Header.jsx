@@ -20,7 +20,7 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
     }, []);
 
     return (
-        <header className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] md:max-w-[90%]">
+        <header className="fixed top-14 md:top-16 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] md:max-w-[90%]">
             <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-3 py-2 md:px-6 md:py-3 flex items-center gap-2 md:gap-8">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}

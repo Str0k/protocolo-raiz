@@ -14,7 +14,7 @@ const Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   return (
-    <section className="relative pt-20 pb-12 md:pt-48 md:pb-32 px-4 overflow-hidden">
+    <section className="relative pt-32 pb-12 md:pt-48 md:pb-32 px-4 overflow-hidden">
       {/* Background Elements - Hidden on mobile */}
       {!isMobile && (
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">

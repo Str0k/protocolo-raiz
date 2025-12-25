@@ -9,6 +9,7 @@ import HotmartWidget from './components/HotmartWidget';
 import Pricing from './components/Pricing';
 import WhatsAppButton from './components/WhatsAppButton';
 import SnowEffect from './components/SnowEffect';
+import ViewerCount from './components/ViewerCount';
 
 // Lazy load non-critical sections for faster initial load
 const DeepBenefits = lazy(() => import('./components/DeepBenefits'));
@@ -78,6 +79,7 @@ function App() {
       {/* Christmas Snow Effect - Desktop Only */}
       {isSnowEnabled && isDesktop && <SnowEffect />}
 
+      <ViewerCount />
       <Header isSnowEnabled={isSnowEnabled} onToggleSnow={toggleSnow} />
       <main>
         {/* Critical above-the-fold content loads immediately */}
