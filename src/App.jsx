@@ -10,6 +10,7 @@ import Pricing from './components/Pricing';
 import WhatsAppButton from './components/WhatsAppButton';
 import SnowEffect from './components/SnowEffect';
 import ViewerCount from './components/ViewerCount';
+import RecentPurchases from './components/RecentPurchases';
 
 // Lazy load non-critical sections for faster initial load
 const DeepBenefits = lazy(() => import('./components/DeepBenefits'));
@@ -111,6 +112,8 @@ function App() {
 
         <Reviews />
         <ValueStack />
+
+        <RecentPurchases />
 
         {/* Second checkout - loads eagerly for conversions */}
         <Pricing />
