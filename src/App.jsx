@@ -85,7 +85,7 @@ function App() {
         {/* Critical above-the-fold content loads immediately */}
         <Hero />
         <ProductImpact />
-        <Reviews />
+
         <Problem />
 
         {/* Lazy load remaining sections */}
@@ -109,6 +109,7 @@ function App() {
           <CommunitySupport />
         </Suspense>
 
+        <Reviews />
         <ValueStack />
 
         {/* Second checkout - loads eagerly for conversions */}
