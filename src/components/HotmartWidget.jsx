@@ -86,7 +86,7 @@ const HotmartWidget = () => {
                         </div>
 
                         <div className="text-center mt-8">
-                            <img src="https://static.hotmart.com/images/site/hotmart-logo.svg" alt="Hotmart" className="h-6 mx-auto opacity-50 grayscale hover:grayscale-0 transition-all duration-300" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Hotmart_logo.svg" alt="Hotmart" className="h-8 mx-auto opacity-70 grayscale hover:grayscale-0 transition-all duration-300" />
                         </div>
                     </div >
                 </RevealOnScroll >
