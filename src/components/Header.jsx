@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Snowflake } from 'lucide-react';
 
-const Header = ({ isSnowEnabled, onToggleSnow }) => {
+const Header = () => {
     const mobilePhrases = [
         "Desinflama tu Abdomen",
         "Resultados en 7 Días",
@@ -60,36 +59,13 @@ const Header = ({ isSnowEnabled, onToggleSnow }) => {
                     <a href="#pricing" className="hover:text-primary transition-colors">Obtener Oferta</a>
                 </nav>
 
-                {/* Snow Toggle Button */}
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={onToggleSnow}
-                    className={`relative p-2 rounded-full transition-all duration-300 ${isSnowEnabled
-                        ? 'bg-blue-100 text-blue-600'
-                        : 'bg-slate-100 text-slate-400'
-                        }`}
-                    title={isSnowEnabled ? "Desactivar nieve" : "Activar nieve"}
-                >
-                    <Snowflake
-                        size={18}
-                        className={`transition-all ${isSnowEnabled ? 'animate-spin-slow' : ''}`}
-                        style={{ animationDuration: '3s' }}
-                    />
-                    {isSnowEnabled && (
-                        <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white"
-                        />
-                    )}
-                </motion.button>
+
 
                 {/* Comenzar Button - Hidden on mobile, visible on desktop */}
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
                     className="hidden md:flex custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
                 >
                     <span>Comenzar</span>

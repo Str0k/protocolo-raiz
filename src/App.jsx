@@ -8,9 +8,8 @@ import Problem from './components/Problem';
 import HotmartWidget from './components/HotmartWidget';
 import Pricing from './components/Pricing';
 import WhatsAppButton from './components/WhatsAppButton';
-import SnowEffect from './components/SnowEffect';
-import ViewerCount from './components/ViewerCount';
-import RecentPurchases from './components/RecentPurchases';
+// RecentPurchases removed
+
 
 // Lazy load non-critical sections for faster initial load
 const DeepBenefits = lazy(() => import('./components/DeepBenefits'));
@@ -22,6 +21,8 @@ const Solution = lazy(() => import('./components/Solution'));
 const Ingredients = lazy(() => import('./components/Ingredients'));
 const Timeline = lazy(() => import('./components/Timeline'));
 const Bonuses = lazy(() => import('./components/Bonuses'));
+const LongTermRoadmap = lazy(() => import('./components/LongTermRoadmap'));
+const LimitedAvailability = lazy(() => import('./components/LimitedAvailability'));
 const SneakPeek = lazy(() => import('./components/SneakPeek'));
 const Filter = lazy(() => import('./components/Filter'));
 const CashCheckout = lazy(() => import('./components/CashCheckout'));
@@ -53,19 +54,7 @@ function App() {
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
-  // Snow effect state with localStorage persistence
-  const [isSnowEnabled, setIsSnowEnabled] = useState(() => {
-    const saved = localStorage.getItem('snowEnabled');
-    return saved === null ? true : saved === 'true';
-  });
 
-  const toggleSnow = () => {
-    setIsSnowEnabled(prev => {
-      const newValue = !prev;
-      localStorage.setItem('snowEnabled', newValue.toString());
-      return newValue;
-    });
-  };
 
   return (
     <div className="min-h-screen bg-background font-sans text-text">
@@ -76,12 +65,7 @@ function App() {
         </Suspense>
       )}
 
-
-      {/* Christmas Snow Effect - Desktop Only */}
-      {isSnowEnabled && isDesktop && <SnowEffect />}
-
-      <ViewerCount />
-      <Header isSnowEnabled={isSnowEnabled} onToggleSnow={toggleSnow} />
+      <Header />
       <main>
         {/* Critical above-the-fold content loads immediately */}
         <Hero />
@@ -104,6 +88,7 @@ function App() {
 
         <Suspense fallback={<SectionLoader />}>
           <Timeline />
+          <LongTermRoadmap />
           <SneakPeek />
           <Filter />
           <Bonuses />
@@ -113,7 +98,10 @@ function App() {
         <Reviews />
         <ValueStack />
 
-        <RecentPurchases />
+        {/* Replaced fake scarcity with real urgency */}
+        <Suspense fallback={<SectionLoader />}>
+          <LimitedAvailability />
+        </Suspense>
 
         {/* Second checkout - loads eagerly for conversions */}
         <Pricing />

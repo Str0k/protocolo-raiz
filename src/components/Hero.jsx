@@ -24,111 +24,63 @@ const Hero = () => {
       )}
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col md:grid md:grid-cols-2 md:gap-12 md:items-center">
-          {/* TEXT FIRST ON MOBILE */}
-          <div className="text-center md:text-left order-1">
+        <div className="flex flex-col items-center text-center">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full max-w-4xl"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-4 leading-tight">
+              ¿Tu Pantalón No Cierra Después de las Fiestas?
+            </h1>
+
+            <h2 className="text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">
+              No Es Grasa. Es Inflamación Química. Y Puedes Revertirla en 7 Días.
+            </h2>
+
+            <p className="text-lg md:text-xl text-slate-600 mb-8 font-medium max-w-2xl mx-auto">
+              El protocolo científico que desinflama tu abdomen sin dietas restrictivas, hambre ni rebote
+            </p>
+
+            <ul className="text-left max-w-lg mx-auto mb-8 space-y-2">
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Reduce entre 3-7 cm de cintura en la primera semana</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Elimina la hinchazón, gases y pesadez digestiva</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Sin contar calorías, sin pasar hambre, sin efecto rebote</span>
+              </li>
+            </ul>
+
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="inline-block px-3 py-1 rounded-full bg-red-50 border border-red-200 mb-4"
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <p className="text-[10px] md:text-sm font-bold tracking-wide text-red-600 uppercase">
-                ⚠️ No es grasa, es inflamación
+              <button
+                onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
+                className="bg-primary hover:bg-primary/90 text-white text-xl md:text-2xl font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 w-full md:w-auto"
+              >
+                DESINFLAMA TU ABDOMEN HOY - $17 USD
+              </button>
+
+              <p className="text-xs md:text-sm text-slate-500 mt-3 flex items-center justify-center gap-2">
+                <span>🔒 Pago 100% seguro</span>
+                <span className="hidden md:inline">·</span>
+                <span>✓ Acceso inmediato</span>
+                <span className="hidden md:inline">·</span>
+                <span>⚡ Garantía de 7 días</span>
               </p>
             </motion.div>
+          </motion.div>
 
-            <div className="mb-5">
-              {isMobile ? (
-                // Simplified title for mobile - no animation overhead
-                <h1 className="text-3xl font-bold text-text leading-tight mb-3">
-                  No engordaste 5 kilos en diciembre.
-                </h1>
-              ) : (
-                <AnimatedTitle
-                  text="No engordaste 5 kilos en diciembre."
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-text leading-tight mb-2"
-                />
-              )}
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: isMobile ? 0.2 : 0.8, duration: 0.4 }}
-              >
-                <span className="block text-3xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">
-                  Estás INFLAMADO.
-                </span>
-
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.5 }}
-                  className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed font-medium"
-                >
-                  La hinchazón no es grasa. Es un grito de ayuda de tu metabolismo. <br className="hidden md:block" />
-                  Aprende a apagar el fuego interno y resetea tu cuerpo en 7 días.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2, duration: 0.5 }}
-                  className="flex justify-center md:justify-start"
-                >
-                  <button
-                    onClick={() => document.getElementById('problem').scrollIntoView({ behavior: 'smooth' })}
-                    className="group flex items-center gap-2 text-primary font-bold text-lg hover:text-primary/80 transition-colors cursor-pointer"
-                  >
-                    <span>Descubre la solución</span>
-                    <motion.span
-                      animate={{ y: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      👇
-                    </motion.span>
-                  </button>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* IMAGE SECOND ON MOBILE - CENTERED */}
-          <div className="order-2 flex justify-center mt-8 md:mt-0">
-            <motion.div
-              initial={isMobile ? { opacity: 0 } : { opacity: 0, rotateY: -20, x: 50 }}
-              animate={isMobile ? { opacity: 1 } : { opacity: 1, rotateY: 0, x: 0 }}
-              transition={isMobile ? { duration: 0.4, delay: 0.3 } : { duration: 1, type: "spring" }}
-              className="relative w-full max-w-[280px] md:max-w-md mx-auto"
-            >
-              {!isMobile && <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-3xl transform rotate-3 scale-105 blur-2xl"></div>}
-              <img
-                src="/hero-image.png"
-                alt="El Protocolo de Raíz - Desinflama tu abdomen"
-                className="relative z-10 w-full h-auto rounded-2xl shadow-2xl border border-slate-200"
-                fetchpriority="high"
-              />
-
-              {/* Floating Badge - Desktop Only */}
-              {!isMobile && (
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                  className="absolute -bottom-6 -right-6 bg-surface border border-slate-200 p-4 rounded-xl shadow-xl z-20"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="bg-green-500/20 p-2 rounded-full">
-                      <ShieldCheck className="text-green-600" size={24} />
-                    </div>
-                    <div>
-                      <p className="text-xs text-slate-500">Resultados</p>
-                      <p className="text-sm font-bold text-white">100% Garantizado</p>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>
@@ -136,3 +88,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
