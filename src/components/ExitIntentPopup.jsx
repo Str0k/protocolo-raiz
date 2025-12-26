@@ -155,7 +155,7 @@ const ExitIntentPopup = () => {
                         {/* CTAs */}
                         < div className="space-y-3" >
                             <a
-                                href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                                href="#checkout"
                                 className="block w-full bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-emerald-700 text-white text-center font-bold py-4 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105"
                                 onClick={() => {
                                     if (window.fbq) window.fbq('track', 'InitiateCheckout');

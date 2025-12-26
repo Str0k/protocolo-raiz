@@ -71,7 +71,7 @@ const StickyBottomBar = () => {
                                 {cuposText}
                             </motion.span>
                             <a
-                                href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                                href="#checkout"
                                 className="bg-white text-primary px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all whitespace-nowrap"
                             >
                                 Empezar →

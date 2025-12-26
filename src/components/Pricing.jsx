@@ -37,7 +37,7 @@ const Pricing = () => {
                             </div>
 
                             <a
-                                href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                                href="#checkout"
                                 className="custom-btn w-full text-xl py-4 mb-4 shadow-xl shadow-primary/20 hover:shadow-primary/40"
                                 onClick={() => {
                                     if (window.fbq) window.fbq('track', 'InitiateCheckout');

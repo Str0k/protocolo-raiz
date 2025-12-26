@@ -135,7 +135,7 @@ const VideoSection = () => {
                     className="text-center"
                 >
                     <a
-                        href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                        href="#checkout"
                         className="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-emerald-700 text-white text-base md:text-lg font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105"
                     >
                         Quiero resultados como este → Solo $17 USD hoy

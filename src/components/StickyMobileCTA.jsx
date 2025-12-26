@@ -9,7 +9,7 @@ const StickyMobileCTA = () => {
                     <p className="text-white text-lg font-bold">$17 USD</p>
                 </div>
                 <a
-                    href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                    href="#checkout"
                     className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold text-sm"
                 >
                     COMPRAR →

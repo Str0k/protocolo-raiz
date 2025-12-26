@@ -19,7 +19,7 @@ const StrategicCTA = ({ variant = 'default', urgencyText = null, headline = null
                 <p className="text-gray-600 mb-6">{subheadline}</p>
             )}
             <a
-                href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                href="#checkout"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full md:w-auto inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white text-lg md:text-xl font-bold py-4 px-8 rounded-2xl shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 transform hover:scale-105"

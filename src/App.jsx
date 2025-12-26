@@ -118,6 +118,7 @@ function App() {
           <SneakPeek />
           <ProductSneakPeek />
           <Pricing />
+          <HotmartWidget />
           <Reviews />
           <StrategicCTA urgencyText="⏰ Solo 12 cupos restantes hoy" />
           <ValueStack />

@@ -117,7 +117,7 @@ const Hero = () => {
             className="mb-6"
           >
             <a
-              href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+              href="#checkout"
               className="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-emerald-700 text-white text-lg md:text-xl font-bold py-5 px-10 md:px-12 rounded-full shadow-2xl shadow-primary/40 hover:shadow-primary/60 transition-all duration-300 transform hover:scale-105 animate-breathing"
             >
               COMENZAR MI RESET AHORA →

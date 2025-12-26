@@ -5,6 +5,33 @@ import CountdownTimer from './CountdownTimer';
 import PaymentMethods from './PaymentMethods';
 
 const HotmartWidget = () => {
+    useEffect(() => {
+        // Listen for Hotmart checkout completion events
+        const handleHotmartPurchase = (event) => {
+            // Check if it's a Hotmart purchase completion event
+            if (event.data && event.data.type === 'hotmart:purchase:approved') {
+                // Fire Facebook Pixel Purchase event
+                if (window.fbq) {
+                    window.fbq('track', 'Purchase', {
+                        value: 17.00,
+                        currency: 'USD',
+                        content_name: 'El Protocolo de Raíz',
+                        content_type: 'product'
+                    });
+                    console.log('Facebook Pixel: Purchase event fired');
+                }
+            }
+        };
+
+        // Add event listener for postMessage from Hotmart iframe
+        window.addEventListener('message', handleHotmartPurchase);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('message', handleHotmartPurchase);
+        };
+    }, []);
+
     return (
         <section id="checkout" className="py-24 bg-slate-50 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 opacity-70 -z-10"></div>
@@ -35,8 +62,10 @@ const HotmartWidget = () => {
                             {/* Hotmart Button Container */}
                             <div className="mb-12 flex justify-center">
                                 <a
+                                    onClick={(e) => e.preventDefault()}
                                     href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                    className="group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden"
+                                    className="hotmart-fb hotmart__button-checkout group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden cursor-pointer"
+                                    style={{ border: 'none', textDecoration: 'none' }}
                                 >
                                     <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
                                     <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>
