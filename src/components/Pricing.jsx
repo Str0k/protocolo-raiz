@@ -16,6 +16,11 @@ const Pricing = () => {
                         {/* LEFT SIDE: PRICING & CTA */}
                         <div className="p-8 md:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-200 bg-white">
                             <div className="text-center md:text-left mb-6">
+                                <img
+                                    src="/bundle-gold.jpg"
+                                    alt="Paquete Post-Fiestas"
+                                    className="w-full rounded-xl shadow-lg mb-6 transform hover:scale-105 transition-transform duration-300"
+                                />
                                 <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 inline-block">
                                     83% DE DESCUENTO
                                 </span>

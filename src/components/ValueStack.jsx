@@ -29,7 +29,7 @@ const ValueStack = () => {
                             className="relative z-10"
                         >
                             <img
-                                src="/value-stack.jpg"
+                                src="/bundle-cream.jpg"
                                 alt="Diagrama de Valor - El Protocolo de Raíz"
                                 className="w-full h-auto rounded-xl shadow-lg"
                                 loading="lazy"

@@ -32,7 +32,7 @@ const ProductShowcase = () => {
 
                     {/* Main Image */}
                     <img
-                        src="/product-explosion.jpg"
+                        src="/bundle-green.jpg"
                         alt="Protocolo de Raíz Completo"
                         className="w-full h-auto drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
                     />
