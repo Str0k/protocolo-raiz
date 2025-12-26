@@ -1,6 +1,9 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import ProductShowcase from './components/ProductShowcase';
+import Authority from './components/Authority';
+import EmotionalBenefits from './components/EmotionalBenefits';
 import ProductImpact from './components/ProductImpact';
 import ValueStack from './components/ValueStack';
 import Reviews from './components/Reviews';
@@ -16,7 +19,7 @@ const DeepBenefits = lazy(() => import('./components/DeepBenefits'));
 const Science = lazy(() => import('./components/Science'));
 const LogicPivot = lazy(() => import('./components/LogicPivot'));
 const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
-const Transformation = lazy(() => import('./components/Transformation'));
+const DailyTransformation = lazy(() => import('./components/DailyTransformation'));
 const Solution = lazy(() => import('./components/Solution'));
 const Ingredients = lazy(() => import('./components/Ingredients'));
 const Timeline = lazy(() => import('./components/Timeline'));
@@ -67,50 +70,50 @@ function App() {
 
       <Header />
       <main>
-        {/* Critical above-the-fold content loads immediately */}
+        {/* 1. Hero */}
         <Hero />
-        <ProductImpact />
 
+        {/* 2. Product Visual */}
+        <ProductShowcase />
+
+        {/* 3. Authority */}
+        <Authority />
+
+        {/* 4. Problem */}
         <Problem />
+
+        {/* 5. Emotional Benefits */}
+        <EmotionalBenefits />
 
         {/* Lazy load remaining sections */}
         <Suspense fallback={<SectionLoader />}>
-          <DeepBenefits />
+          {/* 6. Science */}
           <Science />
-          <LogicPivot />
+
+          {/* 7. Comparison */}
           <ComparisonTable />
-          <Transformation />
+
+          {/* 8. Solution (Timeline) */}
           <Solution />
+
+          {/* 9. Ingredients */}
           <Ingredients />
+
+          {/* 10. Daily Transformation */}
+          <DailyTransformation />
         </Suspense>
 
-
-
         <Suspense fallback={<SectionLoader />}>
-          <Timeline />
           <LongTermRoadmap />
-          <SneakPeek />
-          <Filter />
-          <Bonuses />
-          <CommunitySupport />
-        </Suspense>
-
-        <Reviews />
-        <ValueStack />
-
-        {/* Replaced fake scarcity with real urgency */}
-        <Suspense fallback={<SectionLoader />}>
           <LimitedAvailability />
-        </Suspense>
-
-        {/* Second checkout - loads eagerly for conversions */}
-        <Pricing />
-
-        <Suspense fallback={<SectionLoader />}>
-          <CashCheckout />
-          <HotmartWidget />
+          <SneakPeek />
+          <Pricing />
+          <Reviews />
+          <ValueStack />
+          <Bonuses />
           <FAQ />
         </Suspense>
+
       </main>
 
       <Suspense fallback={null}>

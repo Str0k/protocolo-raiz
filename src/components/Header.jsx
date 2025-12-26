@@ -2,73 +2,43 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
-    const mobilePhrases = [
-        "Desinflama tu Abdomen",
-        "Resultados en 7 Días",
-        "Sin Dietas Estrictas",
-        "100% Natural"
-    ];
-
-    const [phraseIndex, setPhraseIndex] = useState(0);
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setPhraseIndex((prev) => (prev + 1) % mobilePhrases.length);
-        }, 3000);
-        return () => clearInterval(interval);
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <header className="fixed top-14 md:top-16 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] md:max-w-[90%]">
-            <div className="bg-white/80 backdrop-blur-xl border border-white/20 rounded-full shadow-lg shadow-black/5 px-3 py-2 md:px-6 md:py-3 flex items-center gap-2 md:gap-8">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative group cursor-pointer flex-shrink-0"
-                >
-                    <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <motion.img
+        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
+            <div className="container mx-auto px-4 flex items-center justify-between">
+                {/* Logo */}
+                <a href="#" className="flex-shrink-0">
+                    <img
                         src="/logo.jpg"
                         alt="Protocolo de Raíz"
-                        className="h-8 md:h-12 w-auto object-contain mix-blend-multiply relative z-10"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        className="h-10 md:h-12 w-auto object-contain mix-blend-multiply"
                     />
-                </motion.div>
+                </a>
 
-                {/* Mobile Animated Phrase - Elegant & Dynamic */}
-                <div className="flex md:hidden flex-1 justify-center items-center overflow-hidden h-5 min-w-[140px]">
-                    <AnimatePresence mode="wait">
-                        <motion.p
-                            key={phraseIndex}
-                            initial={{ y: 15, opacity: 0, filter: 'blur(5px)' }}
-                            animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-                            exit={{ y: -15, opacity: 0, filter: 'blur(5px)' }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="text-[10px] font-bold tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary whitespace-nowrap"
-                        >
-                            {mobilePhrases[phraseIndex]}
-                        </motion.p>
-                    </AnimatePresence>
-                </div>
-
-                <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+                {/* Desktop Menu */}
+                <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
                     <a href="#problem" className="hover:text-primary transition-colors">El Problema</a>
                     <a href="#solution" className="hover:text-primary transition-colors">La Solución</a>
                     <a href="#pricing" className="hover:text-primary transition-colors">Obtener Oferta</a>
                 </nav>
 
-
-
-                {/* Comenzar Button - Hidden on mobile, visible on desktop */}
+                {/* CTA Button */}
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="hidden md:flex custom-btn text-xs md:text-sm !px-4 md:!px-6 !py-1.5 md:!py-2 !min-w-[auto]"
+                    className="bg-[#10B981] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/40 transition-all"
                 >
-                    <span>Comenzar</span>
+                    Comenzar
                 </motion.button>
             </div>
         </header>
