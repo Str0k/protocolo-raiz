@@ -26,12 +26,11 @@ const StrategicCTA = ({ variant = 'default', urgencyText = null, headline = null
             >
                 COMENZAR MI RESET AHORA →
             </a>
-            <p className="text-sm text-gray-600 mt-4 flex items-center justify-center gap-4 flex-wrap">
-                <span>🔒 Pago 100% seguro</span>
-                <span>·</span>
-                <span>⚡ Acceso inmediato</span>
-                <span>·</span>
-                <span>🛡️ Garantía 7 días</span>
+            <p className="text-sm text-gray-600 mt-2 flex items-center justify-center gap-2 font-medium">
+                <span className="text-emerald-500 font-bold">✓</span>
+                <span>Sin riesgo</span>
+                <span className="text-gray-300">·</span>
+                <span>Cancelación en 1 clic</span>
             </p>
         </div>
     );

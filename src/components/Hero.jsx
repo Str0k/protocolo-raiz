@@ -65,12 +65,10 @@ const Hero = () => {
                 DESINFLAMA TU ABDOMEN HOY - $17 USD
               </motion.button>
 
-              <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 text-xs font-semibold text-slate-500">
-                <span className="flex items-center gap-1"><Lock size={14} className="text-[#10B981]" /> Pago 100% seguro</span>
-                <span className="hidden md:inline">·</span>
-                <span className="flex items-center gap-1"><Zap size={14} className="text-[#10B981]" /> Acceso inmediato</span>
-                <span className="hidden md:inline">·</span>
-                <span className="flex items-center gap-1"><ShieldCheck size={14} className="text-[#10B981]" /> Garantía de 7 días</span>
+              <div className="flex flex-wrap justify-center md:justify-start gap-2 text-sm font-medium text-slate-500 mt-4">
+                <span className="flex items-center gap-1 text-emerald-600 font-bold">✓</span> Sin riesgo
+                <span className="text-slate-300">·</span>
+                <span>Cancelación en 1 clic</span>
               </div>
             </div>
           </motion.div>

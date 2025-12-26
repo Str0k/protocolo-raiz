@@ -38,13 +38,20 @@ const Pricing = () => {
 
                             <a
                                 href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
-                                className="custom-btn w-full text-xl py-4 mb-6 shadow-xl shadow-primary/20 hover:shadow-primary/40"
+                                className="custom-btn w-full text-xl py-4 mb-4 shadow-xl shadow-primary/20 hover:shadow-primary/40"
                                 onClick={() => {
                                     if (window.fbq) window.fbq('track', 'InitiateCheckout');
                                 }}
                             >
                                 <span>COMENZAR MI RESET AHORA</span>
                             </a>
+
+                            <p className="text-sm text-slate-500 mb-6 text-center flex items-center justify-center gap-2 font-medium">
+                                <span className="text-green-500 font-bold">✓</span>
+                                <span>Sin riesgo</span>
+                                <span className="text-slate-300">·</span>
+                                <span>Cancelación en 1 clic</span>
+                            </p>
 
                             <div className="mb-8">
                                 <PaymentMethods theme="light" className="!gap-2" />

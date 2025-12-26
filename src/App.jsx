@@ -21,6 +21,7 @@ const LogicPivot = lazy(() => import('./components/LogicPivot'));
 const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
 const StrategicCTA = lazy(() => import('./components/StrategicCTA'));
 const StickyMobileCTA = lazy(() => import('./components/StickyMobileCTA'));
+const ExitIntentModal = lazy(() => import('./components/ExitIntentModal'));
 const DailyTransformation = lazy(() => import('./components/DailyTransformation'));
 const Solution = lazy(() => import('./components/Solution'));
 const Ingredients = lazy(() => import('./components/Ingredients'));
@@ -132,6 +133,7 @@ function App() {
 
       <WhatsAppButton />
       <StickyMobileCTA />
+      <ExitIntentModal />
     </div>
   );
 }
