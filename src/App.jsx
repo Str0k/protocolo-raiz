@@ -23,6 +23,9 @@ const StrategicCTA = lazy(() => import('./components/StrategicCTA'));
 const StickyMobileCTA = lazy(() => import('./components/StickyMobileCTA'));
 const StickyBottomBar = lazy(() => import('./components/StickyBottomBar'));
 const LiveViewerCount = lazy(() => import('./components/LiveViewerCount'));
+const VideoSection = lazy(() => import('./components/VideoSection'));
+const FomoNotifications = lazy(() => import('./components/FomoNotifications'));
+const ExitIntentPopup = lazy(() => import('./components/ExitIntentPopup'));
 
 const DailyTransformation = lazy(() => import('./components/DailyTransformation'));
 const Solution = lazy(() => import('./components/Solution'));
@@ -77,6 +80,11 @@ function App() {
       <main>
         {/* 1. Hero */}
         <Hero />
+
+        {/* Video Section - Critical for Facebook traffic */}
+        <Suspense fallback={<SectionLoader />}>
+          <VideoSection />
+        </Suspense>
 
         {/* 2. Product Visual */}
         <ProductShowcase />
@@ -137,6 +145,8 @@ function App() {
       <StickyMobileCTA />
       <StickyBottomBar />
       <LiveViewerCount />
+      <FomoNotifications />
+      <ExitIntentPopup />
     </div>
   );
 }
