@@ -17,7 +17,14 @@ const Footer = () => {
                 <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
                     <a href="#" className="hover:text-primary transition-colors">Aviso Legal</a>
                     <a href="#" className="hover:text-primary transition-colors">Términos y Condiciones</a>
-                    <a href="#" className="hover:text-primary transition-colors">Contacto</a>
+                    <a
+                        href="https://wa.me/18165006446?text=Hola!%20%F0%9F%91%8B%20Quiero%20comenzar%20el%20Protocolo%20de%20Ra%C3%ADz%20y%20tengo%20algunas%20dudas.%20%C2%BFPodr%C3%ADan%20ayudarme%3F%20%F0%9F%99%8F"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors font-bold text-[#25D366]"
+                    >
+                        ¿Aún tienes preguntas? Escríbenos
+                    </a>
                 </div>
 
                 <p className="text-xs">

@@ -19,6 +19,7 @@ const DeepBenefits = lazy(() => import('./components/DeepBenefits'));
 const Science = lazy(() => import('./components/Science'));
 const LogicPivot = lazy(() => import('./components/LogicPivot'));
 const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
+const StrategicCTA = lazy(() => import('./components/StrategicCTA'));
 const DailyTransformation = lazy(() => import('./components/DailyTransformation'));
 const Solution = lazy(() => import('./components/Solution'));
 const Ingredients = lazy(() => import('./components/Ingredients'));
@@ -92,6 +93,7 @@ function App() {
 
           {/* 7. Comparison */}
           <ComparisonTable />
+          <StrategicCTA />
 
           {/* 8. Solution (Timeline) */}
           <Solution />
@@ -109,6 +111,7 @@ function App() {
           <SneakPeek />
           <Pricing />
           <Reviews />
+          <StrategicCTA urgencyText="⏰ Solo 12 cupos restantes hoy" />
           <ValueStack />
           <Bonuses />
           <FAQ />
@@ -116,6 +119,12 @@ function App() {
 
       </main>
 
+      <StrategicCTA
+        variant="highlight"
+        headline="¿Listo para tu Transformación?"
+        subheadline="Únete a las 1,500+ personas que ya recuperaron su abdomen plano"
+        className="mb-8"
+      />
       <Suspense fallback={null}>
         <Footer />
       </Suspense>

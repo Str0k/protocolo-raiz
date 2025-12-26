@@ -1,91 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import { Timer } from 'lucide-react';
+'use client';
+import { useState, useEffect } from 'react';
 
-const CountdownTimer = ({ className = "" }) => {
-    const DURATION_HOURS = 2; // Duration of the timer in hours
-    const RESET_WINDOW_HOURS = 12; // When to fully reset the timer cycle
-
-    // Initialize state properly
-    const [timeLeft, setTimeLeft] = useState(DURATION_HOURS * 60 * 60);
+const CountdownTimer = () => {
+    const [timeLeft, setTimeLeft] = useState({ hours: 72, minutes: 0, seconds: 0 });
 
     useEffect(() => {
-        const STORAGE_KEY = 'offer_countdown_data';
+        // Only run on client-side to match the 'use client' directive context
+        const storedEndTime = localStorage.getItem('countdownEndTime');
+        let endTime;
 
-        const initTimer = () => {
-            const now = Date.now();
-            const savedData = localStorage.getItem(STORAGE_KEY);
-
-            let targetTime;
-
-            if (savedData) {
-                const { target, createdAt } = JSON.parse(savedData);
-                const ageHours = (now - createdAt) / (1000 * 60 * 60);
-
-                // If existing timer is valid (within 12h reset window)
-                if (ageHours < RESET_WINDOW_HOURS) {
-                    targetTime = target;
-                }
-            }
-
-            // If no valid timer exists, create new one
-            if (!targetTime) {
-                targetTime = now + (DURATION_HOURS * 60 * 60 * 1000);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                    target: targetTime,
-                    createdAt: now
-                }));
-            }
-
-            return targetTime;
-        };
-
-        const targetTime = initTimer();
+        if (storedEndTime) {
+            endTime = parseInt(storedEndTime);
+        } else {
+            endTime = Date.now() + (72 * 60 * 60 * 1000);
+            localStorage.setItem('countdownEndTime', endTime.toString());
+        }
 
         const updateTimer = () => {
             const now = Date.now();
-            const difference = Math.floor((targetTime - now) / 1000);
+            const difference = endTime - now;
 
-            if (difference > 0) {
-                setTimeLeft(difference);
-            } else {
-                setTimeLeft(0);
-                // Optional: Force reset if we want it to loop immediately after 0
-                // but usually "expired" means expired until the 12h window passes.
+            if (difference <= 0) {
+                // Reset timer if expired
+                const newEndTime = Date.now() + (72 * 60 * 60 * 1000);
+                localStorage.setItem('countdownEndTime', newEndTime.toString());
+                endTime = newEndTime;
+                return;
             }
+
+            const hours = Math.floor(difference / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            setTimeLeft({ hours, minutes, seconds });
         };
 
-        // Run immediately to avoid initial flash of wrong time
-        updateTimer();
-
+        updateTimer(); // Initial call
         const timer = setInterval(updateTimer, 1000);
 
         return () => clearInterval(timer);
     }, []);
 
-    const formatTime = (seconds) => {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-        return `${h.toString().padStart(2, '0')} : ${m.toString().padStart(2, '0')} : ${s.toString().padStart(2, '0')}`;
-    };
-
-    const scrollToCheckout = () => {
-        const checkoutSection = document.getElementById('checkout');
-        if (checkoutSection) {
-            checkoutSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    const formatNumber = (num) => String(num).padStart(2, '0');
 
     return (
-        <div
-            onClick={scrollToCheckout}
-            className={`flex items-center gap-2 text-red-600 cursor-pointer hover:scale-105 transition-transform ${className}`}
-        >
-            <Timer size={20} className="animate-pulse" />
-            <span className="font-medium uppercase tracking-wider text-sm">La oferta termina en:</span>
-            <span className="font-mono font-bold text-xl tracking-widest tabular-nums">
-                {formatTime(timeLeft)}
-            </span>
+        <div className="bg-gradient-to-r from-red-500 via-orange-500 to-red-600 rounded-xl p-6 mb-8 max-w-lg mx-auto shadow-2xl">
+            <p className="text-white text-center text-sm md:text-base font-semibold uppercase tracking-wider mb-3">
+                ⚠️ Esta oferta termina en:
+            </p>
+            <div className="flex justify-center items-center gap-3 md:gap-6">
+                <div className="text-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 md:p-4 min-w-[70px] md:min-w-[90px]">
+                        <span className="text-white font-bold text-4xl md:text-5xl block leading-none">
+                            {formatNumber(timeLeft.hours)}
+                        </span>
+                    </div>
+                    <span className="text-white text-xs md:text-sm font-medium uppercase tracking-wider mt-2 block">
+                        Horas
+                    </span>
+                </div>
+                <span className="text-white text-3xl md:text-4xl font-bold">:</span>
+                <div className="text-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 md:p-4 min-w-[70px] md:min-w-[90px]">
+                        <span className="text-white font-bold text-4xl md:text-5xl block leading-none">
+                            {formatNumber(timeLeft.minutes)}
+                        </span>
+                    </div>
+                    <span className="text-white text-xs md:text-sm font-medium uppercase tracking-wider mt-2 block">
+                        Minutos
+                    </span>
+                </div>
+                <span className="text-white text-3xl md:text-4xl font-bold">:</span>
+                <div className="text-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 md:p-4 min-w-[70px] md:min-w-[90px]">
+                        <span className="text-white font-bold text-4xl md:text-5xl block leading-none">
+                            {formatNumber(timeLeft.seconds)}
+                        </span>
+                    </div>
+                    <span className="text-white text-xs md:text-sm font-medium uppercase tracking-wider mt-2 block">
+                        Segundos
+                    </span>
+                </div>
+            </div>
+            <p className="text-white text-center text-xs md:text-sm mt-4 opacity-90">
+                🔥 Después vuelve a $97 USD
+            </p>
         </div>
     );
 };

@@ -2,11 +2,15 @@ import React from 'react';
 import { ShieldCheck, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PaymentMethods from './PaymentMethods';
+import CountdownTimer from './CountdownTimer';
+import ObjectionCrusher from './ObjectionCrusher';
 
 const Pricing = () => {
     return (
         <section id="pricing" className="py-20 md:py-24 bg-white relative">
             <div className="container mx-auto px-4 max-w-5xl">
+                <ObjectionCrusher />
+                <CountdownTimer />
                 <div className="bg-surface rounded-3xl shadow-2xl overflow-hidden border border-slate-200">
                     <div className="grid md:grid-cols-2">
                         {/* LEFT SIDE: PRICING & CTA */}
