@@ -39,6 +39,7 @@ const CashCheckout = lazy(() => import('./components/CashCheckout'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const CommunitySupport = lazy(() => import('./components/CommunitySupport'));
 const Footer = lazy(() => import('./components/Footer'));
+const ProductSneakPeek = lazy(() => import('./components/ProductSneakPeek'));
 
 // Only load MouseFollower on desktop (not needed on mobile)
 const MouseFollower = lazy(() => import('./components/MouseFollower'));
@@ -115,6 +116,7 @@ function App() {
           <LongTermRoadmap />
           <LimitedAvailability />
           <SneakPeek />
+          <ProductSneakPeek />
           <Pricing />
           <Reviews />
           <StrategicCTA urgencyText="⏰ Solo 12 cupos restantes hoy" />

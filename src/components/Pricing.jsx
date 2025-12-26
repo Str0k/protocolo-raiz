@@ -53,6 +53,24 @@ const Pricing = () => {
                                 <span>Cancelación en 1 clic</span>
                             </p>
 
+                            {/* Payment Methods */}
+                            <div className="text-center mb-4">
+                                <p className="text-xs text-slate-500 mb-3">Métodos de pago aceptados:</p>
+                                <div className="flex items-center justify-center gap-4 mb-4">
+                                    <div className="px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200">
+                                        <span className="font-bold text-slate-700">VISA</span>
+                                    </div>
+                                    <div className="px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200">
+                                        <span className="font-bold text-slate-700">Mastercard</span>
+                                    </div>
+                                    <div className="px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200">
+                                        <span className="font-bold text-slate-700">PayPal</span>
+                                    </div>
+                                </div>
+                                <p className="text-xs text-emerald-600 font-semibold mb-2">🔒 Pago 100% seguro con cifrado SSL</p>
+                                <p className="text-xs text-slate-500">Sin cargos ocultos ni suscripciones automáticas</p>
+                            </div>
+
                             <div className="mb-8">
                                 <PaymentMethods theme="light" className="!gap-2" />
                             </div>
@@ -100,6 +118,11 @@ const Pricing = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Final Trust Message */}
+                <p className="text-sm text-center text-slate-600 italic max-w-md mx-auto mt-8">
+                    Miles de mujeres ya han confiado en este proceso. Hoy la decisión está en tus manos, pero el riesgo lo asumimos nosotras.
+                </p>
             </div>
         </section>
     );
