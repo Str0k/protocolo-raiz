@@ -20,7 +20,7 @@ const WhatsAppButton = () => {
                 ease: "easeInOut",
                 times: [0, 0.2, 0.4, 1]
             }}
-            className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-50 group flex items-center justify-center"
+            className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-50 group flex items-center justify-center"
             aria-label="Contactar por WhatsApp"
         >
             {/* Pulse Effect */}
