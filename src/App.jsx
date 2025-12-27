@@ -143,7 +143,7 @@ function App() {
       <StickyBottomBar />
       <LiveViewerCount />
       {/* <FomoNotifications /> */}
-      <ExitIntentPopup />
+      {/* <ExitIntentPopup /> */}
     </div>
   );
 }
