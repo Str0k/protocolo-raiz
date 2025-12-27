@@ -56,7 +56,7 @@ const StickyBottomBar = () => {
                                     Desinflama tu abdomen
                                 </span>
                                 <span className="text-emerald-100 text-xs">
-                                    7 días · $17 USD
+                                    Protocolo de 7 días
                                 </span>
                             </div>
                         </div>

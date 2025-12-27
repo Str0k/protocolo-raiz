@@ -131,7 +131,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-sm text-slate-500 mb-10"
           >
-            Acceso inmediato · Solo $17 USD · Sin riesgo
+            Acceso inmediato · Garantía de devolución · Sin riesgo
           </motion.p>
 
           {/* Trust Row */}

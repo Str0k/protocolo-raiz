@@ -142,7 +142,7 @@ function App() {
       <StickyMobileCTA />
       <StickyBottomBar />
       <LiveViewerCount />
-      <FomoNotifications />
+      {/* <FomoNotifications /> */}
       <ExitIntentPopup />
     </div>
   );

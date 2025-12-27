@@ -7,10 +7,10 @@ const LiveViewerCount = () => {
     const [viewerCount, setViewerCount] = useState(0);
 
     useEffect(() => {
-        // Show after 13 seconds
+        // Show after 3 seconds (faster, less delay)
         const showTimer = setTimeout(() => {
             setIsVisible(true);
-        }, 13000);
+        }, 3000);
 
         // Get or generate viewer count
         const initializeViewerCount = () => {
@@ -51,25 +51,25 @@ const LiveViewerCount = () => {
     }, []);
 
     const generateRandomCount = () => {
-        // Random number between 23 and 87
-        return Math.floor(Math.random() * (87 - 23 + 1)) + 23;
+        // Random number between 15 and 45 (más realista)
+        return Math.floor(Math.random() * (45 - 15 + 1)) + 15;
     };
 
-    // Simulate slight fluctuations every 15 seconds
+    // Simulate slight fluctuations every 12 seconds
     useEffect(() => {
         if (!isVisible) return;
 
         const fluctuateInterval = setInterval(() => {
             setViewerCount(prev => {
-                // Randomly add or subtract 1-3
-                const change = Math.floor(Math.random() * 3) + 1;
+                // Randomly add or subtract 1-2 (más sutil)
+                const change = Math.floor(Math.random() * 2) + 1;
                 const direction = Math.random() > 0.5 ? 1 : -1;
                 const newCount = prev + (change * direction);
 
-                // Keep within reasonable bounds (20-100)
-                return Math.max(20, Math.min(100, newCount));
+                // Keep within reasonable bounds (12-50)
+                return Math.max(12, Math.min(50, newCount));
             });
-        }, 15000); // Every 15 seconds
+        }, 12000); // Every 12 seconds
 
         return () => clearInterval(fluctuateInterval);
     }, [isVisible]);
@@ -81,38 +81,68 @@ const LiveViewerCount = () => {
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: 100, opacity: 0 }}
-                    transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                    className="fixed top-1/3 right-0 z-40 hidden md:block"
+                    transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                    className="fixed top-24 md:top-32 right-4 z-40"
                 >
-                    <div className="bg-white/95 backdrop-blur-sm shadow-2xl rounded-l-2xl border-l-4 border-primary px-5 py-4 min-w-[200px]">
-                        <div className="flex items-center gap-3">
+                    {/* Desktop Version - Más sutil */}
+                    <div className="hidden md:block">
+                        <div className="bg-white/80 backdrop-blur-md shadow-lg rounded-2xl border border-emerald-100/50 px-4 py-3 min-w-[160px]">
+                            <div className="flex items-center gap-3">
+                                {/* Pulse indicator */}
+                                <motion.div
+                                    animate={{ scale: [1, 1.15, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                    className="w-2 h-2 bg-emerald-500 rounded-full relative"
+                                >
+                                    <span className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-60"></span>
+                                </motion.div>
+
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-1.5 mb-0.5">
+                                        <Eye size={14} className="text-slate-500" />
+                                        <span className="text-[11px] text-slate-600 font-medium">
+                                            En línea
+                                        </span>
+                                    </div>
+                                    <motion.div
+                                        key={viewerCount}
+                                        initial={{ scale: 1.15, opacity: 0.7 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="text-xl font-bold text-emerald-600"
+                                    >
+                                        {viewerCount}
+                                    </motion.div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Mobile Version - Más compacto */}
+                    <div className="block md:hidden">
+                        <div className="bg-white/90 backdrop-blur-md shadow-lg rounded-full border border-emerald-100/50 px-3 py-2 flex items-center gap-2">
                             <motion.div
                                 animate={{ scale: [1, 1.2, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
-                                className="w-3 h-3 bg-green-500 rounded-full relative"
+                                className="w-1.5 h-1.5 bg-emerald-500 rounded-full relative"
                             >
-                                <span className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></span>
+                                <span className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-60"></span>
                             </motion.div>
 
-                            <div className="flex-1">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <Eye size={16} className="text-slate-600" />
-                                    <span className="text-xs text-slate-600 font-medium">
-                                        Viendo ahora
-                                    </span>
-                                </div>
-                                <motion.div
-                                    key={viewerCount}
-                                    initial={{ scale: 1.2 }}
-                                    animate={{ scale: 1 }}
-                                    className="text-2xl font-bold text-primary"
-                                >
-                                    {viewerCount}
-                                </motion.div>
-                                <p className="text-[10px] text-slate-500">
-                                    personas en línea
-                                </p>
-                            </div>
+                            <Eye size={12} className="text-slate-500" />
+
+                            <motion.span
+                                key={viewerCount}
+                                initial={{ scale: 1.1 }}
+                                animate={{ scale: 1 }}
+                                className="text-sm font-bold text-emerald-600"
+                            >
+                                {viewerCount}
+                            </motion.span>
+
+                            <span className="text-[10px] text-slate-500 font-medium">
+                                viendo
+                            </span>
                         </div>
                     </div>
                 </motion.div>
