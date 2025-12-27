@@ -61,21 +61,19 @@ const StickyBottomBar = () => {
                             </div>
                         </div>
 
-                        {/* Right: CTA Button + Cupos Pill */}
+                        {/* Right: CTA Button */}
                         <div className="flex items-center gap-2">
-                            <motion.span
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="text-[10px] bg-red-500 text-white px-2 py-1 rounded-full font-bold whitespace-nowrap"
+                            <button
+                                onClick={() => {
+                                    window.scrollBy({
+                                        top: window.innerHeight * 0.8,
+                                        behavior: 'smooth'
+                                    });
+                                }}
+                                className="bg-white text-primary px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all whitespace-nowrap"
                             >
-                                {cuposText}
-                            </motion.span>
-                            <a
-                                href="#checkout"
-                                className="bg-white text-primary px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all whitespace-nowrap"
-                            >
-                                Empezar →
-                            </a>
+                                Ver más
+                            </button>
                         </div>
                     </div>
                 </motion.div>

@@ -8,12 +8,17 @@ const StickyMobileCTA = () => {
                     <p className="text-white text-sm font-bold">Desinflama tu abdomen</p>
                     <p className="text-white text-xs">Protocolo de 7 días</p>
                 </div>
-                <a
-                    href="#checkout"
-                    className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold text-sm"
+                <button
+                    onClick={() => {
+                        window.scrollBy({
+                            top: window.innerHeight * 0.8,
+                            behavior: 'smooth'
+                        });
+                    }}
+                    className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold text-sm shadow-lg"
                 >
-                    COMPRAR →
-                </a>
+                    Comenzar
+                </button>
             </div>
         </div>
     );
