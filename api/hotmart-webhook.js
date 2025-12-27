@@ -130,11 +130,17 @@ export default async function handler(req, res) {
         // Leer datos del webhook de Hotmart
         const hotmartData = req.body;
 
-        // Log para debugging (visible en Vercel logs)
-        console.log('Webhook recibido de Hotmart:', JSON.stringify(hotmartData, null, 2));
+        // Log detallado para debugging
+        console.log('=== WEBHOOK RECIBIDO ===');
+        console.log('Timestamp:', new Date().toISOString());
+        console.log('Body completo:', JSON.stringify(hotmartData, null, 2));
+        console.log('Tipo de evento:', hotmartData.event);
 
         // Verificar que sea un evento de compra completada
-        if (hotmartData.event !== 'PURCHASE_COMPLETE') {
+        // Hotmart puede enviar: PURCHASE_COMPLETE, PURCHASE_APPROVED, etc.
+        const validEvents = ['PURCHASE_COMPLETE', 'PURCHASE_APPROVED', 'PURCHASE_DELAYED'];
+
+        if (!validEvents.includes(hotmartData.event)) {
             console.log(`Evento ignorado: ${hotmartData.event}`);
             return res.status(200).json({
                 success: true,
@@ -143,44 +149,66 @@ export default async function handler(req, res) {
         }
 
         // Extraer datos del comprador
-        // La estructura puede variar según la versión del webhook de Hotmart
-        const buyer = hotmartData.data?.buyer || hotmartData.buyer || {};
-        const purchase = hotmartData.data?.purchase || hotmartData.purchase || {};
+        // Hotmart V2 webhook structure
+        const data = hotmartData.data || {};
+        const buyer = data.buyer || hotmartData.buyer || {};
+        const purchase = data.purchase || hotmartData.purchase || {};
+        const product = data.product || hotmartData.product || {};
+        const commissions = data.commissions || hotmartData.commissions || [];
 
+        console.log('=== DATOS EXTRAÍDOS ===');
+        console.log('Buyer:', buyer);
+        console.log('Purchase:', purchase);
+        console.log('Product:', product);
+
+        // Construir datos de compra con múltiples fallbacks
         const purchaseData = {
             email: buyer.email,
             buyerName: buyer.name,
             phone: buyer.phone || buyer.checkout_phone,
-            value: purchase.price?.value || purchase.transaction?.value,
-            currency: purchase.price?.currency_code || 'MXN',
+            value: purchase.price?.value ||
+                purchase.original_offer_price?.value ||
+                commissions[0]?.value ||
+                0,
+            currency: purchase.price?.currency_code ||
+                purchase.original_offer_price?.currency_code ||
+                'MXN',
         };
+
+        console.log('=== PURCHASE DATA FINAL ===');
+        console.log(JSON.stringify(purchaseData, null, 2));
 
         // Validar que tengamos al menos el email
         if (!purchaseData.email) {
+            console.error('ERROR: No se encontró email del comprador');
             throw new Error('No se encontró email del comprador en los datos de Hotmart');
         }
 
-        console.log('Datos de compra extraídos:', purchaseData);
-
         // Enviar evento a Facebook Conversions API
+        console.log('=== ENVIANDO A FACEBOOK ===');
         const fbResult = await sendFacebookConversion(purchaseData);
 
-        console.log('Evento enviado a Facebook:', fbResult);
+        console.log('=== RESPUESTA DE FACEBOOK ===');
+        console.log(JSON.stringify(fbResult, null, 2));
 
         // Responder con éxito
         return res.status(200).json({
             success: true,
             message: 'Webhook procesado correctamente',
+            purchaseData: purchaseData,
             facebookResponse: fbResult,
         });
 
     } catch (error) {
-        console.error('Error procesando webhook:', error);
+        console.error('=== ERROR PROCESANDO WEBHOOK ===');
+        console.error('Error completo:', error);
+        console.error('Stack trace:', error.stack);
 
         // Responder con error pero status 200 para que Hotmart no reintente
         return res.status(200).json({
             success: false,
             error: error.message,
+            errorStack: error.stack,
             message: 'Error procesando webhook, pero recibido correctamente',
         });
     }
