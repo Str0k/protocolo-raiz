@@ -4,9 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://static.hotmart.com http://static.hotmart.com https://pay.hotmart.com; style-src 'self' 'unsafe-inline' https://static.hotmart.com http://static.hotmart.com https://fonts.googleapis.com; img-src 'self' data: https://www.facebook.com https://static.hotmart.com http://static.hotmart.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.facebook.com https://static.hotmart.com http://static.hotmart.com https://api-checkout-vue.hotmart.com https://pay.hotmart.com; frame-src https://pay.hotmart.com;" />
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.googletagmanager.com https://static.hotmart.com http://static.hotmart.com https://pay.hotmart.com; style-src 'self' 'unsafe-inline' https://static.hotmart.com http://static.hotmart.com https://fonts.googleapis.com; img-src 'self' data: https://www.facebook.com https://www.googletagmanager.com https://static.hotmart.com http://static.hotmart.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.facebook.com https://www.googletagmanager.com https://static.hotmart.com http://static.hotmart.com https://api-checkout-vue.hotmart.com https://pay.hotmart.com; frame-src https://www.googletagmanager.com https://pay.hotmart.com;" />
   <link rel="icon" href="/favicon.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-N922F8JN');</script>
+  <!-- End Google Tag Manager -->
+
   <title>El Protocolo de Raíz | Desinflama tu Abdomen</title>
 
   <!-- Performance Optimization -->
@@ -72,6 +84,11 @@
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N922F8JN" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
