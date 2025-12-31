@@ -62,7 +62,6 @@ const HotmartWidget = () => {
                             {/* Hotmart Button Container */}
                             <div className="mb-12 flex justify-center">
                                 <a
-                                    onClick={(e) => e.preventDefault()}
                                     href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
                                     className="hotmart-fb hotmart__button-checkout group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden cursor-pointer"
                                     style={{ border: 'none', textDecoration: 'none' }}
