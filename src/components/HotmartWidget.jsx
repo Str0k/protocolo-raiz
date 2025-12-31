@@ -73,7 +73,7 @@ const HotmartWidget = () => {
                                         <span>DESCARGAR AHORA</span>
                                         <span className="bg-white/20 px-3 py-1 rounded-lg text-lg font-normal flex items-center gap-2">
                                             <span className="line-through opacity-70 text-sm">$30</span>
-                                            $17 USD
+                                            $17 USD / $375 MXN
                                         </span>
                                     </span>
                                     <span className="relative z-10 block text-sm font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>

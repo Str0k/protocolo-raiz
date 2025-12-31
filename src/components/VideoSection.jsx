@@ -138,7 +138,7 @@ const VideoSection = () => {
                         href="#checkout"
                         className="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-emerald-700 text-white text-base md:text-lg font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105"
                     >
-                        Quiero resultados como este → Solo $17 USD hoy
+                        Quiero resultados como este → Solo $17 USD / $375 MXN hoy
                     </a>
                 </motion.div>
             </div>

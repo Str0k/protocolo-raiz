@@ -38,7 +38,7 @@ const CashCheckout = () => {
                                     <span>DESCARGAR AHORA</span>
                                     <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                                     <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
-                                        OFERTA $17
+                                        $17 USD / $375 MXN
                                     </div>
                                 </a>
                                 <div className="w-full">

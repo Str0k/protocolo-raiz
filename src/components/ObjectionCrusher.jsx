@@ -10,7 +10,7 @@ const ObjectionCrusher = () => {
         {
             icon: "💰",
             question: "¿Es caro?",
-            answer: "$17 = 2 cafés Starbucks."
+            answer: "$17 USD / $375 MXN = 2 cafés Starbucks."
         },
         {
             icon: "⚡",

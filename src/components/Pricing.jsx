@@ -33,6 +33,7 @@ const Pricing = () => {
                                     </span>
                                     <span className="text-xl font-bold text-slate-500 self-end mb-2">USD</span>
                                 </div>
+                                <p className="text-slate-600 text-lg font-semibold mb-1">$375 MXN</p>
                                 <p className="text-slate-500 text-sm font-medium">oferta exclusiva por tiempo limitado</p>
                             </div>
 

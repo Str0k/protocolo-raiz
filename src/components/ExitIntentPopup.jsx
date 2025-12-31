@@ -128,7 +128,7 @@ const ExitIntentPopup = () => {
                                 <Gift className="text-primary flex-shrink-0 mt-1" size={24} />
                                 <div>
                                     <p className="font-bold text-slate-900 mb-2">
-                                        Protocolo de Raíz + TODOS los bonos por $17 USD
+                                        Protocolo de Raíz + TODOS los bonos por $17 USD / $375 MXN
                                     </p>
                                     <p className="text-sm text-slate-700 mb-3">
                                         + Video exclusivo <strong>GRATIS</strong>: "Los 3 Errores que Mantienen tu Abdomen Inflamado Aunque Comas Bien" (valor $27)
