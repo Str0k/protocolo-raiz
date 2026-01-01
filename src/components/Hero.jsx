@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, Shield, Lock, MessageCircle } from 'lucide-react';
+import { Lock, Shield, MessageCircle, Zap } from 'lucide-react';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen pt-24 pb-16 flex items-center overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-emerald-50/30">
-      {/* Cinematic Parallax Background - Luminous Intestinal Garden */}
+      {/* Cinematic Parallax Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Organic shapes with gentle glow */}
         <motion.div
           className="absolute top-[10%] right-[5%] w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl"
           animate={{
@@ -72,55 +71,81 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
 
-          {/* Main Hook */}
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight"
           >
-            No es grasa. Es{' '}
-            <span className="text-primary">inflamación química</span>.
+            Desinfla tu abdomen en{' '}
+            <span className="text-primary">7 días</span>
             <br className="hidden md:block" />
-            Reviértela en 7 días{' '}
-            <span className="text-secondary">sin dietas extremas</span>.
+            <span className="text-secondary">—sin dietas extremas ni pasar hambre</span>
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Pattern Interrupt Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            El protocolo científico que desinflama tu abdomen, reduce{' '}
-            <strong className="text-primary">3–7 cm de cintura</strong> y reinicia tu
-            energía… sin pasar hambre, sin contar calorías, sin efecto rebote.
+            Eso que parece grasa obstinada <strong className="text-primary">NO es grasa</strong>.{' '}
+            Es <strong className="text-secondary">inflamación química</strong> atrapada en tu intestino.
+            <br className="hidden md:block" />
+            Y se puede revertir en una semana.
           </motion.p>
+
+          {/* Micro-Benefit Bullets */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col items-center gap-3 mb-8 text-left max-w-xl mx-auto"
+          >
+            {[
+              { text: "Sentirte ligera por primera vez en meses, sin esa sensación de globo", icon: "✓" },
+              { text: "Recuperar tu energía desde el día 3—sin necesitar 3 cafés para funcionar", icon: "✓" },
+              { text: "Ver resultados visibles en el espejo, no solo en la báscula", icon: "✓" },
+              { text: "Comer sin miedo a que tu abdomen se infle después de cada comida", icon: "✓" },
+              { text: "Volver a ponerte tu ropa favorita sin sentir que te aprieta", icon: "✓" }
+            ].map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                className="flex items-start gap-3"
+              >
+                <span className="text-primary font-bold text-lg">{benefit.icon}</span>
+                <span className="text-slate-700">{benefit.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* Social Proof Line */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-sm md:text-base text-slate-500 mb-10 font-medium"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-sm md:text-base text-slate-500 mb-8 font-medium"
           >
-            ✓ 1,500+ mujeres ya transformaron su abdomen y su energía con este método
-            clínicamente diseñado
+            👩‍👩‍👧 <strong className="text-primary">1,500+ mujeres</strong> en México ya desinflamaron su abdomen con este método
           </motion.p>
 
           {/* Primary CTA with Breathing Effect */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
             className="mb-6"
           >
             <a
               href="#checkout"
               className="inline-block bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-emerald-700 text-white text-lg md:text-xl font-bold py-5 px-10 md:px-12 rounded-full shadow-2xl shadow-primary/40 hover:shadow-primary/60 transition-all duration-300 transform hover:scale-105 animate-breathing"
             >
-              COMENZAR MI RESET AHORA →
+              SÍ, QUIERO DESINFLAMAR MI ABDOMEN →
             </a>
           </motion.div>
 
@@ -131,7 +156,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-sm text-slate-500 mb-10"
           >
-            Acceso inmediato · Garantía de devolución · Sin riesgo
+            ⚡ Acceso inmediato · 🛡️ 7 días de garantía · 🔒 Pago 100% seguro
           </motion.p>
 
           {/* Trust Row */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, CheckCircle, User } from 'lucide-react';
+import { Star, CheckCircle, User, MessageCircle } from 'lucide-react';
 
 const Reviews = () => {
     const testimonials = [
@@ -10,8 +10,8 @@ const Reviews = () => {
             city: 'Guadalajara',
             verified: true,
             avatar: '👩‍🦰',
-            mainQuote: 'En 7 días mi pantalón volvió a cerrar sin hacer ejercicio. Pensé que era grasa, pero era pura inflamación.',
-            secondaryQuote: 'Bajé 5 cm de cintura y ya no tengo esa barriga de 6 meses después de comer.',
+            mainQuote: 'En 5 días mi pantalón volvió a cerrar. Pensé que era grasa—pero era pura inflamación.',
+            result: 'Bajó 5 cm de cintura sin hacer ejercicio',
             rating: 5
         },
         {
@@ -20,8 +20,8 @@ const Reviews = () => {
             city: 'CDMX',
             verified: true,
             avatar: '👩',
-            mainQuote: 'Por fin entendí que mi problema no era fuerza de voluntad. Era mi intestino inflamado.',
-            secondaryQuote: 'En 6 días dejé de verme embarazada después de cada comida. Es increíble.',
+            mainQuote: 'Por fin entendí que mi problema no era falta de voluntad. Era mi intestino inflamado.',
+            result: 'Dejó de verse "embarazada" después de cada comida',
             rating: 5
         },
         {
@@ -30,8 +30,8 @@ const Reviews = () => {
             city: 'Monterrey',
             verified: true,
             avatar: '👱‍♀️',
-            mainQuote: 'Probé keto, ayuno intermitente, todo. Nada funcionó hasta que arreglé mi raíz.',
-            secondaryQuote: 'Ya no tengo gases constantes ni esa sensación de estar siempre hinchada.',
+            mainQuote: 'Probé keto, ayuno, de todo. Nada funcionó hasta que arreglé la raíz.',
+            result: 'Eliminó gases constantes y sensación de hinchazón',
             rating: 5
         },
         {
@@ -40,18 +40,18 @@ const Reviews = () => {
             city: 'Puebla',
             verified: true,
             avatar: '👩‍💼',
-            mainQuote: 'Tengo intestino sensible y pensé que nada me iba a funcionar. Me equivoqué totalmente.',
-            secondaryQuote: 'El protocolo es súper gentil pero efectivo. Perdí 6 cm y mi digestión mejoró 100%.',
+            mainQuote: 'Tengo intestino sensible. Pensé que nada me iba a funcionar. Me equivoqué totalmente.',
+            result: 'Perdió 6 cm y digestión mejoró al 100%',
             rating: 5
         },
         {
-            name: 'Sofia L.',
+            name: 'Sofía L.',
             age: 31,
             city: 'Querétaro',
             verified: true,
             avatar: '👩‍🎓',
-            mainQuote: 'No es una dieta más. Es realmente un reset completo. Mi energía cambió desde el día 3.',
-            secondaryQuote: 'Ya no necesito 3 cafés para funcionar. Me levanto con claridad mental.',
+            mainQuote: 'No es una dieta más. Es realmente un reset. Mi energía cambió desde el día 3.',
+            result: 'Ya no necesita 3 cafés para funcionar',
             rating: 5
         },
         {
@@ -61,8 +61,26 @@ const Reviews = () => {
             verified: true,
             avatar: '👩‍⚕️',
             mainQuote: 'Después de las fiestas estaba desesperada. 7 días después volví a sentirme yo.',
-            secondaryQuote: 'Mi ropa volvió a quedarme y lo mejor: sin pasar hambre ni contar calorías.',
+            result: 'Su ropa volvió a quedarle—sin pasar hambre',
             rating: 5
+        }
+    ];
+
+    const whatsappMessages = [
+        {
+            name: 'María C. – 29 años',
+            message: 'No lo puedo creer, mi pantalón volvió a cerrar en 5 días 😭🙏',
+            time: '10:23 AM'
+        },
+        {
+            name: 'Ana M. – 34 años',
+            message: 'Ya no tengo gases todo el día, por fin puedo ir a reuniones sin miedo 🙌',
+            time: '2:15 PM'
+        },
+        {
+            name: 'Lucía R. – 42 años',
+            message: 'Pensé que era grasa, pero en 7 días mi barriga bajó muchísimo. Gracias ❤️',
+            time: '5:47 PM'
         }
     ];
 
@@ -78,10 +96,10 @@ const Reviews = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-                        Resultados reales de mujeres como tú
+                        Resultados reales en 7 días
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Sin filtros. Sin promesas vacías. Solo historias reales de transformación.
+                        De mujeres como tú, con vidas como la tuya. Sin filtros. Sin promesas vacías.
                     </p>
                 </motion.div>
 
@@ -126,18 +144,19 @@ const Reviews = () => {
                             </div>
 
                             {/* Main Quote */}
-                            <blockquote className="mb-3">
+                            <blockquote className="mb-4">
                                 <p className="text-slate-700 font-medium leading-relaxed">
                                     "{testimonial.mainQuote}"
                                 </p>
                             </blockquote>
 
-                            {/* Secondary Quote */}
-                            {testimonial.secondaryQuote && (
-                                <p className="text-sm text-slate-600 italic">
-                                    {testimonial.secondaryQuote}
+                            {/* Result Badge */}
+                            <div className="bg-emerald-50 rounded-lg px-3 py-2 border border-emerald-100">
+                                <p className="text-sm text-emerald-700 font-medium flex items-center gap-2">
+                                    <CheckCircle size={14} className="text-emerald-500" />
+                                    {testimonial.result}
                                 </p>
-                            )}
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -150,34 +169,19 @@ const Reviews = () => {
                     className="mt-20"
                 >
                     <div className="text-center mb-8">
-                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                            Pantallas reales de nuestro grupo privado
+                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2 flex items-center justify-center gap-3">
+                            <MessageCircle className="text-green-500" size={28} />
+                            Mensajes reales de nuestro grupo privado
                         </h3>
                         <p className="text-slate-600">
-                            Sin filtros. Sin promesas vacías. Solo mensajes de mujeres que ya empezaron su reset.
+                            Sin filtros. Sin edición. Solo capturas directas.
                         </p>
                     </div>
 
                     {/* Screenshot Cards - Horizontal Scroll */}
                     <div className="overflow-x-auto pb-4 -mx-4 px-4">
                         <div className="flex gap-4 md:justify-center" style={{ minWidth: 'min-content' }}>
-                            {[
-                                {
-                                    name: 'María C. – 29 años',
-                                    message: 'No lo puedo creer, mi pantalón volvió a cerrar en 5 días 😭🙏',
-                                    time: '10:23 AM'
-                                },
-                                {
-                                    name: 'Ana M. – 34 años',
-                                    message: 'Ya no tengo gases todo el día, por fin puedo ir a reuniones sin miedo 🙌',
-                                    time: '2:15 PM'
-                                },
-                                {
-                                    name: 'Lucía R. – 42 años',
-                                    message: 'Pensé que era grasa, pero en 7 días mi barriga bajó muchísimo. Gracias ❤️',
-                                    time: '5:47 PM'
-                                }
-                            ].map((screenshot, index) => (
+                            {whatsappMessages.map((screenshot, index) => (
                                 <motion.div
                                     key={index}
                                     initial={{ opacity: 0, x: 20 }}

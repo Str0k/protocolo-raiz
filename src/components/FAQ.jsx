@@ -1,42 +1,46 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 
 const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
     const faqs = [
         {
-            question: 'No tengo tiempo para cocinar complicado, ¿igual puedo hacerlo?',
-            answer: 'Todas las recetas están diseñadas para completarse en 15-20 minutos máximo. No necesitas técnicas avanzadas ni ingredientes exóticos. Incluye lista de compra lista y menú pre-planeado día por día. Si esto resuena contigo, este protocolo es para ti.'
+            question: 'No tengo tiempo para cocinar complicado. ¿Igual puedo hacerlo?',
+            answer: 'Todas las recetas toman 15-20 minutos máximo. No necesitas ser chef. Los ingredientes están en cualquier supermercado (Walmart, Soriana, Chedraui). La lista de compras ya está hecha. Solo sigues el plan.'
         },
         {
-            question: 'Ya probé de todo (keto, ayuno, detox) y nada me funciona. ¿Qué hace diferente este protocolo?',
-            answer: 'Este protocolo no se enfoca en calorías ni macros. Trabaja a nivel de inflamación intestinal y microbiota, que es la raíz del 80% de los problemas de peso y energía. Si tu intestino está inflamado, ninguna dieta funcionará a largo plazo. Por eso ves resultados en 5-7 días y sin efecto rebote.'
+            question: 'Ya probé keto, ayuno, detox... nada me funciona. ¿Por qué esto sería diferente?',
+            answer: 'Porque esto no es una dieta de calorías. Trabaja a nivel de inflamación intestinal—la raíz del problema. Si tu intestino está inflamado, ninguna dieta funcionará a largo plazo. Por eso ves resultados visibles en 5-7 días.'
         },
         {
-            question: 'Tengo intestino sensible o colon irritable, ¿es seguro para mí?',
-            answer: 'El protocolo está diseñado precisamente para intestinos sensibles. Eliminamos los alimentos irritantes típicos y reintroducimos de forma gradual. Más del 60% de nuestras clientas tienen diagnóstico de intestino irritable y reportan mejora significativa en gases, hinchazón y regularidad.'
+            question: 'Tengo intestino sensible o colon irritable. ¿Es seguro para mí?',
+            answer: 'Está diseñado precisamente para intestinos sensibles. Eliminamos los alimentos irritantes y reintroducimos gradualmente. Más del 60% de nuestras clientas tienen intestino sensible y reportan mejora significativa.'
         },
         {
-            question: '¿Qué pasa después de los 7 días? ¿Voy a recuperar todo lo perdido?',
-            answer: 'Incluye la Guía Escudo Anti-Rebote que te enseña exactamente cómo comer después del reset para mantener resultados de por vida. No es una dieta temporal, es un reset permanente de tu sistema digestivo. Aprenderás a identificar qué alimentos te inflaman y cuáles te sanan.'
+            question: '¿Qué pasa después de los 7 días? ¿Voy a recuperar todo?',
+            answer: 'No si sigues la Guía Escudo Anti-Rebote (incluida gratis). Te enseña exactamente qué comer después del reset para mantener resultados de por vida. Aprenderás a identificar qué te inflama y qué te sana.'
         },
         {
             question: '¿Funciona si soy vegetariana o vegana?',
-            answer: 'Sí, completamente. El protocolo incluye adaptaciones específicas y sustituciones para vegetarianas, veganas y otras restricciones alimentarias. Los principios de desinflamación intestinal funcionan igual con fuentes vegetales.'
+            answer: 'Sí. El protocolo incluye adaptaciones específicas para vegetarianas, veganas y otras restricciones. Los principios de desinflamación funcionan igual con fuentes vegetales.'
         },
         {
-            question: '¿Necesito suplementos caros o productos especiales?',
-            answer: 'No. Todo se consigue en cualquier supermercado normal (Walmart, Soriana, Chedraui, etc.). La lista de compra incluye marcas accesibles y alternativas económicas. El protocolo está diseñado para ser realista y sostenible, no para venderte productos extra.'
+            question: '¿Necesito comprar suplementos caros?',
+            answer: 'No. Todo se consigue en cualquier supermercado normal. La lista incluye marcas accesibles y alternativas económicas. No te vendemos productos extra.'
         },
         {
             question: '¿Cómo recibo el protocolo después de pagar?',
-            answer: 'Acceso inmediato por email y WhatsApp. Descargas todo en tu celular en menos de 2 minutos. El formato está diseñado para móvil, así que puedes consultarlo mientras compras, cocinas o comes fuera. Sin esperas, sin complicaciones.'
+            answer: 'Acceso inmediato por email y WhatsApp. Descargas todo en tu celular en menos de 2 minutos. El formato está optimizado para móvil—consultas mientras compras o cocinas.'
         },
         {
-            question: '¿Realmente puedo pedir reembolso si no veo resultados?',
-            answer: 'Sí, sin letra chica. Tienes 7 días completos para probar el protocolo. Si no ves reducción visible en tu abdomen ni mejora en tu energía, te devolvemos el 100% de tu dinero. Sin preguntas incómodas. Proceso automático en 24-48 horas. Asumimos todo el riesgo, tú solo decides si quieres probar.'
+            question: '¿De verdad puedo pedir reembolso si no funciona?',
+            answer: 'Sí, sin letra chica. Tienes 7 días completos. Si no ves reducción visible en tu abdomen, te devolvemos el 100%. Sin preguntas incómodas. Proceso automático en 24-48 horas.'
+        },
+        {
+            question: '¿Puedo hacerlo si trabajo o viajo?',
+            answer: 'Sí. Las recetas son rápidas y puedes adaptar cuando comes fuera con la Guía de Situaciones Sociales. Muchas mujeres lo hacen mientras trabajan tiempo completo o viajan.'
         }
     ];
 
@@ -112,9 +116,15 @@ const FAQ = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="mt-12 text-center"
                 >
-                    <p className="text-slate-500 text-sm">
-                        ¿Tienes otra duda? Escríbenos por WhatsApp y te respondemos en menos de 2 horas.
-                    </p>
+                    <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                        <div className="flex items-center justify-center gap-2 text-primary mb-2">
+                            <MessageCircle size={20} />
+                            <span className="font-bold">¿Tienes otra duda?</span>
+                        </div>
+                        <p className="text-slate-600 text-sm">
+                            Escríbenos por WhatsApp y te respondemos en menos de 2 horas.
+                        </p>
+                    </div>
                 </motion.div>
             </div>
         </section>

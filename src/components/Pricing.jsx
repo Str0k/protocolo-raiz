@@ -1,16 +1,28 @@
 import React from 'react';
-import { ShieldCheck, Check } from 'lucide-react';
+import { ShieldCheck, Check, Zap, Clock, BadgeCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PaymentMethods from './PaymentMethods';
 import CountdownTimer from './CountdownTimer';
-import ObjectionCrusher from './ObjectionCrusher';
 
 const Pricing = () => {
     return (
         <section id="pricing" className="py-20 md:py-24 bg-white relative">
             <div className="container mx-auto px-4 max-w-5xl">
-                <ObjectionCrusher />
+
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                        Invierte en ti hoy—sin ningún riesgo
+                    </h2>
+                </motion.div>
+
                 <CountdownTimer />
+
                 <div className="bg-surface rounded-3xl shadow-2xl overflow-hidden border border-slate-200">
                     <div className="grid md:grid-cols-2">
                         {/* LEFT SIDE: PRICING & CTA */}
@@ -18,23 +30,63 @@ const Pricing = () => {
                             <div className="text-center md:text-left mb-6">
                                 <img
                                     src="/bundle-gold.jpg"
-                                    alt="Paquete Post-Fiestas"
+                                    alt="Paquete Protocolo de Raíz"
                                     className="w-full rounded-xl shadow-lg mb-6 transform hover:scale-105 transition-transform duration-300"
                                 />
                                 <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 inline-block">
-                                    83% DE DESCUENTO
+                                    90% DE DESCUENTO
                                 </span>
-                                <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
-                                    <span className="text-slate-400 text-2xl line-through decoration-red-500/50">
-                                        $97 USD
-                                    </span>
-                                    <span className="text-6xl font-bold text-primary tracking-tight">
-                                        $17
-                                    </span>
-                                    <span className="text-xl font-bold text-slate-500 self-end mb-2">USD</span>
+
+                                {/* Price Display */}
+                                <div className="mb-4">
+                                    <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
+                                        <span className="text-slate-400 text-lg">Valor total:</span>
+                                        <span className="text-slate-400 text-2xl line-through decoration-red-500/50">
+                                            $172 USD
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center justify-center md:justify-start gap-4 mb-2">
+                                        <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">
+                                            $17
+                                        </span>
+                                        <span className="text-xl font-bold text-slate-500 self-end mb-2">USD</span>
+                                    </div>
+                                    <p className="text-slate-600 text-lg font-semibold mb-1">$375 MXN</p>
+                                    <p className="text-slate-500 text-sm">
+                                        💡 Menos de 2 cafés de Starbucks
+                                    </p>
                                 </div>
-                                <p className="text-slate-600 text-lg font-semibold mb-1">$375 MXN</p>
-                                <p className="text-slate-500 text-sm font-medium">oferta exclusiva por tiempo limitado</p>
+                            </div>
+
+                            {/* What's Included Summary */}
+                            <div className="bg-slate-50 rounded-xl p-4 mb-6">
+                                <p className="text-sm font-bold text-slate-700 mb-3">Incluye:</p>
+                                <div className="space-y-2 text-sm text-slate-600">
+                                    <div className="flex items-center gap-2">
+                                        <Check size={16} className="text-green-500" />
+                                        <span>Plan de 7 días paso a paso</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={16} className="text-green-500" />
+                                        <span>+30 recetas anti-inflamatorias</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={16} className="text-green-500" />
+                                        <span>Lista de compras lista</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={16} className="text-green-500" />
+                                        <span>Guía de situaciones sociales</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={16} className="text-green-500" />
+                                        <span>BONUS: Guía Escudo Anti-Rebote</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Check size={16} className="text-green-500" />
+                                        <span>BONUS: Grupo privado WhatsApp</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <a
@@ -44,14 +96,14 @@ const Pricing = () => {
                                     if (window.fbq) window.fbq('track', 'InitiateCheckout');
                                 }}
                             >
-                                <span>COMENZAR MI RESET AHORA</span>
+                                <span>SÍ, QUIERO DESINFLAMAR MI ABDOMEN →</span>
                             </a>
 
                             <p className="text-sm text-slate-500 mb-6 text-center flex items-center justify-center gap-2 font-medium">
-                                <span className="text-green-500 font-bold">✓</span>
-                                <span>Sin riesgo</span>
+                                <Zap className="text-primary" size={16} />
+                                <span>Acceso inmediato</span>
                                 <span className="text-slate-300">·</span>
-                                <span>Cancelación en 1 clic</span>
+                                <span>Sin riesgo</span>
                             </p>
 
                             {/* Payment Methods */}
@@ -72,18 +124,19 @@ const Pricing = () => {
                                 <p className="text-xs text-slate-500">Sin cargos ocultos ni suscripciones automáticas</p>
                             </div>
 
-                            <div className="mb-8">
+                            <div className="mb-4">
                                 <PaymentMethods theme="light" className="!gap-2" />
                             </div>
 
+                            {/* Additional Trust Points */}
                             <div className="flex flex-col gap-2 text-sm text-slate-500">
                                 <div className="flex items-center gap-2">
-                                    <Check size={16} className="text-green-500" />
+                                    <BadgeCheck size={16} className="text-green-500" />
                                     <span>Acceso inmediato de por vida</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Check size={16} className="text-green-500" />
-                                    <span>Todos los bonos incluidos gratis</span>
+                                    <BadgeCheck size={16} className="text-green-500" />
+                                    <span>Todas las actualizaciones futuras incluidas</span>
                                 </div>
                             </div>
                         </div>
@@ -108,13 +161,30 @@ const Pricing = () => {
                                 7 DÍAS SIN RIESGO
                             </p>
 
-                            <p className="text-slate-600 leading-relaxed mb-6 text-sm md:text-base">
-                                "Si sigues el protocolo durante 7 días y no ves una reducción visible en tu abdomen, te devolvemos el <strong>100% de tu dinero</strong>. Sin preguntas. Sin letra chica."
-                            </p>
+                            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200 mb-6">
+                                <p className="text-slate-700 leading-relaxed text-sm md:text-base">
+                                    "Si sigues el protocolo durante 7 días y no ves una reducción visible en tu abdomen, te devolvemos el <strong className="text-primary">100% de tu dinero</strong>."
+                                </p>
+                            </div>
 
-                            <div className="flex items-center gap-2 text-xs font-bold text-slate-500 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm">
+                            <div className="space-y-3 text-left w-full max-w-xs">
+                                <div className="flex items-center gap-3 text-sm text-slate-600">
+                                    <Check size={18} className="text-green-500 shrink-0" />
+                                    <span>Sin preguntas incómodas</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-sm text-slate-600">
+                                    <Check size={18} className="text-green-500 shrink-0" />
+                                    <span>Sin letra chica</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-sm text-slate-600">
+                                    <Check size={18} className="text-green-500 shrink-0" />
+                                    <span>Reembolso en 24-48 horas</span>
+                                </div>
+                            </div>
+
+                            <div className="mt-6 flex items-center gap-2 text-xs font-bold text-slate-500 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm">
                                 <span className="w-2 h-2 rounded-full bg-green-500 table"></span>
-                                Reembolso garantizado en 24-48 horas
+                                El riesgo es TODO nuestro
                             </div>
                         </div>
                     </div>
