@@ -11,6 +11,7 @@ const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
 const OfferBreakdown = lazy(() => import('./components/OfferBreakdown'));
 const HowItWorks = lazy(() => import('./components/HowItWorks'));
 const Reviews = lazy(() => import('./components/Reviews'));
+const WhatsAppScreenshots = lazy(() => import('./components/WhatsAppScreenshots'));
 const Pricing = lazy(() => import('./components/Pricing'));
 const HotmartWidget = lazy(() => import('./components/HotmartWidget'));
 const FAQ = lazy(() => import('./components/FAQ'));
@@ -84,6 +85,9 @@ function App() {
         <Suspense fallback={<SectionLoader />}>
           {/* SECTION 8: Social Proof Amplification (Real Results Showcase) */}
           <Reviews />
+
+          {/* SECTION 8B: Real WhatsApp Screenshots (Living Proof) */}
+          <WhatsAppScreenshots />
 
           {/* SECTION 9: Offer + Pricing + Urgency (Conversion Catalyst Zone) */}
           <Pricing />
