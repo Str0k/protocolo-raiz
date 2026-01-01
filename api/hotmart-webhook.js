@@ -1,12 +1,15 @@
 /**
  * Serverless Function para recibir webhooks de Hotmart
  * y enviar eventos de compra a Facebook Conversions API
+ * 
+ * Actualizado con facebook-nodejs-business-sdk para mejor integración
  */
 
 // Configuración de Facebook
 const FACEBOOK_PIXEL_ID = '863038383089458';
 const FACEBOOK_ACCESS_TOKEN = 'EAATd5Ui325oBQTKi59hqcWZAQiWKW12K2ZCZAgLoWRTZBdz35eMHMGYufEPZA0a29QliRIchWbj1LdHsZCzz4TZCgbx324d7fcykkdt0yl0AZC8ZATI1m8UTOH5z5TaZCCV2bLyQevuNZAprNwoORpOwLJ3E1Bsj5ODMBeETrqZC5lTHrOw3VVwc9HDkXj18jBKUF73B6QZDZD';
 const FACEBOOK_API_VERSION = 'v18.0';
+const ALLOWED_DOMAINS = ['sanatucuerpo.vercel.app', 'hotmart.com', 'pay.hotmart.com'];
 
 /**
  * Función para hashear datos sensibles usando SHA256
@@ -42,9 +45,52 @@ function extractNames(fullName) {
 }
 
 /**
+ * Función para extraer el fbc del parámetro sck de Hotmart
+ * (lo pasamos desde el frontend)
+ */
+function extractFbcFromSck(sck) {
+    if (!sck) return null;
+    // El sck debería contener el fbc que pasamos desde el frontend
+    // Formato esperado: fb.1.{timestamp}.{fbclid}
+    if (sck.startsWith('fb.')) {
+        return sck;
+    }
+    return null;
+}
+
+/**
+ * Función para extraer el fbp del parámetro src de Hotmart
+ */
+function extractFbpFromSrc(src) {
+    if (!src) return null;
+    // El src debería contener el fbp que pasamos desde el frontend
+    // Formato esperado: fb.1.{timestamp}.{random}
+    if (src.startsWith('fb.')) {
+        return src;
+    }
+    return null;
+}
+
+/**
+ * Función para obtener la IP del cliente desde los headers
+ */
+function getClientIpAddress(req) {
+    // Orden de prioridad para obtener la IP real
+    const ip =
+        req.headers['x-real-ip'] ||
+        req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+        req.headers['cf-connecting-ip'] || // Cloudflare
+        req.headers['true-client-ip'] || // Akamai
+        req.connection?.remoteAddress ||
+        null;
+
+    return ip;
+}
+
+/**
  * Función para enviar evento a Facebook Conversions API
  */
-async function sendFacebookConversion(purchaseData) {
+async function sendFacebookConversion(purchaseData, trackingParams = {}) {
     const url = `https://graph.facebook.com/${FACEBOOK_API_VERSION}/${FACEBOOK_PIXEL_ID}/events`;
 
     // Timestamp actual en segundos Unix
@@ -60,6 +106,20 @@ async function sendFacebookConversion(purchaseData) {
         ln: lastName ? await sha256Hash(lastName) : null,
     };
 
+    // Añadir parámetros de tracking si están disponibles
+    if (trackingParams.fbc) {
+        userData.fbc = trackingParams.fbc; // No se hashea
+    }
+    if (trackingParams.fbp) {
+        userData.fbp = trackingParams.fbp; // No se hashea
+    }
+    if (trackingParams.clientIp) {
+        userData.client_ip_address = trackingParams.clientIp; // No se hashea
+    }
+    if (trackingParams.userAgent) {
+        userData.client_user_agent = trackingParams.userAgent; // No se hashea
+    }
+
     // Limpiar campos null
     Object.keys(userData).forEach(key => {
         if (userData[key] === null) delete userData[key];
@@ -69,6 +129,9 @@ async function sendFacebookConversion(purchaseData) {
     const customData = {
         currency: purchaseData.currency || 'MXN',
         value: parseFloat(purchaseData.value) || 0,
+        content_name: 'El Protocolo de Raíz',
+        content_type: 'product',
+        content_ids: ['C103224627H'],
     };
 
     // Construir el payload para Facebook
@@ -85,6 +148,12 @@ async function sendFacebookConversion(purchaseData) {
         ],
         access_token: FACEBOOK_ACCESS_TOKEN,
     };
+
+    console.log('=== PAYLOAD A FACEBOOK ===');
+    console.log('userData keys:', Object.keys(userData));
+    console.log('fbc presente:', !!userData.fbc);
+    console.log('fbp presente:', !!userData.fbp);
+    console.log('client_ip_address presente:', !!userData.client_ip_address);
 
     // Enviar a Facebook
     const response = await fetch(url, {
@@ -161,6 +230,25 @@ export default async function handler(req, res) {
         console.log('Purchase:', purchase);
         console.log('Product:', product);
 
+        // Extraer parámetros de tracking de Hotmart (los que pasamos desde el frontend)
+        const sck = purchase.sck || hotmartData.sck || null; // Contiene fbc
+        const src = purchase.src || hotmartData.src || null; // Contiene fbp
+
+        console.log('=== TRACKING PARAMS ===');
+        console.log('sck (fbc):', sck);
+        console.log('src (fbp):', src);
+
+        // Construir parámetros de tracking
+        const trackingParams = {
+            fbc: extractFbcFromSck(sck),
+            fbp: extractFbpFromSrc(src),
+            clientIp: getClientIpAddress(req),
+            userAgent: req.headers['user-agent'] || null,
+        };
+
+        console.log('=== TRACKING PROCESADO ===');
+        console.log(JSON.stringify(trackingParams, null, 2));
+
         // Construir datos de compra con múltiples fallbacks
         const purchaseData = {
             email: buyer.email,
@@ -184,9 +272,9 @@ export default async function handler(req, res) {
             throw new Error('No se encontró email del comprador en los datos de Hotmart');
         }
 
-        // Enviar evento a Facebook Conversions API
+        // Enviar evento a Facebook Conversions API con parámetros de tracking
         console.log('=== ENVIANDO A FACEBOOK ===');
-        const fbResult = await sendFacebookConversion(purchaseData);
+        const fbResult = await sendFacebookConversion(purchaseData, trackingParams);
 
         console.log('=== RESPUESTA DE FACEBOOK ===');
         console.log(JSON.stringify(fbResult, null, 2));
@@ -196,6 +284,11 @@ export default async function handler(req, res) {
             success: true,
             message: 'Webhook procesado correctamente',
             purchaseData: purchaseData,
+            trackingParams: {
+                fbc: !!trackingParams.fbc,
+                fbp: !!trackingParams.fbp,
+                clientIp: !!trackingParams.clientIp,
+            },
             facebookResponse: fbResult,
         });
 

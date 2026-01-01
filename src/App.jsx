@@ -5,6 +5,7 @@ import ClarityModule from './components/ClarityModule';
 import Problem from './components/Problem';
 import Authority from './components/Authority';
 import WhatsAppButton from './components/WhatsAppButton';
+import FacebookParamCapture from './components/FacebookParamCapture';
 
 // Lazy load non-critical sections for faster initial load
 const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
@@ -49,6 +50,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background font-sans text-text">
+      {/* Facebook CAPI Parameter Capture - captures fbc, fbp, IP */}
+      <FacebookParamCapture />
+
       {/* Only render MouseFollower on desktop */}
       {isDesktop && (
         <Suspense fallback={null}>

@@ -1,11 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ShieldCheck, Lock, CreditCard, Banknote } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
 import CountdownTimer from './CountdownTimer';
 import PaymentMethods from './PaymentMethods';
+import { getFacebookParamBuilder } from '../utils/FacebookParamBuilder';
+
+const HOTMART_BASE_URL = 'https://pay.hotmart.com/C103224627H?checkoutMode=2';
 
 const HotmartWidget = () => {
+    const [hotmartUrl, setHotmartUrl] = useState(HOTMART_BASE_URL);
+
     useEffect(() => {
+        // Get Facebook parameters and append them to the Hotmart URL
+        const setupUrl = async () => {
+            try {
+                const builder = getFacebookParamBuilder();
+                await builder.initialize();
+
+                // Build URL with tracking parameters
+                const params = builder.getParams();
+                const url = new URL(HOTMART_BASE_URL);
+
+                // Add fbc and fbp as src/sck parameters for Hotmart tracking
+                if (params.fbc) {
+                    url.searchParams.set('sck', params.fbc);
+                }
+                if (params.fbp) {
+                    url.searchParams.set('src', params.fbp);
+                }
+
+                // Also store in localStorage for the webhook to use
+                localStorage.setItem('fb_tracking_params', JSON.stringify({
+                    fbc: params.fbc,
+                    fbp: params.fbp,
+                    clientIp: params.clientIp,
+                    userAgent: params.userAgent
+                }));
+
+                setHotmartUrl(url.toString());
+                console.log('[HotmartWidget] URL with tracking:', url.toString());
+            } catch (error) {
+                console.error('[HotmartWidget] Error setting up URL:', error);
+            }
+        };
+
+        setupUrl();
+
         // Listen for Hotmart checkout completion events
         const handleHotmartPurchase = (event) => {
             // Check if it's a Hotmart purchase completion event
@@ -31,6 +71,7 @@ const HotmartWidget = () => {
             window.removeEventListener('message', handleHotmartPurchase);
         };
     }, []);
+
 
     return (
         <section id="checkout" className="py-24 bg-slate-50 relative overflow-hidden">
@@ -62,7 +103,7 @@ const HotmartWidget = () => {
                             {/* Hotmart Button Container */}
                             <div className="mb-12 flex justify-center">
                                 <a
-                                    href="https://pay.hotmart.com/C103224627H?checkoutMode=2"
+                                    href={hotmartUrl}
                                     className="hotmart-fb hotmart__button-checkout group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden cursor-pointer"
                                     style={{ border: 'none', textDecoration: 'none' }}
                                 >
