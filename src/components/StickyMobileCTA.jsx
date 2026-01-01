@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Zap, ArrowRight } from 'lucide-react';
 
 const StickyMobileCTA = () => {
-    return (
-        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-emerald-500 to-emerald-600 p-4 shadow-2xl z-50 md:hidden">
-            <div className="flex items-center justify-between max-w-md mx-auto">
-                <div>
-                    <p className="text-white text-sm font-bold">Desinflama tu abdomen</p>
-                    <p className="text-white text-xs">Protocolo de 7 días</p>
-                </div>
-                <button
-                    onClick={() => {
-                        window.scrollBy({
-                            top: window.innerHeight * 0.8,
-                            behavior: 'smooth'
-                        });
-                    }}
-                    className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold text-sm shadow-lg"
-                >
-                    Comenzar
-                </button>
-            </div>
-        </div>
-    );
+    const [isVisible, setIsVisible] = useState(false);
+    const [isPastHalf, setIsPastHalf] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Only show if StickyBottomBar is NOT visible (avoid duplicates)
+            // This component appears on top, StickyBottomBar at bottom
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+            // Show in header area only when near top
+            setIsVisible(scrollPercent < 15);
+            setIsPastHalf(scrollPercent > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial check
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const handleClick = () => {
+        // Scroll to checkout or pricing
+        const checkout = document.getElementById('checkout');
+        if (checkout) {
+            checkout.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            const pricing = document.getElementById('pricing');
+            if (pricing) pricing.scrollIntoView({ behavior: 'smooth' });
+        }
+        if (window.fbq) window.fbq('track', 'InitiateCheckout');
+    };
+
+    // Don't render this component - let StickyBottomBar handle mobile CTAs
+    // This prevents duplicate sticky bars
+    return null;
 };
 
 export default StickyMobileCTA;

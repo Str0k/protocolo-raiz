@@ -114,7 +114,11 @@ const HotmartWidget = () => {
                         </div>
 
                         <div className="text-center mt-8">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Hotmart_logo.svg" alt="Hotmart" className="h-8 mx-auto opacity-70 grayscale hover:grayscale-0 transition-all duration-300" />
+                            <div className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-600 transition-colors">
+                                <span className="text-sm">Procesado por</span>
+                                <span className="font-bold text-lg tracking-tight">HOTMART</span>
+                                <span className="text-xs bg-slate-100 px-2 py-0.5 rounded">Seguro</span>
+                            </div>
                         </div>
                     </div >
                 </RevealOnScroll >

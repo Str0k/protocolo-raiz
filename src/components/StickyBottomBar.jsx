@@ -1,33 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User } from 'lucide-react';
+import { Zap, ShieldCheck, ArrowRight } from 'lucide-react';
 
 const StickyBottomBar = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [cuposText, setCuposText] = useState('Solo 12 cupos hoy');
+    const [isPastHalf, setIsPastHalf] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             // Show after 20% scroll
             const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-            setIsVisible(scrollPercent > 20);
+            setIsVisible(scrollPercent > 15);
 
-            // Update cupos text when near pricing section
-            const pricingElement = document.getElementById('pricing');
-            if (pricingElement) {
-                const pricingTop = pricingElement.offsetTop;
-                const scrollPos = window.scrollY + window.innerHeight;
-                if (scrollPos > pricingTop - 200) {
-                    setCuposText('¡Últimos cupos!');
-                } else {
-                    setCuposText('Solo 12 cupos hoy');
-                }
-            }
+            // Change CTA text after 50% scroll (user has seen enough)
+            setIsPastHalf(scrollPercent > 50);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleClick = () => {
+        if (isPastHalf) {
+            // If past 50%, go directly to checkout
+            const checkout = document.getElementById('checkout');
+            if (checkout) {
+                checkout.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Fallback to pricing section
+                const pricing = document.getElementById('pricing');
+                if (pricing) pricing.scrollIntoView({ behavior: 'smooth' });
+            }
+            // Track checkout intent
+            if (window.fbq) window.fbq('track', 'InitiateCheckout');
+        } else {
+            // If early in page, scroll down to see more
+            window.scrollBy({
+                top: window.innerHeight * 0.8,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     return (
         <AnimatePresence>
@@ -41,40 +54,43 @@ const StickyBottomBar = () => {
                 >
                     <div className="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
 
-                        {/* Left: Expert Avatar */}
-                        <div className="flex items-center gap-3">
-                            <div className="relative">
-                                <div className="w-10 h-10 rounded-full bg-emerald-200 flex items-center justify-center">
-                                    <User size={20} className="text-primary-dark" />
-                                </div>
-                                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
-                            </div>
-
-                            {/* Center: Text */}
-                            <div className="flex flex-col">
-                                <span className="text-white text-xs font-semibold leading-tight">
-                                    Desinflama tu abdomen
-                                </span>
-                                <span className="text-emerald-100 text-xs">
-                                    Protocolo de 7 días
-                                </span>
-                            </div>
+                        {/* Left: Value Proposition */}
+                        <div className="flex flex-col">
+                            <span className="text-white text-sm font-bold leading-tight flex items-center gap-1.5">
+                                {isPastHalf ? (
+                                    <>
+                                        <ShieldCheck size={14} className="text-emerald-300" />
+                                        Garantía 7 días
+                                    </>
+                                ) : (
+                                    <>
+                                        <Zap size={14} className="text-yellow-300" />
+                                        Desinflama en 7 días
+                                    </>
+                                )}
+                            </span>
+                            <span className="text-emerald-100 text-xs">
+                                {isPastHalf ? 'Solo $17 USD · Sin riesgo' : 'Protocolo científico'}
+                            </span>
                         </div>
 
-                        {/* Right: CTA Button */}
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={() => {
-                                    window.scrollBy({
-                                        top: window.innerHeight * 0.8,
-                                        behavior: 'smooth'
-                                    });
-                                }}
-                                className="bg-white text-primary px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all whitespace-nowrap"
-                            >
-                                Ver más
-                            </button>
-                        </div>
+                        {/* Right: Dynamic CTA Button */}
+                        <button
+                            onClick={handleClick}
+                            className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all whitespace-nowrap ${isPastHalf
+                                    ? 'bg-yellow-400 text-slate-900 animate-pulse'
+                                    : 'bg-white text-primary'
+                                }`}
+                        >
+                            {isPastHalf ? (
+                                <>
+                                    ¡Comprar por $17!
+                                    <ArrowRight size={14} />
+                                </>
+                            ) : (
+                                'Ver más'
+                            )}
+                        </button>
                     </div>
                 </motion.div>
             )}
