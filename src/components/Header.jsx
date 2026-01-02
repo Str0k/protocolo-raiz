@@ -13,22 +13,22 @@ const Header = () => {
     }, []);
 
     return (
-        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
+        <header className={`fixed top-10 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-slate-900/80 backdrop-blur-sm py-3'}`}>
             <div className="container mx-auto px-4 flex items-center justify-between">
                 {/* Logo */}
                 <a href="#" className="flex-shrink-0">
                     <img
                         src="/logo.jpg"
                         alt="Protocolo de Raíz"
-                        className="h-10 md:h-12 w-auto object-contain mix-blend-multiply"
+                        className={`h-9 md:h-11 w-auto object-contain ${scrolled ? '' : 'brightness-0 invert'}`}
                     />
                 </a>
 
                 {/* Desktop Menu */}
-                <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-                    <a href="#problem" className="hover:text-primary transition-colors">El Problema</a>
-                    <a href="#solution" className="hover:text-primary transition-colors">La Solución</a>
-                    <a href="#pricing" className="hover:text-primary transition-colors">Obtener Oferta</a>
+                <nav className={`hidden md:flex items-center gap-8 text-sm font-medium ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>
+                    <a href="#problem" className="hover:text-emerald-400 transition-colors">El Problema</a>
+                    <a href="#solution" className="hover:text-emerald-400 transition-colors">La Solución</a>
+                    <a href="#pricing" className="hover:text-emerald-400 transition-colors">Obtener Oferta</a>
                 </nav>
 
                 {/* CTA Button */}
@@ -36,7 +36,7 @@ const Header = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="bg-[#10B981] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/40 transition-all"
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-full font-bold text-sm shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all"
                 >
                     Comenzar
                 </motion.button>

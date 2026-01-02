@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import UrgencyBanner from './components/UrgencyBanner';
 import ClarityModule from './components/ClarityModule';
 import Problem from './components/Problem';
 import Authority from './components/Authority';
@@ -60,7 +61,10 @@ function App() {
         </Suspense>
       )}
 
+      {/* Fixed Elements: Banner + Header */}
+      <UrgencyBanner />
       <Header />
+
       <main>
         {/* SECTION 1: Hero (Above-the-Fold Power Zone) */}
         <Hero />

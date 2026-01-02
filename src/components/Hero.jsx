@@ -4,24 +4,7 @@ import { Lock, Shield, MessageCircle, FileText, Clock, AlertTriangle } from 'luc
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-8 pb-16 flex flex-col overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-emerald-900">
-
-      {/* URGENCY BANNER - New Year 2026 */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 px-4 text-center relative overflow-hidden"
-      >
-        <motion.div
-          className="absolute inset-0 bg-white/10"
-          animate={{ x: ['-100%', '100%'] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-        />
-        <p className="text-white font-bold text-sm md:text-base relative z-10">
-          🚨 <span className="underline">ENERO 2026</span> — ¿Cuántos años llevas prometiendo "este año sí bajo de peso"?
-          <span className="hidden md:inline"> Este es el momento de ACTUAR, no de seguir esperando.</span>
-        </p>
-      </motion.div>
+    <section className="relative min-h-screen pt-28 pb-16 flex flex-col overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-emerald-900">
 
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
