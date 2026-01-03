@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, ShoppingCart, Utensils, Users, Gift, Shield, Check, Smartphone, Clock, Infinity } from 'lucide-react';
+import { FileText, ShoppingCart, Utensils, Users, Gift, Shield, Check, Smartphone, Clock, Infinity, Brain, Sparkles } from 'lucide-react';
 
 const ProductReveal = () => {
     const deliverables = [
@@ -10,7 +10,10 @@ const ProductReveal = () => {
         { icon: <Users size={18} />, text: "Guía para cenas, fiestas y restaurantes" },
         { icon: <Gift size={18} />, text: "BONUS: Acceso al grupo privado de WhatsApp" },
         { icon: <Shield size={18} />, text: "BONUS: Guía Escudo Anti-Rebote" },
+        { icon: <Brain size={18} />, text: "BONUS: Meditaciones guiadas para alimentación consciente" },
+        { icon: <Sparkles size={18} />, text: "BONUS: Audios de relajación para reducir ansiedad y estrés" },
     ];
+
 
     return (
         <section className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">

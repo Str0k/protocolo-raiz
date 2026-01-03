@@ -62,7 +62,9 @@ const SimpleOffer = () => {
                                         "Lista de compras lista",
                                         "Guía de situaciones sociales",
                                         "BONUS: Grupo privado WhatsApp",
-                                        "BONUS: Guía Escudo Anti-Rebote"
+                                        "BONUS: Guía Escudo Anti-Rebote",
+                                        "BONUS: Meditaciones para alimentación consciente",
+                                        "BONUS: Audios de relajación anti-estrés"
                                     ].map((item, index) => (
                                         <div key={index} className="flex items-center gap-2">
                                             <Check size={14} className="text-emerald-500 shrink-0" />
