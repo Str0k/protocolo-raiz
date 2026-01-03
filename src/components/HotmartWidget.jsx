@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ShieldCheck, Lock, CreditCard, Banknote } from 'lucide-react';
-import RevealOnScroll from './RevealOnScroll';
-import CountdownTimer from './CountdownTimer';
+import { Lock, ShieldCheck, CreditCard, Banknote, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import PaymentMethods from './PaymentMethods';
 import { getFacebookParamBuilder } from '../utils/FacebookParamBuilder';
 
@@ -11,17 +10,14 @@ const HotmartWidget = () => {
     const [hotmartUrl, setHotmartUrl] = useState(HOTMART_BASE_URL);
 
     useEffect(() => {
-        // Get Facebook parameters and append them to the Hotmart URL
         const setupUrl = async () => {
             try {
                 const builder = getFacebookParamBuilder();
                 await builder.initialize();
 
-                // Build URL with tracking parameters
                 const params = builder.getParams();
                 const url = new URL(HOTMART_BASE_URL);
 
-                // Add fbc and fbp as src/sck parameters for Hotmart tracking
                 if (params.fbc) {
                     url.searchParams.set('sck', params.fbc);
                 }
@@ -29,7 +25,6 @@ const HotmartWidget = () => {
                     url.searchParams.set('src', params.fbp);
                 }
 
-                // Also store in localStorage for the webhook to use
                 localStorage.setItem('fb_tracking_params', JSON.stringify({
                     fbc: params.fbc,
                     fbp: params.fbp,
@@ -38,7 +33,6 @@ const HotmartWidget = () => {
                 }));
 
                 setHotmartUrl(url.toString());
-                console.log('[HotmartWidget] URL with tracking:', url.toString());
             } catch (error) {
                 console.error('[HotmartWidget] Error setting up URL:', error);
             }
@@ -46,11 +40,8 @@ const HotmartWidget = () => {
 
         setupUrl();
 
-        // Listen for Hotmart checkout completion events
         const handleHotmartPurchase = (event) => {
-            // Check if it's a Hotmart purchase completion event
             if (event.data && event.data.type === 'hotmart:purchase:approved') {
-                // Fire Facebook Pixel Purchase event
                 if (window.fbq) {
                     window.fbq('track', 'Purchase', {
                         value: 17.00,
@@ -58,113 +49,117 @@ const HotmartWidget = () => {
                         content_name: 'El Protocolo de Raíz',
                         content_type: 'product'
                     });
-                    console.log('Facebook Pixel: Purchase event fired');
                 }
             }
         };
 
-        // Add event listener for postMessage from Hotmart iframe
         window.addEventListener('message', handleHotmartPurchase);
-
-        // Cleanup
-        return () => {
-            window.removeEventListener('message', handleHotmartPurchase);
-        };
+        return () => window.removeEventListener('message', handleHotmartPurchase);
     }, []);
 
-
     return (
-        <section id="checkout" className="py-24 bg-slate-50 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 opacity-70 -z-10"></div>
+        <section id="checkout" className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+            <div className="container mx-auto px-4 max-w-2xl">
 
-            <div className="container mx-auto px-4 relative z-10">
-                <RevealOnScroll width="100%">
-                    <div className="max-w-4xl mx-auto">
-                        {/* Secure Checkout Header */}
-                        <div className="flex items-center justify-center gap-2 mb-6 text-slate-400 text-sm font-semibold tracking-widest uppercase">
-                            <Lock size={16} />
-                            Checkout Seguro SSL
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-8"
+                >
+                    <div className="flex items-center justify-center gap-2 text-slate-400 text-sm font-medium mb-4">
+                        <Lock size={14} />
+                        Checkout Seguro SSL
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                        Completa tu compra
+                    </h2>
+                    <p className="text-slate-600">
+                        Acceso inmediato después del pago
+                    </p>
+                </motion.div>
+
+                {/* Checkout Card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="bg-white rounded-3xl p-8 md:p-10 border border-slate-200 shadow-2xl shadow-slate-200/50"
+                >
+                    {/* Price Summary */}
+                    <div className="text-center mb-8 pb-8 border-b border-slate-100">
+                        <p className="text-sm text-slate-500 mb-2">El Protocolo de Raíz</p>
+                        <div className="flex items-baseline justify-center gap-2">
+                            <span className="text-4xl md:text-5xl font-bold text-slate-900">$17</span>
+                            <span className="text-lg text-slate-500">USD</span>
                         </div>
-                        <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-2xl shadow-slate-200/50 relative overflow-hidden">
-                            {/* Premium Top Border */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+                        <p className="text-slate-600 mt-1">≈ $375 MXN</p>
+                    </div>
 
-                            <div className="text-center mb-10">
-                                <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
-                                    Empieza tu transformación hoy
-                                </h3>
-                                <p className="text-slate-500 text-lg">
-                                    Acceso inmediato • Garantía de satisfacción • Soporte 24/7
-                                </p>
+                    {/* Hotmart Button */}
+                    <div className="mb-8">
+                        <a
+                            href={hotmartUrl}
+                            className="hotmart-fb hotmart__button-checkout group relative block w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-xl py-5 px-8 rounded-2xl shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all transform hover:-translate-y-0.5 text-center overflow-hidden"
+                            style={{ border: 'none', textDecoration: 'none' }}
+                        >
+                            {/* Shimmer effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+
+                            <span className="relative z-10 flex items-center justify-center gap-3">
+                                <Sparkles size={22} />
+                                <span>DESCARGAR MI GUÍA AHORA</span>
+                            </span>
+                        </a>
+                    </div>
+
+                    {/* Trust Badges */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div className="flex flex-col items-center gap-2 text-center">
+                            <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                <Lock size={20} />
                             </div>
-
-                            <CountdownTimer className="mb-8 justify-center" />
-
-                            {/* Hotmart Button Container */}
-                            <div className="mb-12 flex justify-center">
-                                <a
-                                    href={hotmartUrl}
-                                    className="hotmart-fb hotmart__button-checkout group relative bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 text-white font-bold text-2xl py-6 px-12 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all transform hover:-translate-y-1 w-full md:w-auto inline-block text-center overflow-hidden cursor-pointer"
-                                    style={{ border: 'none', textDecoration: 'none' }}
-                                >
-                                    <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 skew-x-12 -translate-x-full"></div>
-                                    <div className="absolute inset-0 rounded-2xl ring-4 ring-white/20 group-hover:ring-white/40 transition-all"></div>
-
-                                    <span className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-3">
-                                        <span>DESCARGAR AHORA</span>
-                                        <span className="bg-white/20 px-3 py-1 rounded-lg text-lg font-normal flex items-center gap-2">
-                                            <span className="line-through opacity-70 text-sm">$30</span>
-                                            $17 USD / $375 MXN
-                                        </span>
-                                    </span>
-                                    <span className="relative z-10 block text-sm font-normal opacity-90 mt-1">Oferta por tiempo limitado</span>
-                                </a>
-                            </div>
-
-                            <div className="mb-10">
-                                <PaymentMethods theme="light" />
-                            </div>
-
-                            {/* Trust Indicators */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-slate-100">
-                                <div className="flex flex-col items-center gap-3 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform duration-300">
-                                        <Lock size={24} />
-                                    </div>
-                                    <span className="text-sm font-semibold text-slate-600">Pago 100% Seguro</span>
-                                </div>
-                                <div className="flex flex-col items-center gap-3 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform duration-300">
-                                        <ShieldCheck size={24} />
-                                    </div>
-                                    <span className="text-sm font-semibold text-slate-600">Garantía de 7 Días</span>
-                                </div>
-                                <div className="flex flex-col items-center gap-3 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                                        <CreditCard size={24} />
-                                    </div>
-                                    <span className="text-sm font-semibold text-slate-600">Tarjetas y Paypal</span>
-                                </div>
-                                <div className="flex flex-col items-center gap-3 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform duration-300">
-                                        <Banknote size={24} />
-                                    </div>
-                                    <span className="text-sm font-semibold text-slate-600">Pago en Efectivo</span>
-                                </div>
-                            </div>
+                            <span className="text-xs font-medium text-slate-600">Pago Seguro</span>
                         </div>
-
-                        <div className="text-center mt-8">
-                            <div className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-600 transition-colors">
-                                <span className="text-sm">Procesado por</span>
-                                <span className="font-bold text-lg tracking-tight">HOTMART</span>
-                                <span className="text-xs bg-slate-100 px-2 py-0.5 rounded">Seguro</span>
+                        <div className="flex flex-col items-center gap-2 text-center">
+                            <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+                                <ShieldCheck size={20} />
                             </div>
+                            <span className="text-xs font-medium text-slate-600">Garantía 7 días</span>
                         </div>
-                    </div >
-                </RevealOnScroll >
-            </div >
-        </section >
+                        <div className="flex flex-col items-center gap-2 text-center">
+                            <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                <CreditCard size={20} />
+                            </div>
+                            <span className="text-xs font-medium text-slate-600">Tarjetas/PayPal</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 text-center">
+                            <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600">
+                                <Banknote size={20} />
+                            </div>
+                            <span className="text-xs font-medium text-slate-600">Efectivo</span>
+                        </div>
+                    </div>
+
+                    {/* Payment Methods */}
+                    <div className="pt-6 border-t border-slate-100">
+                        <p className="text-xs text-slate-500 text-center mb-4">Aceptamos todos los métodos de pago:</p>
+                        <PaymentMethods theme="light" />
+                    </div>
+                </motion.div>
+
+                {/* Hotmart Badge */}
+                <div className="text-center mt-6">
+                    <div className="inline-flex items-center gap-2 text-slate-400 text-sm">
+                        <span>Procesado por</span>
+                        <span className="font-bold text-slate-500">HOTMART</span>
+                        <span className="text-xs bg-slate-100 px-2 py-0.5 rounded">Seguro</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     );
 };
 

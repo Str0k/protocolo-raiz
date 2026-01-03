@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, ChevronLeft, ChevronRight, X, CheckCircle } from 'lucide-react';
+import { MessageCircle, ChevronLeft, ChevronRight, X, CheckCircle, Quote } from 'lucide-react';
 
 const WhatsAppScreenshots = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -38,25 +38,25 @@ const WhatsAppScreenshots = () => {
     };
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-            <div className="container mx-auto px-4 max-w-5xl">
+        <section className="py-16 md:py-20 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 overflow-hidden">
+            <div className="container mx-auto px-4 max-w-6xl">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-10"
+                    className="text-center mb-12"
                 >
-                    <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold text-sm mb-4">
+                    <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full font-semibold text-sm mb-4 border border-green-500/30">
                         <MessageCircle size={18} />
-                        CONVERSACIONES REALES
+                        PRUEBA REAL
                     </div>
-                    <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-3">
-                        Capturas de WhatsApp de clientes reales
+                    <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
+                        Mensajes reales de clientas
                     </h2>
-                    <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto">
-                        Sin filtros. Sin edición. Conversaciones directas de mujeres que ya probaron el protocolo.
+                    <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+                        Capturas directas de WhatsApp. Sin filtros. Sin edición.
                     </p>
                 </motion.div>
 
@@ -71,35 +71,31 @@ const WhatsAppScreenshots = () => {
                             {screenshots.map((screenshot, index) => (
                                 <div
                                     key={index}
-                                    className="w-full flex-shrink-0 px-2"
+                                    className="w-full flex-shrink-0 px-4"
                                 >
                                     <motion.div
                                         className="relative cursor-pointer"
                                         onClick={() => setSelectedImage(screenshot.src)}
                                         whileTap={{ scale: 0.98 }}
                                     >
-                                        {/* Phone Frame Effect */}
+                                        {/* Phone Frame */}
                                         <div className="relative mx-auto max-w-[280px]">
-                                            {/* Notch */}
-                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-b-2xl z-10" />
-
-                                            {/* Screenshot with phone styling */}
-                                            <div className="bg-black p-2 rounded-[2.5rem] shadow-2xl">
+                                            <div className="bg-slate-800 p-2 rounded-[2rem] shadow-2xl border border-slate-700">
                                                 <img
                                                     src={screenshot.src}
                                                     alt={`Testimonio WhatsApp ${index + 1}`}
-                                                    className="w-full rounded-[2rem] object-cover"
+                                                    className="w-full rounded-[1.5rem] object-cover"
                                                     loading="lazy"
                                                 />
                                             </div>
                                         </div>
 
                                         {/* Highlight Badge */}
-                                        <div className="mt-4 mx-4">
-                                            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-center">
-                                                <p className="text-sm text-emerald-800 font-medium flex items-center justify-center gap-2">
-                                                    <CheckCircle size={16} className="text-emerald-500 shrink-0" />
-                                                    <span>"{screenshot.highlight}"</span>
+                                        <div className="mt-4 mx-2">
+                                            <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-center backdrop-blur">
+                                                <p className="text-sm text-emerald-400 font-medium flex items-center justify-center gap-2">
+                                                    <Quote size={14} className="shrink-0 rotate-180" />
+                                                    <span>{screenshot.highlight}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -112,15 +108,15 @@ const WhatsAppScreenshots = () => {
                     {/* Navigation Arrows */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-0 top-1/3 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full p-2 z-10 hover:bg-white transition-colors"
+                        className="absolute left-0 top-1/3 -translate-y-1/2 bg-slate-800/90 backdrop-blur-sm shadow-lg rounded-full p-2 z-10 hover:bg-slate-700 transition-colors border border-slate-700"
                     >
-                        <ChevronLeft size={24} className="text-slate-600" />
+                        <ChevronLeft size={24} className="text-white" />
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-0 top-1/3 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-lg rounded-full p-2 z-10 hover:bg-white transition-colors"
+                        className="absolute right-0 top-1/3 -translate-y-1/2 bg-slate-800/90 backdrop-blur-sm shadow-lg rounded-full p-2 z-10 hover:bg-slate-700 transition-colors border border-slate-700"
                     >
-                        <ChevronRight size={24} className="text-slate-600" />
+                        <ChevronRight size={24} className="text-white" />
                     </button>
 
                     {/* Dot Indicators */}
@@ -129,7 +125,7 @@ const WhatsAppScreenshots = () => {
                             <button
                                 key={index}
                                 onClick={() => setActiveIndex(index)}
-                                className={`h-2 rounded-full transition-all duration-300 ${activeIndex === index ? 'w-8 bg-primary' : 'w-2 bg-slate-300'
+                                className={`h-2 rounded-full transition-all duration-300 ${activeIndex === index ? 'w-8 bg-emerald-500' : 'w-2 bg-slate-600'
                                     }`}
                             />
                         ))}
@@ -147,17 +143,13 @@ const WhatsAppScreenshots = () => {
                             className="relative cursor-pointer group"
                             onClick={() => setSelectedImage(screenshot.src)}
                         >
-                            {/* Phone Frame Effect */}
+                            {/* Phone Frame */}
                             <div className="relative">
-                                {/* Shadow glow on hover */}
+                                {/* Glow on hover */}
                                 <div className="absolute inset-0 bg-emerald-400/20 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                 {/* Phone body */}
-                                <div className="relative bg-gradient-to-b from-slate-800 to-black p-1.5 rounded-[1.8rem] shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300">
-                                    {/* Notch */}
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-black rounded-b-xl z-10" />
-
-                                    {/* Screen */}
+                                <div className="relative bg-gradient-to-b from-slate-700 to-slate-800 p-1.5 rounded-[1.8rem] shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-300 border border-slate-600">
                                     <img
                                         src={screenshot.src}
                                         alt={`Testimonio WhatsApp ${index + 1}`}
@@ -166,18 +158,18 @@ const WhatsAppScreenshots = () => {
                                     />
                                 </div>
 
-                                {/* Zoom indicator on hover */}
+                                {/* Zoom indicator */}
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div className="bg-black/60 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full">
-                                        Toca para ampliar
+                                        Clic para ampliar
                                     </div>
                                 </div>
                             </div>
 
                             {/* Highlight Badge */}
                             <div className="mt-3">
-                                <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-2">
-                                    <p className="text-xs text-emerald-700 font-medium line-clamp-2 flex items-start gap-1.5">
+                                <div className="bg-slate-800/80 border border-slate-700 rounded-lg p-2">
+                                    <p className="text-xs text-emerald-400 font-medium line-clamp-2 flex items-start gap-1.5">
                                         <CheckCircle size={14} className="text-emerald-500 shrink-0 mt-0.5" />
                                         <span>"{screenshot.highlight}"</span>
                                     </p>
@@ -187,15 +179,15 @@ const WhatsAppScreenshots = () => {
                     ))}
                 </div>
 
-                {/* Trust indicator */}
+                {/* Trust Indicator */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-center mt-8"
+                    className="text-center mt-10"
                 >
                     <p className="text-slate-500 text-sm">
-                        📱 Capturas reales de conversaciones con clientes · Sin editar
+                        📱 Capturas reales de nuestro grupo privado de WhatsApp
                     </p>
                 </motion.div>
 
@@ -206,7 +198,7 @@ const WhatsAppScreenshots = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
                             onClick={() => setSelectedImage(null)}
                         >
                             <motion.div
@@ -216,7 +208,6 @@ const WhatsAppScreenshots = () => {
                                 className="relative max-w-sm w-full max-h-[90vh]"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                {/* Close button */}
                                 <button
                                     onClick={() => setSelectedImage(null)}
                                     className="absolute -top-12 right-0 text-white/80 hover:text-white p-2"
@@ -224,8 +215,7 @@ const WhatsAppScreenshots = () => {
                                     <X size={28} />
                                 </button>
 
-                                {/* Phone frame for modal */}
-                                <div className="bg-black p-2 rounded-[2.5rem] shadow-2xl">
+                                <div className="bg-slate-800 p-2 rounded-[2.5rem] shadow-2xl border border-slate-700">
                                     <img
                                         src={selectedImage}
                                         alt="Testimonio WhatsApp ampliado"

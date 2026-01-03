@@ -1,35 +1,46 @@
 import React from 'react';
+import { Heart, Mail } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-background text-slate-500 py-12 border-t border-slate-200">
-            <div className="container mx-auto px-4 text-center">
-                <div className="grid md:grid-cols-4 gap-8 mb-12">
-                    <div className="col-span-1 md:col-span-2 text-center md:text-left">
-                        <img src="/logo.jpg" alt="Protocolo de Raíz" loading="lazy" className="h-16 mb-6 mix-blend-multiply mx-auto md:mx-0" />
-                        <p className="text-slate-500 max-w-sm mx-auto md:mx-0">
-                            Un enfoque científico y natural para sanar tu digestión desde la raíz, sin dietas restrictivas ni suplementos innecesarios.
-                        </p>
+        <footer className="py-8 bg-slate-900 border-t border-slate-800">
+            <div className="container mx-auto px-4 max-w-4xl">
+
+                <div className="text-center">
+                    {/* Brand */}
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                            <span className="text-white font-bold">R</span>
+                        </div>
+                        <span className="font-bold text-white">Protocolo de Raíz</span>
                     </div>
-                    {/* Additional footer columns can go here */}
+
+                    {/* Tagline */}
+                    <p className="text-slate-400 text-sm mb-6 flex items-center justify-center gap-2">
+                        Hecho con <Heart size={14} className="text-red-400" /> para mujeres que quieren sentirse bien
+                    </p>
+
+                    {/* Links */}
+                    <div className="flex items-center justify-center gap-6 text-sm text-slate-500 mb-6">
+                        <a href="mailto:soporte@sanatucuerpo.com" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
+                            <Mail size={14} />
+                            Soporte
+                        </a>
+                        <span className="text-slate-700">|</span>
+                        <span>Garantía 7 días</span>
+                        <span className="text-slate-700">|</span>
+                        <span>Pago seguro</span>
+                    </div>
+
+                    {/* Copyright */}
+                    <p className="text-xs text-slate-600">
+                        © {new Date().getFullYear()} Protocolo de Raíz. Todos los derechos reservados.
+                    </p>
+                    <p className="text-xs text-slate-600 mt-1">
+                        Este producto no pretende diagnosticar, tratar, curar o prevenir ninguna enfermedad.
+                    </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
-                    <a href="#" className="hover:text-primary transition-colors">Aviso Legal</a>
-                    <a href="#" className="hover:text-primary transition-colors">Términos y Condiciones</a>
-                    <a
-                        href="https://wa.me/18165006446?text=Hola!%20%F0%9F%91%8B%20Quiero%20comenzar%20el%20Protocolo%20de%20Ra%C3%ADz%20y%20tengo%20algunas%20dudas.%20%C2%BFPodr%C3%ADan%20ayudarme%3F%20%F0%9F%99%8F"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-primary transition-colors font-bold text-[#25D366]"
-                    >
-                        ¿Aún tienes preguntas? Escríbenos
-                    </a>
-                </div>
-
-                <p className="text-xs">
-                    Copyright © 2025 Protocolo de Raíz. Todos los derechos reservados.
-                </p>
             </div>
         </footer>
     );

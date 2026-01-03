@@ -1,66 +1,59 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Zap, Clock } from 'lucide-react';
+import { Shield, ArrowRight, Heart } from 'lucide-react';
 
 const FinalCTA = () => {
     return (
-        <section className="py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-            <div className="container mx-auto px-4 max-w-3xl">
+        <section className="py-16 md:py-20 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950 text-white overflow-hidden">
+            <div className="container mx-auto px-4 max-w-3xl relative">
+
+                {/* Subtle background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px]" />
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center"
+                    className="text-center relative z-10"
                 >
-                    {/* Emotional Copy */}
-                    <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
-                        Los próximos <strong className="text-white">7 días van a pasar de todas formas.</strong>
+                    {/* Emotional Headline */}
+                    <h2 className="text-2xl md:text-4xl font-bold mb-6">
+                        Los próximos 7 días van a pasar{' '}
+                        <span className="text-emerald-400">de todas formas</span>
+                    </h2>
+
+                    <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                        La única pregunta es: ¿cómo te vas a sentir cuando terminen?
                     </p>
 
-                    <p className="text-lg text-slate-400 mb-6">
-                        La única pregunta es: ¿Cómo te vas a sentir cuando pasen?
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-6 mb-10 max-w-xl mx-auto text-left">
-                        {/* Option A - Without */}
-                        <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
-                            <p className="text-red-300 font-medium mb-2">❌ Sin el protocolo:</p>
+                    {/* Two Options */}
+                    <div className="grid md:grid-cols-2 gap-4 mb-10 max-w-xl mx-auto">
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 text-left">
+                            <p className="text-red-400 font-medium mb-2">❌ Sin el protocolo:</p>
                             <p className="text-slate-400 text-sm">
                                 Igual de hinchada, cansada y frustrada
                             </p>
                         </div>
-
-                        {/* Option B - With */}
-                        <div className="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
-                            <p className="text-emerald-300 font-medium mb-2">✓ Con el protocolo:</p>
+                        <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5 text-left">
+                            <p className="text-emerald-400 font-medium mb-2">✓ Con el protocolo:</p>
                             <p className="text-slate-300 text-sm">
-                                Ligera, con energía, y con 3-7 cm menos de cintura
+                                Ligera, con energía, y con cm menos de cintura
                             </p>
                         </div>
                     </div>
 
-                    <p className="text-slate-300 mb-6">
-                        Más de <strong className="text-primary">1,500 mujeres</strong> ya tomaron la decisión.
-                        <br />
-                        Son las mismas que ahora cierran su pantalón sin problema.
-                        <br />
-                        Son las que tienen energía para hacer lo que aman.
-                        <br />
-                        Son las que dejaron de verse "embarazadas" después de comer.
-                    </p>
-
-                    <p className="text-xl text-white font-medium mb-8">
-                        Hoy, esa decisión es tuya.
+                    {/* Social Proof */}
+                    <p className="text-slate-400 mb-6 flex items-center justify-center gap-2">
+                        <Heart size={16} className="text-red-400" />
+                        +1,500 mujeres ya tomaron esta decisión
                     </p>
 
                     {/* Guarantee Reminder */}
-                    <div className="bg-slate-800/50 rounded-xl p-4 mb-8 inline-block border border-slate-700">
-                        <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
-                            <Shield className="text-primary" size={18} />
-                            Recuerda: el riesgo es <strong className="text-white">CERO</strong>.
-                            Si no ves resultados en 7 días, te devolvemos cada centavo.
-                        </p>
+                    <div className="inline-flex items-center gap-2 bg-slate-800/60 border border-slate-700 rounded-full px-4 py-2 mb-8 text-sm text-slate-400">
+                        <Shield size={16} className="text-emerald-400" />
+                        <span>
+                            Recuerda: 7 días de garantía total. Riesgo <strong className="text-white">CERO</strong>.
+                        </span>
                     </div>
 
                     {/* CTA Button */}
@@ -71,30 +64,20 @@ const FinalCTA = () => {
                     >
                         <a
                             href="#checkout"
-                            className="inline-block bg-gradient-to-r from-primary to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white text-lg md:text-xl font-bold py-5 px-10 md:px-14 rounded-full shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 animate-breathing"
+                            className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white text-lg font-bold py-4 px-10 rounded-2xl shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all transform hover:scale-[1.02] group"
                             onClick={() => {
                                 if (window.fbq) window.fbq('track', 'InitiateCheckout');
                             }}
                         >
-                            SÍ, QUIERO COMENZAR MI RESET HOY →
+                            <span>SÍ, QUIERO COMENZAR HOY</span>
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </a>
                     </motion.div>
 
-                    {/* Trust indicators */}
-                    <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6 text-sm text-slate-500">
-                        <span className="flex items-center gap-1">
-                            <Zap size={14} className="text-primary" />
-                            Acceso inmediato
-                        </span>
-                        <span className="flex items-center gap-1">
-                            <Shield size={14} className="text-primary" />
-                            7 días de garantía
-                        </span>
-                        <span className="flex items-center gap-1">
-                            <Clock size={14} className="text-primary" />
-                            $17 USD ($375 MXN)
-                        </span>
-                    </div>
+                    {/* Price Reminder */}
+                    <p className="text-slate-500 text-sm mt-4">
+                        Solo $17 USD (≈ $375 MXN) • Acceso inmediato
+                    </p>
 
                 </motion.div>
             </div>

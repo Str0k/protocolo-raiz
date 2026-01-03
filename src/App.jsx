@@ -1,32 +1,19 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import UrgencyBanner from './components/UrgencyBanner';
-import ClarityModule from './components/ClarityModule';
-import Problem from './components/Problem';
-import Authority from './components/Authority';
-import WhatsAppButton from './components/WhatsAppButton';
 import FacebookParamCapture from './components/FacebookParamCapture';
+import WhatsAppButton from './components/WhatsAppButton';
 
-// Lazy load non-critical sections for faster initial load
-const ComparisonTable = lazy(() => import('./components/ComparisonTable'));
-const OfferBreakdown = lazy(() => import('./components/OfferBreakdown'));
-const HowItWorks = lazy(() => import('./components/HowItWorks'));
-const Reviews = lazy(() => import('./components/Reviews'));
+// Lazy load sections for performance
+const SocialProofStrip = lazy(() => import('./components/SocialProofStrip'));
+const ProblemAgitation = lazy(() => import('./components/ProblemAgitation'));
+const ProductReveal = lazy(() => import('./components/ProductReveal'));
 const WhatsAppScreenshots = lazy(() => import('./components/WhatsAppScreenshots'));
-const Pricing = lazy(() => import('./components/Pricing'));
+const SimpleOffer = lazy(() => import('./components/SimpleOffer'));
 const HotmartWidget = lazy(() => import('./components/HotmartWidget'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const FinalCTA = lazy(() => import('./components/FinalCTA'));
 const Footer = lazy(() => import('./components/Footer'));
-
-// Optional sections (can be re-enabled if needed)
-const StickyMobileCTA = lazy(() => import('./components/StickyMobileCTA'));
-const StickyBottomBar = lazy(() => import('./components/StickyBottomBar'));
-const LiveViewerCount = lazy(() => import('./components/LiveViewerCount'));
-
-// Only load MouseFollower on desktop (not needed on mobile)
-const MouseFollower = lazy(() => import('./components/MouseFollower'));
 
 // Lightweight loading placeholder
 const SectionLoader = () => (
@@ -36,95 +23,65 @@ const SectionLoader = () => (
 );
 
 function App() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    // Detect if device is desktop (width > 768px)
-    const checkDevice = () => {
-      setIsDesktop(window.innerWidth > 768);
-    };
-
-    checkDevice();
-    window.addEventListener('resize', checkDevice);
-    return () => window.removeEventListener('resize', checkDevice);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background font-sans text-text">
-      {/* Facebook CAPI Parameter Capture - captures fbc, fbp, IP */}
+      {/* Facebook CAPI Parameter Capture */}
       <FacebookParamCapture />
 
-      {/* Only render MouseFollower on desktop */}
-      {isDesktop && (
-        <Suspense fallback={null}>
-          <MouseFollower />
-        </Suspense>
-      )}
-
-      {/* Fixed Elements: Banner + Header */}
-      <UrgencyBanner />
+      {/* Header */}
       <Header />
 
       <main>
-        {/* SECTION 1: Hero (Above-the-Fold Power Zone) */}
+        {/* SECTION 1: Hero - Above the fold power zone with product image */}
         <Hero />
 
-        {/* SECTION 2: Clarity Module (Anti-Confusion Lock) */}
-        <ClarityModule />
-
-        {/* SECTION 3: Problem Education (Aha Moment Engineering) */}
-        <Problem />
-
-        {/* SECTION 7: Authority Establishment (placed early for trust) */}
-        <Authority />
-
-        {/* Lazy load remaining sections */}
+        {/* SECTION 2: Social Proof Strip - Quick trust builder */}
         <Suspense fallback={<SectionLoader />}>
-          {/* SECTION 4: Differentiation Matrix (Why This vs. Everything Else) */}
-          <ComparisonTable />
-
-          {/* SECTION 5: Offer Breakdown (Tangible Value Architecture) */}
-          <OfferBreakdown />
-
-          {/* SECTION 6: Implementation Clarity (How It Works) */}
-          <HowItWorks />
+          <SocialProofStrip />
         </Suspense>
 
+        {/* SECTION 3: Problem Agitation (Short) */}
         <Suspense fallback={<SectionLoader />}>
-          {/* SECTION 8: Social Proof Amplification (Real Results Showcase) */}
-          <Reviews />
+          <ProblemAgitation />
+        </Suspense>
 
-          {/* SECTION 8B: Real WhatsApp Screenshots (Living Proof) */}
+        {/* SECTION 4: Product Reveal - What's inside */}
+        <Suspense fallback={<SectionLoader />}>
+          <ProductReveal />
+        </Suspense>
+
+        {/* SECTION 5: WhatsApp Screenshots - REAL proof */}
+        <Suspense fallback={<SectionLoader />}>
           <WhatsAppScreenshots />
+        </Suspense>
 
-          {/* SECTION 9: Offer + Pricing + Urgency (Conversion Catalyst Zone) */}
-          <Pricing />
+        {/* SECTION 6: Simple Offer + Guarantee */}
+        <Suspense fallback={<SectionLoader />}>
+          <SimpleOffer />
+        </Suspense>
+
+        {/* SECTION 7: Checkout */}
+        <Suspense fallback={<SectionLoader />}>
           <HotmartWidget />
+        </Suspense>
 
-          {/* SECTION 10: FAQ (Objection Demolition) */}
+        {/* SECTION 8: FAQ (Condensed) */}
+        <Suspense fallback={<SectionLoader />}>
           <FAQ />
+        </Suspense>
 
-          {/* SECTION 11: Final CTA (Last Conversion Push) */}
+        {/* SECTION 9: Final CTA */}
+        <Suspense fallback={<SectionLoader />}>
           <FinalCTA />
         </Suspense>
-
       </main>
 
       <Suspense fallback={null}>
         <Footer />
       </Suspense>
 
-      {/* Floating Elements */}
+      {/* Floating WhatsApp Button */}
       <WhatsAppButton />
-      <Suspense fallback={null}>
-        <StickyMobileCTA />
-        <StickyBottomBar />
-        <LiveViewerCount />
-      </Suspense>
-
-      {/* Disabled aggressive elements */}
-      {/* <FomoNotifications /> */}
-      {/* <ExitIntentPopup /> */}
     </div>
   );
 }
