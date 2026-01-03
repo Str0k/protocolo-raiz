@@ -25,7 +25,7 @@ const WhatsAppButton = () => {
         };
     }, []);
 
-    const whatsappNumber = '5212345678901'; // Replace with actual number
+    const whatsappNumber = '18165006446'; // Real number
     const message = encodeURIComponent('Hola, tengo una duda sobre el Protocolo de Raíz');
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
