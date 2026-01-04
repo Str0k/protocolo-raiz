@@ -40,9 +40,19 @@ const Hero = () => {
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
               >
                 Desinfla tu abdomen en{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                <motion.span
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-200 to-emerald-400 bg-[length:200%_auto]"
+                >
                   7 días
-                </span>
+                </motion.span>
                 <br className="hidden sm:block" />
                 <span className="text-slate-300 font-medium text-2xl md:text-3xl lg:text-4xl">
                   sin dietas extremas ni ejercicio
@@ -126,8 +136,20 @@ const Hero = () => {
             {/* RIGHT: Product Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: [0, -15, 0] // Floating animation
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
+              }}
               className="order-1 lg:order-2 flex justify-center"
             >
               <div className="relative">
@@ -142,17 +164,7 @@ const Hero = () => {
                     className="w-full max-w-md lg:max-w-lg rounded-2xl shadow-2xl shadow-black/50"
                   />
 
-                  {/* Price Badge */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="absolute -bottom-4 -right-4 md:bottom-4 md:right-4 bg-white rounded-2xl p-4 shadow-xl"
-                  >
-                    <p className="text-xs text-slate-500 line-through">$172 USD</p>
-                    <p className="text-2xl font-bold text-emerald-600">$17 USD</p>
-                    <p className="text-xs text-slate-600">≈ $375 MXN</p>
-                  </motion.div>
+                  {/* Price Badge REMOVED as per request */}
                 </div>
               </div>
             </motion.div>
