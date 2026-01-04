@@ -197,6 +197,41 @@ const OfferBreakdown = () => {
                     </p>
                 </motion.div>
 
+                {/* Psychological Push */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mt-16 max-w-3xl mx-auto text-center"
+                >
+                    <div className="bg-red-50/50 rounded-2xl p-8 border border-red-100">
+                        <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-6">
+                            Una pregunta honesta...
+                            <br />
+                            <span className="text-red-700">¿Cuánto te está costando <i>realmente</i> no hacer nada?</span>
+                        </h3>
+
+                        <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+                            <p>
+                                No hablo de los $17 USD. Eso es menos de lo que gastas en una pizza que te inflama más.
+                            </p>
+                            <p>
+                                Hablo del costo real:
+                                <br />
+                                La ropa que ya no te pones. Las fotos en las que te escondes.
+                                <br />
+                                La energía que te falta al final del día.
+                            </p>
+                            <p className="font-medium text-slate-800">
+                                Tu cuerpo es el único lugar donde tienes que vivir por el resto de tu vida.
+                            </p>
+                            <p className="italic text-slate-500 text-base mt-4">
+                                ¿No crees que vale la pena invertir en él lo mismo que cuesta un par de calcetines?
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
+
             </div>
         </section>
     );
