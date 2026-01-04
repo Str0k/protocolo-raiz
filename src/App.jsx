@@ -7,6 +7,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 // Lazy load sections for performance
 const SocialProofStrip = lazy(() => import('./components/SocialProofStrip'));
 const ProblemAgitation = lazy(() => import('./components/ProblemAgitation'));
+const EmotionalTrigger = lazy(() => import('./components/EmotionalTrigger'));
 const ProductReveal = lazy(() => import('./components/ProductReveal'));
 const ProductSneakPeek = lazy(() => import('./components/ProductSneakPeek'));
 const WhatsAppScreenshots = lazy(() => import('./components/WhatsAppScreenshots'));
@@ -44,6 +45,11 @@ function App() {
         {/* SECTION 3: Problem Agitation (Short) */}
         <Suspense fallback={<SectionLoader />}>
           <ProblemAgitation />
+        </Suspense>
+
+        {/* SECTION 3.5: Emotional Trigger - Deep psychological copy */}
+        <Suspense fallback={<SectionLoader />}>
+          <EmotionalTrigger />
         </Suspense>
 
         {/* SECTION 4: Product Reveal - What's inside */}
