@@ -8,6 +8,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 const SocialProofStrip = lazy(() => import('./components/SocialProofStrip'));
 const ProblemAgitation = lazy(() => import('./components/ProblemAgitation'));
 const ProductReveal = lazy(() => import('./components/ProductReveal'));
+const ProductSneakPeek = lazy(() => import('./components/ProductSneakPeek'));
 const WhatsAppScreenshots = lazy(() => import('./components/WhatsAppScreenshots'));
 const SimpleOffer = lazy(() => import('./components/SimpleOffer'));
 const HotmartWidget = lazy(() => import('./components/HotmartWidget'));
@@ -48,6 +49,11 @@ function App() {
         {/* SECTION 4: Product Reveal - What's inside */}
         <Suspense fallback={<SectionLoader />}>
           <ProductReveal />
+        </Suspense>
+
+        {/* SECTION 4.5: Product Sneak Peek - Visual preview */}
+        <Suspense fallback={<SectionLoader />}>
+          <ProductSneakPeek />
         </Suspense>
 
         {/* SECTION 5: WhatsApp Screenshots - REAL proof */}
