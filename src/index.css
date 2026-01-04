@@ -128,7 +128,61 @@ img {
     transition-duration: 0.01ms !important;
   }
 
-  html {
-    scroll-behavior: auto;
+}
+}
+
+/* Text Gradients & Effects */
+.text-gradient-gold {
+  background: linear-gradient(to right, #fbbf24, #d97706, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+.text-gradient-premium {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.elegant-title {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Header Shine Effect */
+.header-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  animation: headerShine 8s infinite;
+}
+
+@keyframes headerShine {
+  0% {
+    left: -100%;
+  }
+
+  20% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
   }
 }
